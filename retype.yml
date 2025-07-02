@@ -1,0 +1,32 @@
+input: ./docs
+output: .retype
+
+url: docs.example.com # Use your website address here
+
+start:
+  # Uncomment the next line to try Retype Pro features
+  pro: true
+
+branding:
+  title: Network-Chadmin
+  label: Docs
+
+links:
+  - text: Getting Started
+    link: https://retype.com/guides/getting-started/
+
+footer:
+  copyright: "&copy; Copyright {{ year }}. All rights reserved."
+
+static:
+  - static
+
+theme:
+  base:
+    base-color: "#8839ef"
+    base-bg: "#eff1f5"
+    base-link-weight: 500
+    image-rounded: 0.75rem
+  dark:
+    base-color: "#ca9ee6"
+    base-bg: "#303446"
