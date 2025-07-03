@@ -23,9 +23,9 @@ Check back soon for the finished version of my first lab set, **Shrimp Co.**
 !!!
 
 
-### What You'll Find Here
+## What You'll Find Here
 
-#### Network Academy
+### Network Academy
 
 This project is built around [Containerlab](https://containerlab.dev/) and modern network simulation workflows.  
 You’ll progress from basic VLANs to complex multi-site architectures through practical, hands-on labs designed for clarity, realism, and growth.
@@ -35,19 +35,19 @@ You’ll progress from basic VLANs to complex multi-site architectures through p
 - **Modern**, scalable lab environment  
 - **Clear objectives**, success criteria, and stretch goals  
 
-#### 🧪 Advanced Labs & Experiments
+### Advanced Labs & Experiments
 
 Standalone labs where I explore automation, emerging technologies, and advanced routing designs.
 
-#### 📝 Technical Blog
+### Technical Blog
 
 Deep dives into network concepts, troubleshooting notes, and lessons from real-world projects.
 
-#### 🧰 Resources & Tools
+### Resources & Tools
 
 A curated collection of the tools, platforms, and applications I use regularly as a network engineer.
 
-### Getting Started
+## Getting Started
 
 **New to networking?** Start with [Shrimp Co. - Network Fundamentals](../network-academy/shrimp-co/lab-1.md)  
 **Experienced engineer?** Jump into the advanced labs or browse the technical blog for specific topics.  
@@ -55,7 +55,7 @@ A curated collection of the tools, platforms, and applications I use regularly a
 
 ---
 
-### Lab Environment
+## Lab Environment
 
 All labs are designed for [Containerlab](https://containerlab.dev) — a lightweight network simulation platform that runs real NOS images in Docker containers. Learn more and get started [here](https://containerlab.dev).
 
@@ -63,7 +63,7 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 ---
 
-### Recent Updates 6/16
+## Recent Updates 6/16
 
 - Re-created first four lab topologies for Shrimp Co. in draw.io  
 - Uploaded those four topologies and linked them to lab pages  
@@ -71,7 +71,7 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 ---
 
-### Quick Navigation
+## Quick Navigation
 
 - [Network Academy](docs/labs/network-academy-index.md) — Start here for structured learning  
 - Other Labs — Specialized networking experiments  
