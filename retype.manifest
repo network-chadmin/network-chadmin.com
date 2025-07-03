@@ -1,0 +1,108 @@
+{
+  "version": "3.11.0",
+  "created": "2025-07-03T05:42:38Z",
+  "files": [
+    {
+      "path": ".nojekyll"
+    },
+    {
+      "path": "404.html"
+    },
+    {
+      "path": "documentation/containerlab-reference/index.html"
+    },
+    {
+      "path": "getting-started/index.html"
+    },
+    {
+      "path": "index.html"
+    },
+    {
+      "path": "labs/network-academy/index.html"
+    },
+    {
+      "path": "labs/network-academy/seamart/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-1/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-2/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-3/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-4/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-5/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-6/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-7/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-8/index.html"
+    },
+    {
+      "path": "labs/network-academy/shrimp-co/lab-9/index.html"
+    },
+    {
+      "path": "resources/css/retype.css"
+    },
+    {
+      "path": "resources/fonts/Inter-italic-latin-var.woff2"
+    },
+    {
+      "path": "resources/fonts/Inter-roman-latin-var.woff2"
+    },
+    {
+      "path": "resources/index.html"
+    },
+    {
+      "path": "resources/js/config.js"
+    },
+    {
+      "path": "resources/js/lunr.js"
+    },
+    {
+      "path": "resources/js/prism.js"
+    },
+    {
+      "path": "resources/js/retype.js"
+    },
+    {
+      "path": "resources/js/search.js"
+    },
+    {
+      "path": "resources/lunr.js.LICENSE.txt"
+    },
+    {
+      "path": "resources/mermaid.js.LICENSE.txt"
+    },
+    {
+      "path": "resources/prism.js.LICENSE.txt"
+    },
+    {
+      "path": "resources/retype.js.LICENSE.txt"
+    },
+    {
+      "path": "resources/retype.LICENSE.txt"
+    },
+    {
+      "path": "robots.txt"
+    },
+    {
+      "path": "sitemap.xml.gz"
+    },
+    {
+      "path": "static/router-icon.png"
+    }
+  ]
+}

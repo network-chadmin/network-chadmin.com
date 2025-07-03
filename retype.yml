@@ -20,6 +20,9 @@ links:
   - text: Resources
     link: /resources/
 
+static:
+  - ../static
+
 footer:
   copyright: "&copy; {{ year }} Chad Heetland | Built with Retype"
   links:
@@ -29,9 +32,6 @@ footer:
     - text: Contact
       link: mailto:heetland.chad@gmail.com
       icon: mail
-
-static:
-  - static
 
 favicon: static/router-icon.png
 
