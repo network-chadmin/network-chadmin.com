@@ -9,7 +9,7 @@ start:
 branding:
   title: Network-Chadmin
   label: Labs & Docs
-  logo: static/logo.svg
+  logo: static/router-icon.png
   logoAlign: left
 
 links:
@@ -33,7 +33,7 @@ footer:
 static:
   - static
 
-favicon: static/favicon.ico
+favicon: static/router-icon.png
 
 edit:
   repo: https://github.com/network-chadmin/network-chadmin.github.io
