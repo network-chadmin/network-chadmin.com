@@ -14,10 +14,11 @@ I believe labbing — and learning to enjoy labbing — is the secret to success
 
 ## Shrimp Co. - Network Fundamentals
 
-<figure>
+<figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-transparent.png"
          alt="Shrimp Co." width="400" height="300">
-    <figcaption>Enterprise Infrastructure, built from scratch.</figcaption>
+    <figcaption style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px;"> Enterprise Infrastructure, built from scratch.
+    </figcaption>
 </figure>
 
 **Shrimp Co.** was the original inspiration behind Network Academy and the reason this site exists today.
@@ -28,10 +29,12 @@ While it's designed with beginners in mind, even seasoned learners will find val
 
 ## SeaMart - Zero to Routing Hero
 
-<figure>
+<figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/seamart-transparent.png"
          alt="SeaMart" width="400" height="300">
-    <figcaption>A magnificent journey through layer 3.</figcaption>
+    <figcaption style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px;">
+        A magnificent journey through layer 3.
+    </figcaption>
 </figure>
 
 Routing is a core skill in computer networking. Mastering it not only makes you a more valuable engineer, but it’s essential for those pursuing design and architecture roles.
@@ -40,8 +43,10 @@ In the **SeaMart** series, you’ll step into the role of a Campus and WAN engin
 
 Starting with basic static and dynamic routing, you'll gradually build a large-scale routed environment—incorporating advanced concepts like mutual redistribution and route filtering along the way.
 
-<figure>
+<figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/volt-communications-transparent.png"
          alt="Volt Communications" width="400" height="300">
-    <figcaption>BGP runs the world, how well do you know it?.</figcaption>
+    <figcaption style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px;">
+        BGP runs the world, how well do you know it?
+    </figcaption>
 </figure>
