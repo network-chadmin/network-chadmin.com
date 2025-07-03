@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804827229954">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804828711632">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -11,6 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Containerlab</title>
     <meta name="title" content="Containerlab">
+    <meta name="description" content="Command">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://network-chadmin.github.io/documentation/containerlab-reference/">
@@ -19,20 +20,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://network-chadmin.github.io/documentation/containerlab-reference/">
     <meta property="og:title" content="Containerlab">
+    <meta property="og:description" content="Command">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://network-chadmin.github.io/documentation/containerlab-reference/">
     <meta property="twitter:title" content="Containerlab">
+    <meta property="twitter:description" content="Command">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.804827229954" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.804828711632" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.804827229954" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.804828711632" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/search.js?v=3.11.0.804827229954" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.804827229954" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/search.js?v=3.11.0.804828711632" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.804828711632" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -177,12 +180,182 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="containerlab" class="break-words">
+<doc-anchor-target id="containerlab-reference-guide" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#containerlab">#</doc-anchor-trigger>
-        <span>Containerlab</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#containerlab-reference-guide">#</doc-anchor-trigger>
+        <span>Containerlab Reference Guide</span>
     </h1>
 </doc-anchor-target>
+<doc-anchor-target id="deployment-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#deployment-commands">#</doc-anchor-trigger>
+        <span>Deployment Commands</span>
+    </h2>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>containerlab deploy</code></td>
+<td>Deploy lab (must in directory with lab file.)</td>
+</tr>
+<tr>
+<td><code v-pre>containerlab deploy -t &lt;lab-name.clab.yml</code></td>
+<td>Deploy specific lab file.</td>
+</tr>
+<tr>
+<td><code v-pre>containerlab deploy --reconfigure</code></td>
+<td>Deploy lab with fresh set of files (config/TLS/etc.)</td>
+</tr>
+<tr>
+<td><code v-pre>clab dep</code></td>
+<td>Deploy a lab using alias&#x27;s</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="management-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#management-commands">#</doc-anchor-trigger>
+        <span>Management Commands</span>
+    </h2>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>containerlab inspect</code></td>
+<td>Show running lab in local directory</td>
+</tr>
+<tr>
+<td><code v-pre>containerlab inspect -it &lt;labfile.clab.yml&gt;</code></td>
+<td>Show specific lab</td>
+</tr>
+<tr>
+<td><code v-pre>containerlab inspect -a</code></td>
+<td>Show all labs</td>
+</tr>
+<tr>
+<td><code v-pre>containerlab destroy -t &lt;labfile.clab.yml&gt;</code></td>
+<td>Destroy specific lab</td>
+</tr>
+<tr>
+<td><code v-pre>containerlab destroy -t &lt;labfile.clab.yml&gt; --cleanup</code></td>
+<td>Destroy lab and delete extra lab file</td>
+</tr>
+<tr>
+<td><code v-pre>containerlab save -t &lt;labfile.clab.yml&gt;</code></td>
+<td>Save node configurations from specific lab</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="docker-commands-for-management">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker-commands-for-management">#</doc-anchor-trigger>
+        <span>Docker Commands for Management</span>
+    </h2>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>docker ps</code></td>
+<td>List running containers</td>
+</tr>
+<tr>
+<td><code v-pre>docker restart &lt;container&gt;</code></td>
+<td>Restart container</td>
+</tr>
+<tr>
+<td><code v-pre>docker stop &lt;container&gt;</code></td>
+<td>Stop container</td>
+</tr>
+<tr>
+<td><code v-pre>docker rm &lt;container&gt;</code></td>
+<td>Remove container</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="container-access">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#container-access">#</doc-anchor-trigger>
+        <span>Container Access</span>
+    </h2>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>docker exec -it &lt;container&gt; bash</code></td>
+<td>Access container bash shell</td>
+</tr>
+<tr>
+<td><code v-pre>docker exec -it &lt;container&gt; Cli</code></td>
+<td>Access container CLI (Arista)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="image-management">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#image-management">#</doc-anchor-trigger>
+        <span>Image Management</span>
+    </h2>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>docker images</code></td>
+<td>List available images</td>
+</tr>
+<tr>
+<td><code v-pre>docker rmi &lt;image&gt;</code></td>
+<td>Remove an image</td>
+</tr>
+<tr>
+<td><code v-pre>docker pull &lt;image&gt;</code></td>
+<td>Attempt to download image from Docker</td>
+</tr>
+<tr>
+<td><code v-pre>docker import &lt;file&gt; &lt;name&gt;:&lt;tag&gt;</code></td>
+<td>Import image from file</td>
+</tr>
+</tbody>
+</table>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
