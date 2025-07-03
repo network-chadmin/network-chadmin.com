@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804828711632">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804831564063">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Lab 2 | Trunks</title>
-    <meta name="title" content="Lab 2 | Trunks">
+    <title>Lab 2 - Trunks</title>
+    <meta name="title" content="Lab 2 - Trunks">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-2/">
@@ -18,21 +18,23 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-2/">
-    <meta property="og:title" content="Lab 2 | Trunks">
+    <meta property="og:title" content="Lab 2 - Trunks">
+    <meta property="og:image" content="https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/02_trunks.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-2/">
-    <meta property="twitter:title" content="Lab 2 | Trunks">
+    <meta property="twitter:title" content="Lab 2 - Trunks">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/02_trunks.png">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../../resources/css/retype.css?v=3.11.0.804828711632" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.804831564063" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.804828711632" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.804831564063" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.804828711632" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.804828711632" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.804831564063" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.804831564063" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -177,12 +179,23 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="lab-2--trunks" class="break-words">
+<doc-anchor-target id="lab-2---trunks" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-2--trunks">#</doc-anchor-trigger>
-        <span>Lab 2 | Trunks</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-2---trunks">#</doc-anchor-trigger>
+        <span>Lab 2 - Trunks</span>
     </h1>
 </doc-anchor-target>
+<doc-panel id="lab-topology" collapsed>
+    <template #title>Lab Topology</template>
+<p><figure class="content-center">
+    <img src="https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/02_trunks.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px; text-align: center;">
+<em>Tip: Individual topology files are available in the <strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;">Diagrams</a></strong> folder on my Github</em>
+</p>
+</doc-panel>
 
                                 
                                 <!-- Required only on API pages -->
@@ -244,16 +257,6 @@
                                                 <span>Contact</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a class="inline-flex items-center mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-footer-link hover:text-footer-link-hover md:mb-0" href="https://linkedin.com/in/your-profile">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
-                                                    <g fill="currentColor">
-                                                        <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"/>
-                                                    </g>
-                                                </svg>
-                                                <span>LinkedIn</span>
-                                            </a>
-                                        </li>
                                     </ul>
                                 </div>
                                 <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© 2025 Chad Heetland | Built with Retype</p></div>
@@ -285,6 +288,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 2 | Trunks", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 2 - Trunks", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
