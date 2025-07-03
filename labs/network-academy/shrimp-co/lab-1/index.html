@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804831564063">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804832448883">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Lab 1 - VLANs</title>
     <meta name="title" content="Lab 1 - VLANs">
-    <meta name="description" content="Understanding broadcast domains and network segmentation">
+    <meta name="description" content="Host">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
@@ -20,24 +20,24 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
     <meta property="og:title" content="Lab 1 - VLANs">
-    <meta property="og:description" content="Understanding broadcast domains and network segmentation">
-    <meta property="og:image" content="https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/01_vlans.png">
+    <meta property="og:description" content="Host">
+    <meta property="og:image" content="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
     <meta property="twitter:title" content="Lab 1 - VLANs">
-    <meta property="twitter:description" content="Understanding broadcast domains and network segmentation">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/01_vlans.png">
+    <meta property="twitter:description" content="Host">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../../resources/css/retype.css?v=3.11.0.804831564063" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.804832448883" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.804831564063" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.804832448883" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.804831564063" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.804831564063" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.804832448883" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.804832448883" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -182,14 +182,20 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="vlans" class="break-words">
+<doc-anchor-target id="lab-1---vlans" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#vlans">#</doc-anchor-trigger>
-        <span>VLANs</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-1---vlans">#</doc-anchor-trigger>
+        <span>Lab 1 - VLANs</span>
     </h1>
 </doc-anchor-target>
-<p><em>Understanding broadcast domains and network segmentation</em></p>
-<hr>
+<p><figure class="content-center">
+    <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px; text-align: center;">
+<em>Understanding broadcast domains and network segmentation
+</p>
 <doc-panel id="lab-topology" collapsed>
     <template #title>Lab Topology</template>
 <p><figure class="content-center">
@@ -204,13 +210,13 @@
 <doc-anchor-target id="configuration-tasks">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
-        <span>Configuration Tasks</span>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="host-ip-addresses">
+<doc-anchor-target id="host-ip-addresses--switchport-assignment">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#host-ip-addresses">#</doc-anchor-trigger>
-        <span>Host IP Addresses</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#host-ip-addresses--switchport-assignment">#</doc-anchor-trigger>
+        <span>Host IP Addresses &amp; Switchport Assignment</span>
     </h3>
 </doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
@@ -257,50 +263,11 @@
 <li><strong>VLAN 20</strong> - Engineering Department</li>
 <li><strong>VLAN 99</strong> - Network Management</li>
 </ul>
-<doc-anchor-target id="switch-port-assignment">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#switch-port-assignment">#</doc-anchor-trigger>
-        <span>Switch Port Assignment</span>
-    </h3>
-</doc-anchor-target>
-<p>Configure access ports on the switch:</p>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th>Port</th>
-<th>Host</th>
-<th>VLAN</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Eth0/1</td>
-<td>Bob</td>
-<td>10</td>
-<td>Sales Department</td>
-</tr>
-<tr>
-<td>Eth0/2</td>
-<td>Linda</td>
-<td>10</td>
-<td>Sales Department</td>
-</tr>
-<tr>
-<td>Eth0/3</td>
-<td>Alice</td>
-<td>20</td>
-<td>Engineering Department</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
-<doc-anchor-target id="-success-criteria">
+<doc-anchor-target id="success-criteria">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#-success-criteria">#</doc-anchor-trigger>
-        <span><span class="docs-emoji">&#x2705;</span> Success Criteria</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M3.75 2h16.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25V3.75C2 2.784 2.784 2 3.75 2ZM3.5 3.75v16.5c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25H3.75a.25.25 0 0 0-.25.25Z"/></g></g></svg> Success Criteria</span>
     </h2>
 </doc-anchor-target>
 <doc-anchor-target id="primary-goals">
@@ -328,7 +295,7 @@
 <doc-anchor-target id="verification-commands">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
-        <span>Verification Commands</span>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -346,7 +313,7 @@ show mac address-table</code></pre>
 <doc-anchor-target id="key-concepts">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#key-concepts">#</doc-anchor-trigger>
-        <span>Key Concepts</span>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M16.75 8.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"/><path d="M15.75 0a8.25 8.25 0 1 1-2.541 16.101l-1.636 1.636a1.744 1.744 0 0 1-1.237.513H9.25a.25.25 0 0 0-.25.25v1.448a.876.876 0 0 1-.256.619l-.214.213a.75.75 0 0 1-.545.22H5.25a.25.25 0 0 0-.25.25v1A1.75 1.75 0 0 1 3.25 24h-1.5A1.75 1.75 0 0 1 0 22.25v-2.836c0-.464.185-.908.513-1.236l7.386-7.388A8.249 8.249 0 0 1 15.75 0ZM9 8.25a6.733 6.733 0 0 0 .463 2.462.75.75 0 0 1-.168.804l-7.722 7.721a.25.25 0 0 0-.073.177v2.836c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-1c0-.966.784-1.75 1.75-1.75H7.5v-1c0-.966.784-1.75 1.75-1.75h1.086a.25.25 0 0 0 .177-.073l1.971-1.972a.75.75 0 0 1 .804-.168A6.75 6.75 0 1 0 9 8.25Z"/></g></g></svg> Key Concepts</span>
     </h2>
 </doc-anchor-target>
 <doc-anchor-target id="why-vlans-matter">
