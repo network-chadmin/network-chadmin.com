@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804815984680">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804824625680">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -11,6 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Getting Started</title>
     <meta name="title" content="Getting Started">
+    <meta name="description" content="Labs I publish here use Containerlab, a free network lab solution developed by engineers at Nokia.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://docs.example.com/getting-started/">
@@ -19,19 +20,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://docs.example.com/getting-started/">
     <meta property="og:title" content="Getting Started">
+    <meta property="og:description" content="Labs I publish here use Containerlab, a free network lab solution developed by engineers at Nokia.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://docs.example.com/getting-started/">
     <meta property="twitter:title" content="Getting Started">
+    <meta property="twitter:description" content="Labs I publish here use Containerlab, a free network lab solution developed by engineers at Nokia.">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=3.11.0.804815984680" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.11.0.804824625680" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.804815984680" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.804824625680" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.804815984680" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.804824625680" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.804824625680" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -166,6 +170,93 @@
         <span>Getting Started</span>
     </h1>
 </doc-anchor-target>
+<doc-anchor-target id="requirements">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#requirements">#</doc-anchor-trigger>
+        <span>Requirements</span>
+    </h2>
+</doc-anchor-target>
+<p>Labs I publish here use <a href="https://containerlab.dev/">Containerlab</a>, a free network lab solution developed by engineers at Nokia. It doesn&#x27;t require a costly subscription, and in my experience, it&#x27;s more resource-efficient, more reliable, and a lot more enjoyable than the emulators of years past.</p>
+<ul>
+<li><strong>Containerlab installed on a Linux PC, Server, WSL or on a Macbook.</strong> The labs here have been built and tested on Ubuntu server 24.04.2 LTS.</li>
+<li><strong>Lab images</strong> — at the time of writing, I&#x27;m using Cisco IOL, Cisco IOL-L2, and Arista cEOS.</li>
+<li><strong>Lab files</strong> available on my <a href="https://github.com/network-chadmin/containerlab.git">GitHub</a></li>
+</ul>
+<doc-anchor-target id="installing-containerlab">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#installing-containerlab">#</doc-anchor-trigger>
+        <span>Installing Containerlab</span>
+    </h2>
+</doc-anchor-target>
+<p>Run the command:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">curl -sL https://containerlab.dev/setup | sudo -E bash -s &quot;all&quot;</code></pre>
+</doc-codeblock></div>
+<p>This will install all components needed to run Containerlab, including Docker. See detailed or alternate installation instructions <a href="https://containerlab.dev/install/">here</a>.</p>
+<doc-anchor-target id="images">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#images">#</doc-anchor-trigger>
+        <span>Images</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="cisco-iol">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cisco-iol">#</doc-anchor-trigger>
+        <span>Cisco IOL</span>
+    </h3>
+</doc-anchor-target>
+<p>IOL can be acquired from Cisco after purchasing a CML subscription and extracting the image file from the refplat ISO. You may be able to find it via other avenues, but this is what I did as I know I&#x27;m getting the safest and most up-to-date image. This is technically a VM and not a Container natively so you&#x27;ll need to use <a href="https://github.com/vrnetlab/vrnetlab">vrnetlab</a> to import the images into Docker.</p>
+<doc-anchor-target id="network-host">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#network-host">#</doc-anchor-trigger>
+        <span>Network-Host</span>
+    </h3>
+</doc-anchor-target>
+<p>This is a custom Ubuntu host with a few extra packages installed like sudo, iperf3, tcp dump, traceroute, curl, nginx, and more. Containerlab will pull this image from Docker when you run your first lab.</p>
+<doc-anchor-target id="arista-ceos">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#arista-ceos">#</doc-anchor-trigger>
+        <span>Arista cEOS</span>
+    </h3>
+</doc-anchor-target>
+<p><a href="https://www.arista.com/en/support/software-download">Arista</a> offers these images for free once you&#x27;ve created an account. Navigate to &quot;Support → Software Download → cEOS Lab → 4.33 → cEOS64-lab-4.33.3F.tar.xz&quot;</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>&quot;cEOS Version&quot;</h5>
+<p>This is the cEOS version I&#x27;ll be using in my labs</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="lab-files">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-files">#</doc-anchor-trigger>
+        <span>Lab files</span>
+    </h2>
+</doc-anchor-target>
+<p>Clone the repo containing all my labs/courses:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">git clone https://github.com/network-chadmin/containerlab.git</code></pre>
+</doc-codeblock></div>
+<p>Cloning the repo above will download all the necessary lab files to start, assuming you&#x27;ve acquired the proper images. Move to the directory with your desired lab&#x27;s YAML file in it:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">cd /path/to/your/labfile.clab.yml</code></pre>
+</doc-codeblock></div>
+<p>Then go ahead and launch your lab:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">containerlab deploy</code></pre>
+</doc-codeblock></div>
+<p>For a more in-depth look at how to administer Containerlab and Docker see my <a href="containerlab-reference.md">Containerlab Reference guide</a>.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -201,9 +292,15 @@
                             <footer class="flex flex-wrap items-center justify-between print:justify-center">
                                 <div id="retype-footer-links" class="print:hidden">
                                     <ul class="flex flex-wrap items-center text-sm">
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-footer-link hover:text-footer-link-hover md:mb-0" href="https://github.com/network-chadmin">GitHub</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-footer-link hover:text-footer-link-hover md:mb-0" href="mailto:heetland.chad@gmail.com">Contact</a>
+                                        </li>
                                     </ul>
                                 </div>
-                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© Copyright 2025. All rights reserved.</p></div>
+                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© 2025 Chad Heetland | Built with Retype</p></div>
                             </footer>
                         </div>
                     </div>
@@ -232,6 +329,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Getting Started", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Getting Started", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
