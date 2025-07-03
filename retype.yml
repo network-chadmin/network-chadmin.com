@@ -1,7 +1,7 @@
 input: ./docs
 output: .retype
 
-url: network-chadmin.github.io # Your actual GitHub Pages URL
+url: network-chadmin.github.io
 
 start:
   pro: true
@@ -9,7 +9,7 @@ start:
 branding:
   title: Network-Chadmin
   label: Labs & Docs
-  logo: static/logo.svg # Optional: add a custom logo
+  logo: static/logo.svg
   logoAlign: left
 
 links:
@@ -29,9 +29,6 @@ footer:
     - text: Contact
       link: mailto:heetland.chad@gmail.com
       icon: mail
-    - text: LinkedIn
-      link: https://linkedin.com/in/your-profile
-      icon: person
 
 static:
   - static
@@ -54,15 +51,15 @@ snippets:
 
 theme:
   base:
-    base-color: "#1e40af"        # Professional blue
-    base-bg: "#f8fafc"           # Clean light background
+    base-color: "#2563eb"           # Blue for links and accents
+    base-bg: "#fafbfc"              # Brighter, cleaner white background
     base-link-weight: 500
     image-rounded: 0.5rem
-    code-bg: "#f1f5f9"           # Light code background
-    code-color: "#334155"        # Dark code text
+    code-bg: "#f1f5f9"              # Light blue-gray for code blocks
+    code-color: "#334155"           # Dark slate for code text
   dark:
-    base-color: "#60a5fa"        # Lighter blue for dark mode
-    base-bg: "#0f172a"           # Deep dark background
+    base-color: "#60a5fa"           # Light blue for links and accents
+    base-bg: "#1a202c"              # Lighter dark background (less black)
     base-link-weight: 500
-    code-bg: "#1e293b"           # Dark code background
-    code-color: "#e2e8f0"        # Light code text
+    code-bg: "#2d3748"              # Lighter dark for code blocks
+    code-color: "#f7fafc"           # Light text in code

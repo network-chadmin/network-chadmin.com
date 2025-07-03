@@ -4,6 +4,12 @@ icon:
 order: 1000
 ---
 
+# VLANs
+
+*Understanding broadcast domains and network segmentation*
+
+---
+
 ==- Lab Topology
 ![](https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/01_vlans.png)
 
@@ -12,61 +18,84 @@ order: 1000
 </p>
 ===
 
-## Basic Configuration:
+## Configuration Tasks
 
-- [ ] Set the static IPv4 address for Ethernet1 on each host:
-  - [ ] Bob: 10.1.10.10/24
-  - [ ] Linda: 10.1.10.20/24
-  - [ ] Alice: 10.1.20.10/24
-- [ ] Create and name VLANs
-  - [ ] VLAN 10 (Sales)
-  - [ ] VLAN 20 (Engineering)
-  - [ ] VLAN 99 (Network Management)
-- [ ] Configure Access Ports
-  - [ ] Eth0/1 for Bob (Sales)
-  - [ ] Eth0/2 for Linda (Sales)
-  - [ ] Eth0/3 for Alice (Engineering)
+### Host IP Addresses
 
-!!!info "Linux Host Access & Configuration"
-In case you are unable to SSH to the Linux hosts, you can `docker exec -it <container-name> bash`
-Static IP and subnet mask configuration is done via `sudo ip addr add 10.1.10.10/24 dev eth1`
-!!!
+| Host | Interface | IP Address | VLAN Assignment |
+|------|-----------|------------|-----------------|
+| Bob | Eth0/1 | 10.1.10.10/24 | 10 (Sales) |
+| Linda | Eth0/2 | 10.1.10.20/24 | 10 (Sales) |
+| Alice | Eth0/3 | 10.1.20.10/24 | 20 (Engineering) |
 
-!!!success "Success Criteria"
-1. Bob and Linda can ping each other (both in VLAN 10)
-2. Alice cannot ping Bob or Linda (different VLANs)
-!!!
+### VLAN Configuration
 
-## Stretch Goals:
+Create and configure the following VLANs:
 
-- [ ] Add port descriptions to all switchports
-- [ ] Configure a VLAN interface for VLAN 99 (10.1.99.10/24)
-- [ ] Configure each Linux host's IPv4 address in a manner that would persist across reboots
+- **VLAN 10** - Sales Department
+- **VLAN 20** - Engineering Department  
+- **VLAN 99** - Network Management
 
-!!!warning "Questions"
-- What are a few reason we use VLANs?
-- What is a broadcast domain?
-- How does a switch know where a particular host lives?
-- Why does the Vlan99 SVI show "status down"?
-!!!
+### Switch Port Assignment
 
-==- Verification Commands
+Configure access ports on the switch:
+
+| Port | Host | VLAN | Description |
+|------|------|------|-------------|
+| Eth0/1 | Bob | 10 | Sales Department |
+| Eth0/2 | Linda | 10 | Sales Department |
+| Eth0/3 | Alice | 20 | Engineering Department |
+
+---
+
+## ✅ Success Criteria
+
+### Primary Goals
+1. **Connectivity Test**: Bob and Linda can ping each other (same VLAN)
+2. **Isolation Test**: Alice cannot ping Bob or Linda (different VLANs)
+
+### Stretch Goals
+- Add descriptive port descriptions to all switchports
+- Configure VLAN 99 management interface (10.1.99.10/24)
+- Make host IP configurations persistent across reboots
+
+---
+
+## Verification Commands
+
 ```cisco
-# Show configured VLANS
+# Show configured VLANs
 show vlan brief
-```
 
-```cisco
-# Show interface connection status, VLAN membership, and more
+# Show interface status and VLAN membership
 show interfaces status
-```
 
-```cisco
-# Show mac forwarding table
+# Show MAC address table
 show mac address-table
 ```
-===
 
-==- Reference
-[Reference content would go here]
-===
+---
+
+## Key Concepts
+
+### Why VLANs Matter
+- **Security**: Network segmentation isolates traffic
+- **Broadcast Control**: Reduces broadcast domain size
+- **Organization**: Logical grouping of devices
+
+### Understanding the Topology
+```
+VLAN 10 (Sales)    │  VLAN 20 (Engineering)
+Bob ←→ Linda       │  Alice (isolated)
+```
+
+### Questions to Explore
+- What happens when you send a broadcast in VLAN 10?
+- How does the switch learn where each host is located?
+- Why might VLAN 99 SVI show "status down" initially?
+
+!!!tip "Quick Access"
+Can't SSH to hosts? Use: `docker exec -it <container-name> bash`
+
+Set static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
+!!!
