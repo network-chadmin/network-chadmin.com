@@ -1,37 +1,68 @@
 input: ./docs
 output: .retype
 
-url: docs.example.com # Use your website address here
+url: network-chadmin.github.io # Your actual GitHub Pages URL
 
 start:
-  # Uncomment the next line to try Retype Pro features
   pro: true
 
 branding:
   title: Network-Chadmin
-  label: Docs
+  label: Labs & Docs
+  logo: static/logo.svg # Optional: add a custom logo
+  logoAlign: left
 
 links:
   - text: Getting Started
-    link: https://retype.com/guides/getting-started/
+    link: /getting-started/
+  - text: Network Academy
+    link: /network-academy/
+  - text: Resources
+    link: /resources/
 
 footer:
   copyright: "&copy; {{ year }} Chad Heetland | Built with Retype"
   links:
     - text: GitHub
       link: https://github.com/network-chadmin
+      icon: mark-github
     - text: Contact
       link: mailto:heetland.chad@gmail.com
+      icon: mail
+    - text: LinkedIn
+      link: https://linkedin.com/in/your-profile
+      icon: person
 
 static:
   - static
 
+favicon: static/favicon.ico
+
+edit:
+  repo: https://github.com/network-chadmin/network-chadmin.github.io
+  base: /docs
+  branch: main
+  label: Edit this page
+
+poweredByRetype: false
+
+search:
+  preload: true
+
+snippets:
+  lineNumbers: true
+
 theme:
   base:
-    base-color: "#4a6b4f"        # Forest Green for a more earthy, technical tone
-    base-bg: "#f8f9fa"          # Lighter neutral for contrast
-    base-link-weight: 600
-    image-rounded: 0.75rem
+    base-color: "#1e40af"        # Professional blue
+    base-bg: "#f8fafc"           # Clean light background
+    base-link-weight: 500
+    image-rounded: 0.5rem
+    code-bg: "#f1f5f9"           # Light code background
+    code-color: "#334155"        # Dark code text
   dark:
-    base-color: "#a9cfa5"        # Sage Green tone for night mode
-    base-bg: "#1e1e1e"
+    base-color: "#60a5fa"        # Lighter blue for dark mode
+    base-bg: "#0f172a"           # Deep dark background
+    base-link-weight: 500
+    code-bg: "#1e293b"           # Dark code background
+    code-color: "#e2e8f0"        # Light code text
