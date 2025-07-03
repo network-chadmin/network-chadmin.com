@@ -16,17 +16,22 @@ links:
     link: https://retype.com/guides/getting-started/
 
 footer:
-  copyright: "&copy; Copyright {{ year }}. All rights reserved."
+  copyright: "&copy; {{ year }} Chad Heetland | Built with Retype"
+  links:
+    - text: GitHub
+      link: https://github.com/network-chadmin
+    - text: Contact
+      link: mailto:heetland.chad@gmail.com
 
 static:
   - static
 
 theme:
   base:
-    base-color: "#8839ef"
-    base-bg: "#eff1f5"
-    base-link-weight: 500
+    base-color: "#4a6b4f"        # Forest Green for a more earthy, technical tone
+    base-bg: "#f8f9fa"          # Lighter neutral for contrast
+    base-link-weight: 600
     image-rounded: 0.75rem
   dark:
-    base-color: "#ca9ee6"
-    base-bg: "#303446"
+    base-color: "#a9cfa5"        # Sage Green tone for night mode
+    base-bg: "#1e1e1e"
