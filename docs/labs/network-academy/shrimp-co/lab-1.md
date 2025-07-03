@@ -3,12 +3,12 @@ title: Lab 1 - VLANs
 icon:
 order: 1000
 ---
+![](https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png)
 
-# VLANs
+<p style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px; text-align: center;">
+<em>Understanding broadcast domains and network segmentation
+</p>
 
-*Understanding broadcast domains and network segmentation*
-
----
 
 ==- Lab Topology
 ![](https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/01_vlans.png)
@@ -18,9 +18,9 @@ order: 1000
 </p>
 ===
 
-## Configuration Tasks
+## :icon-tasklist: Configuration Tasks
 
-### Host IP Addresses
+### Host IP Addresses & Switchport Assignment
 
 | Host | Interface | IP Address | VLAN Assignment |
 |------|-----------|------------|-----------------|
@@ -36,19 +36,9 @@ Create and configure the following VLANs:
 - **VLAN 20** - Engineering Department  
 - **VLAN 99** - Network Management
 
-### Switch Port Assignment
-
-Configure access ports on the switch:
-
-| Port | Host | VLAN | Description |
-|------|------|------|-------------|
-| Eth0/1 | Bob | 10 | Sales Department |
-| Eth0/2 | Linda | 10 | Sales Department |
-| Eth0/3 | Alice | 20 | Engineering Department |
-
 ---
 
-## ✅ Success Criteria
+## :icon-checkbox: Success Criteria
 
 ### Primary Goals
 1. **Connectivity Test**: Bob and Linda can ping each other (same VLAN)
@@ -61,7 +51,7 @@ Configure access ports on the switch:
 
 ---
 
-## Verification Commands
+## :icon-terminal: Verification Commands
 
 ```cisco
 # Show configured VLANs
@@ -76,7 +66,7 @@ show mac address-table
 
 ---
 
-## Key Concepts
+## :icon-key: Key Concepts
 
 ### Why VLANs Matter
 - **Security**: Network segmentation isolates traffic

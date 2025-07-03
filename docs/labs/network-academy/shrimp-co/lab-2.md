@@ -3,6 +3,7 @@ title: Lab 2 - Trunks
 icon:
 order: 990
 ---
+![](https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png)
 
 ==- Lab Topology
 ![](https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/02_trunks.png)
