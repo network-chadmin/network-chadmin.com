@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804836556190">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.805150573303">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Lab 1 - VLANs</title>
     <meta name="title" content="Lab 1 - VLANs">
-    <meta name="description" content="Host">
+    <meta name="description" content="Create and configure the following VLANs:">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
@@ -20,25 +20,61 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
     <meta property="og:title" content="Lab 1 - VLANs">
-    <meta property="og:description" content="Host">
+    <meta property="og:description" content="Create and configure the following VLANs:">
     <meta property="og:image" content="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
     <meta property="twitter:title" content="Lab 1 - VLANs">
-    <meta property="twitter:description" content="Host">
+    <meta property="twitter:description" content="Create and configure the following VLANs:">
     <meta property="twitter:image" content="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.804836556190" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.805150573303" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.804836556190" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.805150573303" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.804836556190" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.804836556190" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.805150573303" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.805150573303" data-turbo-eval="false" defer></script>
+
+    <style>
+        /* Colored H2 headings for different sections */
+        h2[id*="configuration"] { 
+            color: #3b82f6; 
+        }
+        h2[id*="success"] { 
+            color: #10b981; 
+        }
+        h2[id*="verification"] { 
+            color: #8b5cf6; 
+        }
+        h2[id*="key-concepts"] { 
+            color: #f59e0b; 
+        }
+        h2[id*="stretch"] { 
+            color: #dc2626; 
+        }
+        
+        /* Dark mode versions */
+        [data-theme="dark"] h2[id*="configuration"] { 
+            color: #60a5fa; 
+        }
+        [data-theme="dark"] h2[id*="success"] { 
+            color: #6ee7b7; 
+        }
+        [data-theme="dark"] h2[id*="verification"] { 
+            color: #a78bfa; 
+        }
+        [data-theme="dark"] h2[id*="key-concepts"] { 
+            color: #fbbf24; 
+        }
+        [data-theme="dark"] h2[id*="stretch"] { 
+            color: #fca5a5; 
+        }
+    </style>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -256,6 +292,18 @@
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="vlan-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#vlan-configuration">#</doc-anchor-trigger>
+        <span>VLAN Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Create and configure the following VLANs:</p>
+<ul>
+<li><strong>VLAN 10</strong> - Sales Department</li>
+<li><strong>VLAN 20</strong> - Engineering Department</li>
+<li><strong>VLAN 99</strong> - Network Management</li>
+</ul>
 <doc-anchor-target id="host-ip-addresses--switchport-assignment">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#host-ip-addresses--switchport-assignment">#</doc-anchor-trigger>
@@ -294,25 +342,15 @@
 </tbody>
 </table>
 </div>
-<doc-anchor-target id="vlan-configuration">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#vlan-configuration">#</doc-anchor-trigger>
-        <span>VLAN Configuration</span>
-    </h3>
-</doc-anchor-target>
-<p>Create and configure the following VLANs:</p>
-<ul>
-<li><strong>VLAN 10</strong> - Sales Department</li>
-<li><strong>VLAN 20</strong> - Engineering Department</li>
-<li><strong>VLAN 99</strong> - Network Management</li>
-</ul>
 <hr>
+<div class="success-section"> 
 <doc-anchor-target id="success-criteria">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M3.75 2h16.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25V3.75C2 2.784 2.784 2 3.75 2ZM3.5 3.75v16.5c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25H3.75a.25.25 0 0 0-.25.25Z"/></g></g></svg> Success Criteria</span>
     </h2>
 </doc-anchor-target>
+</div>
 <doc-anchor-target id="primary-goals">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#primary-goals">#</doc-anchor-trigger>

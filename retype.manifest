@@ -1,6 +1,6 @@
 {
   "version": "3.11.0",
-  "created": "2025-07-03T05:42:38Z",
+  "created": "2025-07-06T20:56:15Z",
   "files": [
     {
       "path": ".nojekyll"
@@ -103,6 +103,12 @@
     },
     {
       "path": "static/router-icon.png"
+    },
+    {
+      "path": "static/shrimpco-index-crt.png"
+    },
+    {
+      "path": "static/shrimpco-index-topology.png"
     }
   ]
 }

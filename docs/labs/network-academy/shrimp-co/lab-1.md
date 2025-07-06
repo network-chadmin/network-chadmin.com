@@ -20,14 +20,6 @@ order: 1000
 
 ## :icon-tasklist: Configuration Tasks
 
-### Host IP Addresses & Switchport Assignment
-
-| Host | Interface | IP Address | VLAN Assignment |
-|------|-----------|------------|-----------------|
-| Bob | Eth0/1 | 10.1.10.10/24 | 10 (Sales) |
-| Linda | Eth0/2 | 10.1.10.20/24 | 10 (Sales) |
-| Alice | Eth0/3 | 10.1.20.10/24 | 20 (Engineering) |
-
 ### VLAN Configuration
 
 Create and configure the following VLANs:
@@ -36,9 +28,21 @@ Create and configure the following VLANs:
 - **VLAN 20** - Engineering Department  
 - **VLAN 99** - Network Management
 
+### Host IP Addresses & Switchport Assignment
+
+| Host | Interface | IP Address | VLAN Assignment |
+|------|-----------|------------|-----------------|
+| Bob | Eth0/1 | 10.1.10.10/24 | 10 (Sales) |
+| Linda | Eth0/2 | 10.1.10.20/24 | 10 (Sales) |
+| Alice | Eth0/3 | 10.1.20.10/24 | 20 (Engineering) |
+
 ---
 
+<div class="success-section"> 
+
 ## :icon-checkbox: Success Criteria
+
+</div>
 
 ### Primary Goals
 1. **Connectivity Test**: Bob and Linda can ping each other (same VLAN)

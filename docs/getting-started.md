@@ -33,9 +33,8 @@ This is a custom Ubuntu host with a few extra packages installed like sudo, iper
 ### Arista cEOS
 [Arista](https://www.arista.com/en/support/software-download) offers these images for free once you've created an account. Navigate to "Support → Software Download → cEOS Lab → 4.33 → cEOS64-lab-4.33.3F.tar.xz"
 
-!!!info "cEOS Version"
-This is the cEOS version I'll be using in my labs
-!!!
+![This is the cEOS version I'll be using in my labs|300x200](/static/getting-started_ceosversion.png)
+
 
 ## Lab files
 

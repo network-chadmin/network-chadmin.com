@@ -63,3 +63,7 @@ theme:
     base-link-weight: 500
     code-bg: "#2d3748"              # Lighter dark for code blocks
     code-color: "#f7fafc"           # Light text in code
+
+css: |
+  h2 { color: #3b82f6; }
+  [data-theme="dark"] h2 { color: #60a5fa; }
