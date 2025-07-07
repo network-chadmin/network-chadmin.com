@@ -9,7 +9,7 @@ start:
 branding:
   title: Network-Chadmin
   label: Labs & Docs
-  logo: static/router-icon.png
+  logo: static/router-icon(2).png
   logoAlign: left
 
 links:
@@ -45,9 +45,6 @@ poweredByRetype: false
 
 search:
   preload: true
-
-snippets:
-  lineNumbers: true
 
 theme:
   base:

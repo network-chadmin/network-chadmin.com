@@ -3,7 +3,7 @@ title: Shrimp Co.
 icon:
 order: 1000
 ---
-![An exploration in networking, from basic L2 to dynamic L3 & tunneling](https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png)
+![An exploration in networking, from basic L2 to dynamic L3 & tunneling](/static/network-academy/shrimpco/banner.png)
 
 ## Welcome to Shrimp Co.
 
@@ -23,12 +23,12 @@ Shrimp Co. is aimed at beginners to computer networking or IT professionals look
 2. If you have SecureCRT make sure to upload the .xml file included in the repo for SSH sessions and commands.
 3. The docker management subnet for this set of labs is 172.20.25.0/24; in order for the SSH sessions to work you'll either need a route with a next-hop of your Ubuntu host or if you're using my SecureCRT sessions you can use an existing session as a jump host:
 
-![Create a session to for your Ubuntu host with automated login and choose it here for every session.](/static/shrimpco-index-crt.png)
+![Create a session to for your Ubuntu host with automated login and choose it here for every session.](/static/network-academy/shrimpco/index-crt.png)
 
 4. Every device has a different management address, even ones with the same hostname between labs.  This was done incase the labs are being run on a server with multiple users and allows multiple  labs to be run without conflict, except for two of the same lab. s
 5. Each device tag has both the Docker management IP address, and the in-lab management IP address.  Both will be shown on the device tags on each lab topology.
 
-![172.16.25.62 is the docker management IP, while 10.1.99.30 is the one you will configure in-lab.](/static/shrimpco-index-topology.png)
+![172.16.25.62 is the docker management IP, while 10.1.99.30 is the one you will configure in-lab.](/static/network-academy/shrimpco/index-topology.png)
 
 6. Emulated networks like these can be buggy at times and certain things that may not work exactly like they do on a physical device.  An example of this is if *SW1 Eth0/1 <---> Eth0/1 SW2* are connected and you shut down *Eth0/1* on *SW1*, the Line Protocol would go down on the SW2 side in the real world, but that won't happen with these emulated devices.  If your network isn't working how you think it should, these things do get goofy sometimes
 7. Have fun and reach out to me at heetland.chad@gmail.com for any comments, questions, or feedback! 

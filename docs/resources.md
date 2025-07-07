@@ -1,10 +1,10 @@
 ---
 title: Resources
-icon:
+icon: tools
 order: 980
 ---
 
-![](https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/wrench-banner.png)
+![](/static/resources/wrench-banner.png)
 
 This is a collection of my favorite tools, applications, learning platforms and more that I use in my day-to-day life as a Network Engineer.
 

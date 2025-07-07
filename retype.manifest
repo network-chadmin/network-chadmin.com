@@ -1,6 +1,6 @@
 {
   "version": "3.11.0",
-  "created": "2025-07-06T20:56:15Z",
+  "created": "2025-07-06T22:34:16Z",
   "files": [
     {
       "path": ".nojekyll"
@@ -102,13 +102,36 @@
       "path": "sitemap.xml.gz"
     },
     {
+      "path": "static/.ds_store"
+    },
+    {
+      "path": "static/getting-started/ceos-version.png"
+    },
+    {
+      "path": "static/network-academy/.ds_store"
+    },
+    {
+      "path": "static/network-academy/shrimpco/index-crt.png"
+    },
+    {
+      "path": "static/network-academy/shrimpco/index-topology.png"
+    },
+    {
+      "path": "static/network-academy/shrimpco/shrimpco-banner.png"
+    },
+    {
+      "path": "static/resources/wrench-banner.png"
+    },
+    {
       "path": "static/router-icon.png"
     },
     {
-      "path": "static/shrimpco-index-crt.png"
+      "path": "static/shrimpco-index-crt.png",
+      "old": true
     },
     {
-      "path": "static/shrimpco-index-topology.png"
+      "path": "static/shrimpco-index-topology.png",
+      "old": true
     }
   ]
 }

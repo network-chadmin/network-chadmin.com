@@ -49,7 +49,7 @@ A curated collection of the tools, platforms, and applications I use regularly a
 
 ## Getting Started
 
-**New to networking?** Start with [Shrimp Co. - Network Fundamentals](../network-academy/shrimp-co/lab-1.md)  
+**New to networking?** Start with [Shrimp Co. - Network Fundamentals](/labs/network-academy/)
 **Experienced engineer?** Jump into the advanced labs or browse the technical blog for specific topics.  
 **Looking for something specific?** Use the search function.
 
@@ -63,17 +63,14 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 ---
 
-## Recent Updates 6/16
+## Recent Updates 7/6
 
-- Re-created first four lab topologies for Shrimp Co. in draw.io  
-- Uploaded those four topologies and linked them to lab pages  
-- Fixed a few typos throughout the site
+- In the process of migrating from gitbook to github pages!
+- Making small changes as I learn retype.
 
 ---
 
 ## Quick Navigation
 
-- [Network Academy](docs/labs/network-academy-index.md) — Start here for structured learning  
-- Other Labs — Specialized networking experiments  
-- Blog — Articles, guides, and deep-dives  
-- [Resources](docs/resources.md) — Tools, templates, and reference materials
+[:icon-mortar-board: Network Academy](/labs/network-academy/) - Lab workbooks
+[:icon-tools Resources](/resources) - Useful tools and applications

@@ -1,20 +1,17 @@
 ---
-title: Lab 1 - VLANs
 icon:
 order: 1000
 ---
-![](https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png)
+![](/static/network-academy/shrimpco/banner.png)
 
-<p style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px; text-align: center;">
-<em>Understanding broadcast domains and network segmentation
-</p>
-
+# Lab 1  - VLANs
+> Shrimp Co. is opening their first office in Seattle, WA, and you're hired as their network administrator. The switch is racked in IDF-A and it's up to you to set up basic layer 2 segmentation
 
 ==- Lab Topology
 ![](https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/01_vlans.png)
 
 <p style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px; text-align: center;">
-<em>Tip: Individual topology files are available in the <strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;">Diagrams</a></strong> folder on my Github</em>
+<em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 ===
 
@@ -38,11 +35,7 @@ Create and configure the following VLANs:
 
 ---
 
-<div class="success-section"> 
-
 ## :icon-checkbox: Success Criteria
-
-</div>
 
 ### Primary Goals
 1. **Connectivity Test**: Bob and Linda can ping each other (same VLAN)
