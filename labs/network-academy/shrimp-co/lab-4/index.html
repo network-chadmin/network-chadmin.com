@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.805164923834">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.805168753453">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,48 +33,75 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.805164923834" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.805168753453" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.805164923834" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.805168753453" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.805164923834" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.805164923834" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.805168753453" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.805168753453" data-turbo-eval="false" defer></script>
 
     <style>
-        /* Colored H2 headings for different sections */
-        h2[id*="configuration"] { 
-            color: #3b82f6; 
-        }
-        h2[id*="success"] { 
-            color: #10b981; 
-        }
-        h2[id*="verification"] { 
-            color: #8b5cf6; 
-        }
-        h2[id*="key-concepts"] { 
-            color: #f59e0b; 
-        }
-        h2[id*="stretch"] { 
-            color: #dc2626; 
-        }
-        
-        /* Dark mode versions */
-        [data-theme="dark"] h2[id*="configuration"] { 
-            color: #60a5fa; 
-        }
-        [data-theme="dark"] h2[id*="success"] { 
-            color: #6ee7b7; 
-        }
-        [data-theme="dark"] h2[id*="verification"] { 
-            color: #a78bfa; 
-        }
-        [data-theme="dark"] h2[id*="key-concepts"] { 
-            color: #fbbf24; 
-        }
-        [data-theme="dark"] h2[id*="stretch"] { 
-            color: #fca5a5; 
-        }
+        /* Base styles if needed */
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all h2 elements and color them based on text content
+            const h2s = document.querySelectorAll('h2');
+            
+            h2s.forEach(h2 => {
+                const text = h2.textContent.toLowerCase();
+                
+                // Check what the heading contains and apply colors
+                if (text.includes('configuration')) {
+                    h2.style.color = '#3b82f6'; // Blue
+                } else if (text.includes('success')) {
+                    h2.style.color = '#10b981'; // Green
+                } else if (text.includes('verification')) {
+                    h2.style.color = '#8b5cf6'; // Purple
+                } else if (text.includes('key') || text.includes('concept')) {
+                    h2.style.color = '#f59e0b'; // Orange
+                } else if (text.includes('stretch')) {
+                    h2.style.color = '#dc2626'; // Red
+                }
+            });
+            
+            // Handle dark mode changes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'data-theme') {
+                        updateColorsForTheme();
+                    }
+                });
+            });
+            
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['data-theme']
+            });
+            
+            function updateColorsForTheme() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const h2s = document.querySelectorAll('h2');
+                
+                h2s.forEach(h2 => {
+                    const text = h2.textContent.toLowerCase();
+                    
+                    if (text.includes('configuration')) {
+                        h2.style.color = isDark ? '#60a5fa' : '#3b82f6';
+                    } else if (text.includes('success')) {
+                        h2.style.color = isDark ? '#6ee7b7' : '#10b981';
+                    } else if (text.includes('verification')) {
+                        h2.style.color = isDark ? '#a78bfa' : '#8b5cf6';
+                    } else if (text.includes('key') || text.includes('concept')) {
+                        h2.style.color = isDark ? '#fbbf24' : '#f59e0b';
+                    } else if (text.includes('stretch')) {
+                        h2.style.color = isDark ? '#fca5a5' : '#dc2626';
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
