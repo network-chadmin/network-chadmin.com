@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.805151208092">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.805164923834">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Lab 1 - VLANs</title>
-    <meta name="title" content="Lab 1 - VLANs">
-    <meta name="description" content="Create and configure the following VLANs:">
+    <title>Lab 1  - VLANs</title>
+    <meta name="title" content="Lab 1  - VLANs">
+    <meta name="description" content="Shrimp Co. is opening their first office in Seattle, WA, and you're hired as their network administrator.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
@@ -19,26 +19,26 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
-    <meta property="og:title" content="Lab 1 - VLANs">
-    <meta property="og:description" content="Create and configure the following VLANs:">
-    <meta property="og:image" content="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png">
+    <meta property="og:title" content="Lab 1  - VLANs">
+    <meta property="og:description" content="Shrimp Co. is opening their first office in Seattle, WA, and you're hired as their network administrator.">
+    <meta property="og:image" content="https://network-chadmin.github.io/static/network-academy/shrimpco/banner.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1/">
-    <meta property="twitter:title" content="Lab 1 - VLANs">
-    <meta property="twitter:description" content="Create and configure the following VLANs:">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png">
+    <meta property="twitter:title" content="Lab 1  - VLANs">
+    <meta property="twitter:description" content="Shrimp Co. is opening their first office in Seattle, WA, and you're hired as their network administrator.">
+    <meta property="twitter:image" content="https://network-chadmin.github.io/static/network-academy/shrimpco/banner.png">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.805151208092" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.805164923834" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.805151208092" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.805164923834" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.805151208092" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.805151208092" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.805164923834" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.805164923834" data-turbo-eval="false" defer></script>
 
     <style>
         /* Colored H2 headings for different sections */
@@ -91,8 +91,8 @@
                     <div class="flex items-center px-2 md:px-6">
                         <a id="retype-branding-logo" href="../../../../" class="flex items-center leading-snug text-xl">
                             <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
-                                <img class="max-h-10 dark:hidden md:inline-block" src="../../../../static/router-icon.png">
-                                <img class="max-h-10 hidden dark:inline-block" src="../../../../static/router-icon.png">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../../../static/router-icon(2).png">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../../../static/router-icon(2).png">
                             </span>
                             <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Network-Chadmin</span>
                         </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">Labs &amp; Docs</span>
@@ -219,20 +219,20 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="lab-1---vlans" class="break-words">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-1---vlans">#</doc-anchor-trigger>
-        <span>Lab 1 - VLANs</span>
-    </h1>
-</doc-anchor-target>
 <p><figure class="content-center">
-    <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-banner.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <img src="../../../../static/network-academy/shrimpco/banner.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px; text-align: center;">
-<em>Understanding broadcast domains and network segmentation
-</p>
+<doc-anchor-target id="lab-1----vlans" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-1----vlans">#</doc-anchor-trigger>
+        <span>Lab 1  - VLANs</span>
+    </h1>
+</doc-anchor-target>
+<blockquote>
+<p>Shrimp Co. is opening their first office in Seattle, WA, and you&#x27;re hired as their network administrator. The switch is racked in IDF-A and it&#x27;s up to you to set up basic layer 2 segmentation</p>
+</blockquote>
 <doc-panel id="lab-topology" collapsed>
     <template #title>Lab Topology</template>
 <p><figure class="content-center">
@@ -241,7 +241,7 @@
 </figure>
 </p>
 <p style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px; text-align: center;">
-<em>Tip: Individual topology files are available in the <strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;">Diagrams</a></strong> folder on my Github</em>
+<em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
 <doc-anchor-target id="configuration-tasks">
@@ -301,14 +301,12 @@
 </table>
 </div>
 <hr>
-<div class="success-section"> 
 <doc-anchor-target id="success-criteria">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M3.75 2h16.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25V3.75C2 2.784 2.784 2 3.75 2ZM3.5 3.75v16.5c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25H3.75a.25.25 0 0 0-.25.25Z"/></g></g></svg> Success Criteria</span>
     </h2>
 </doc-anchor-target>
-</div>
 <doc-anchor-target id="primary-goals">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#primary-goals">#</doc-anchor-trigger>
@@ -496,6 +494,6 @@ Bob ←→ Linda       │  Alice (isolated)</code></pre>
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 1 - VLANs", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 1  - VLANs", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
