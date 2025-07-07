@@ -25,7 +25,7 @@ Check back soon for the finished version of my first lab set, **Shrimp Co.**
 
 ## What You'll Find Here
 
-### Network Academy
+### :icon-mortar-board: Network Academy
 
 This project is built around [Containerlab](https://containerlab.dev/) and modern network simulation workflows.  
 You’ll progress from basic VLANs to complex multi-site architectures through practical, hands-on labs designed for clarity, realism, and growth.
@@ -35,23 +35,17 @@ You’ll progress from basic VLANs to complex multi-site architectures through p
 - **Modern**, scalable lab environment  
 - **Clear objectives**, success criteria, and stretch goals  
 
-### Advanced Labs & Experiments
+### :icon-beaker: Advanced Labs & Experiments
 
 Standalone labs where I explore automation, emerging technologies, and advanced routing designs.
 
-### Technical Blog
+### :icon-project-roadmap: Technical Blog
 
 Deep dives into network concepts, troubleshooting notes, and lessons from real-world projects.
 
-### Resources & Tools
+### :icon-tools: Resources & Tools
 
 A curated collection of the tools, platforms, and applications I use regularly as a network engineer.
-
-## Getting Started
-
-**New to networking?** Start with [Shrimp Co. - Network Fundamentals](/labs/network-academy/)
-**Experienced engineer?** Jump into the advanced labs or browse the technical blog for specific topics.  
-**Looking for something specific?** Use the search function.
 
 ---
 
@@ -67,10 +61,3 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 - In the process of migrating from gitbook to github pages!
 - Making small changes as I learn retype.
-
----
-
-## Quick Navigation
-
-[:icon-mortar-board: Network Academy](/labs/network-academy/) - Lab workbooks
-[:icon-tools Resources](/resources) - Useful tools and applications
