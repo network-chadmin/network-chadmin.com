@@ -16,9 +16,11 @@ links:
   - text: Getting Started
     link: /getting-started/
   - text: Network Academy
-    link: /network-academy/
+    link: /labs/network-academy/
   - text: Resources
     link: /resources/
+  - text: Blog
+    link: /blog/
 
 static:
   - ../static

@@ -1,12 +1,27 @@
 {
   "version": "3.11.0",
-  "created": "2025-07-07T01:30:22Z",
+  "created": "2025-07-10T02:27:06Z",
   "files": [
     {
       "path": ".nojekyll"
     },
     {
       "path": "404.html"
+    },
+    {
+      "path": "blog/feed.xml"
+    },
+    {
+      "path": "blog/index.html"
+    },
+    {
+      "path": "blog/test-post/index.html"
+    },
+    {
+      "path": "categories/index.html"
+    },
+    {
+      "path": "categories/test/index.html"
     },
     {
       "path": "documentation/containerlab-reference/index.html"

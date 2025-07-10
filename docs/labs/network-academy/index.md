@@ -4,10 +4,12 @@ expanded: true
 label: Network Academy
 order: 940
 ---
+
+![](/static/network-academy/banner.png)
+
 > Master networking fundamentals with hands-on labs and enterprise-inspired designs.
 
 # What is Network Academy?
-
 Network Academy started with a simple goal: help colleagues who were new to networking learn through hands-on labs. What began as internal training material has since grown into a public resource for anyone looking to build real skills through practice.
 
 I believe labbing — and learning to enjoy labbing — is the secret to success in this field. My goal isn’t just to teach networking concepts, but to inspire you to build your own labs and take ownership of your learning.
