@@ -57,7 +57,8 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 ---
 
-## Recent Updates 7/6
+## Recent Updates 7/22
 
-- In the process of migrating from gitbook to github pages!
-- Making small changes as I learn retype.
+- Migrated website to Cloudflare!
+- Purchased network-chadmin.com domain
+- Changed Network Academy to use exclusively Arista cEOS instead of Cisco IOL
