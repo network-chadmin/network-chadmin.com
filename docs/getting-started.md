@@ -9,7 +9,7 @@ order: 990
 Labs I publish here use [Containerlab](https://containerlab.dev/), a free network lab solution developed by engineers at Nokia. It doesn't require a costly subscription, and in my experience, it's more resource-efficient, more reliable, and a lot more enjoyable than the emulators of years past.
 
 - **Containerlab installed on a Linux PC, Server, WSL or on a Macbook.** The labs here have been built and tested on Ubuntu server 24.04.2 LTS.
-- **Lab images** — at the time of writing, I'm using Cisco IOL, Cisco IOL-L2, and Arista cEOS.
+- **Lab images** — Arista cEOS and Ubuntu Linux
 - **Lab files** available on my [GitHub](https://github.com/network-chadmin/containerlab.git)
 
 ## Installing Containerlab
@@ -24,14 +24,15 @@ This will install all components needed to run Containerlab, including Docker. S
 
 ## Images
 
-### Cisco IOL
-IOL can be acquired from Cisco after purchasing a CML subscription and extracting the image file from the refplat ISO. You may be able to find it via other avenues, but this is what I did as I know I'm getting the safest and most up-to-date image. This is technically a VM and not a Container natively so you'll need to use [vrnetlab](https://github.com/vrnetlab/vrnetlab) to import the images into Docker.
+!!! A Note on Lab Images
+To ensure the smoothest and most accessible learning experience, all labs in Network Academy now utilize Arista cEOS (Container EOS) images for both routers and switches instead of Cisco IOL.  This provides a stable, consistent lab environment that can be legally and easily downloaded by anyone with an Arista account, allowing you to focus on learning networking concepts without friction.
+!!!
 
 ### Network-Host
 This is a custom Ubuntu host with a few extra packages installed like sudo, iperf3, tcp dump, traceroute, curl, nginx, and more. Containerlab will pull this image from Docker when you run your first lab.
 
 ### Arista cEOS
-[Arista](https://www.arista.com/en/support/software-download) offers these images for free once you've created an account. Navigate to "Support → Software Download → cEOS Lab → 4.33 → cEOS64-lab-4.33.3F.tar.xz"
+[Arista](https://www.arista.com/en/support/software-download) offers these images for free once you've created an account. Navigate to "Support → Software Download → cEOS Lab → 4.32 → EOS-4.32.5.1M → cEOS64-lab-4.32.5.1M.tar.xz"
 
 ![This is the cEOS version I'll be using in my labs|300x200](/static/getting-started/ceos-version.png)
 
