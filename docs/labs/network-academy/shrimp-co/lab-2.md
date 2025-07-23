@@ -29,10 +29,10 @@ Create and configure the following VLANs on **both switches**:
 
 | **Host** | **Interface** | **IP Address** | **VLAN Assignment** |
 |------|-----------|------------|-----------------|
-| Bob | Eth0/1 | 10.1.10.10/24 | 10 (Sales) |
-| Alice | Eth0/2 | 10.1.20.10/24 | 20 (Engineering) |
-| Steve | Eth0/1 | 10.1.10.20/24 | 10 (Sales) |
-| Linda | Eth0/2 | 10.1.20.20/24 | 20 (Engineering) |
+| Bob | Eth1 | 10.1.10.10/24 | 10 (Sales) |
+| Alice | Eth2 | 10.1.20.10/24 | 20 (Engineering) |
+| Steve | Eth1 | 10.1.99.100/24 | 99 (IT) |
+| Linda | Eth2 | 10.1.10.20/24 | 10 (Sales) |
 
 ### Switchport Configuration
 

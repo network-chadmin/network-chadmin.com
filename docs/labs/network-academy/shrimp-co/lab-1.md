@@ -29,9 +29,14 @@ Create and configure the following VLANs:
 
 | Host | Interface | IP Address | VLAN Assignment |
 |------|-----------|------------|-----------------|
-| Bob | Eth0/1 | 10.1.10.10/24 | 10 (Sales) |
-| Linda | Eth0/2 | 10.1.10.20/24 | 10 (Sales) |
-| Alice | Eth0/3 | 10.1.20.10/24 | 20 (Engineering) |
+| Bob | Eth1 | 10.1.10.10/24 | 10 (Sales) |
+| Linda | Eth2 | 10.1.10.20/24 | 10 (Sales) |
+| Alice | Eth3 | 10.1.20.10/24 | 20 (Engineering) |
+
+!!!warning
+
+Hosts and devices in the diagram have **two** IP addresses shown. 172.25.20.X is a docker management subnet that's pre-configured and allows you SSH access, while the 10.X.X.X will be configured by you in the lab.
+!!!
 
 ---
 
@@ -50,7 +55,7 @@ Create and configure the following VLANs:
 
 ## :icon-terminal: Verification Commands
 
-```cisco
+```eos
 # Show configured VLANs
 show vlan brief
 
@@ -59,6 +64,9 @@ show interfaces status
 
 # Show MAC address table
 show mac address-table
+
+# Show configured IP interfaces
+show ip interface brief
 ```
 
 ---
