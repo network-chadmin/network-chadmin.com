@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806545117107">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,12 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806545117107" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806545117107" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806545117107" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806545117107" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -277,6 +277,202 @@
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
+<doc-anchor-target id="configuration-tasks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="vlan-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#vlan-configuration">#</doc-anchor-trigger>
+        <span>VLAN Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Create and configure the following VLANs on <strong>both switches</strong>:</p>
+<ul>
+<li><strong>VLAN 10</strong> - Sales Department</li>
+<li><strong>VLAN 20</strong> - Engineering Department</li>
+<li><strong>VLAN 99</strong> - Network Management</li>
+</ul>
+<doc-anchor-target id="host--access-port-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#host--access-port-configuration">#</doc-anchor-trigger>
+        <span>Host &amp; Access Port Configuration</span>
+    </h3>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th><strong>Host</strong></th>
+<th><strong>Interface</strong></th>
+<th><strong>IP Address</strong></th>
+<th><strong>VLAN Assignment</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bob</td>
+<td>Eth1</td>
+<td>10.1.10.10/24</td>
+<td>10 (Sales)</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>Eth2</td>
+<td>10.1.20.10/24</td>
+<td>20 (Engineering)</td>
+</tr>
+<tr>
+<td>Steve</td>
+<td>Eth1</td>
+<td>10.1.99.100/24</td>
+<td>99 (IT)</td>
+</tr>
+<tr>
+<td>Linda</td>
+<td>Eth2</td>
+<td>10.1.10.20/24</td>
+<td>10 (Sales)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="switchport-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#switchport-configuration">#</doc-anchor-trigger>
+        <span>Switchport Configuration</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Configure the inter-switch link (Eth0/3 on both switches) as an <strong>802.1Q trunk</strong> to carry only VLANs 10,20, and 99.</li>
+<li>Configure VLAN 99 SVI for sea-a1-asw1 - <strong>10.1.99.10/24</strong></li>
+<li>Configure VLAN 99 SVI for sea-b1-asw1 - <strong>10.1.99.20/24</strong></li>
+</ul>
+<doc-anchor-target id="router-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#router-configuration">#</doc-anchor-trigger>
+        <span>Router Configuration</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Configure gateways as subinterfaces for inter-VLAN routing:
+<ul>
+<li>Eth1.10 with IP <strong>10.1.10.1/24</strong></li>
+<li>Eth1.20 with IP <strong>10.1.20.1/24</strong></li>
+<li>Eth2.99 with IP <strong>10.1.99.1/24</strong></li>
+</ul>
+</li>
+<li>Configure Loopback0 with IP <strong>10.255.1.1/32</strong></li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-primary"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-primary" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>While traditionally &quot;router-on-a-stick&quot; refers to a single physical interface carrying multiple tagged VLANs, in this lab <code v-pre>sea-mdf-r1</code> utilizes two physical interfaces (<code v-pre>Eth1</code> and <code v-pre>Eth2</code>) in a &quot;multi-stick&quot; design.  This was done for diagram symmetry and doesn&#x27;t necessarily reflect a best-practice design.</p>
+        </div>
+    </div>
+</div>
+<hr>
+<doc-anchor-target id="success-criteria">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="primary-goals">
+<template #title>Primary Goals</template>
+<ul>
+<li>Bob and Alice (Inter-VLAN routing working)</li>
+<li>All hosts can ping their respective gateways</li>
+<li>Ping Loopback0 from Linda</li>
+</ul>
+</doc-tab>
+<doc-tab v-cloak id="stretch-goals">
+<template #title>Stretch Goals</template>
+<ul>
+<li>Run <code v-pre>sudo tcpdump -i eth1 -n</code> on Bob.  Ping Bob from Linda and Alice.</li>
+<li>Configure router with SSH access and local user account other than admin, SSH to it from Steve</li>
+</ul>
+</doc-tab>
+</doc-tabs>
+<doc-anchor-target id="verification-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
+        <span>Verification Commands</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">cisco</div>
+<pre translate="no" class="language-none"><code v-pre class="language-none"># === Switch Verification ===
+
+# Show VLAN configuration
+show vlan brief
+
+# Show trunk interfaces and allowed VLANs
+show interfaces trunk
+
+# Show interface status and mode
+show interfaces status
+
+# Show MAC address table
+show mac address-table
+
+# === Router Verification ===
+
+# Show ARP table
+
+show ip arp
+
+# Show routing table
+
+show ip route</code></pre>
+</doc-codeblock></div>
+<hr>
+<doc-anchor-target id="questions-to-explore">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#questions-to-explore">#</doc-anchor-trigger>
+        <span>Questions to Explore</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Why does router-on-a-stick use sub-interfaces instead of separate physical connections?</li>
+<li>What kind of routes are each subnet in the routing table?</li>
+<li>What happens to the VLAN tags when traffic reaches the router sub-interface?</li>
+<li>Why do hosts need default gateways configured now when they didn&#x27;t before?</li>
+<li>What&#x27;s the purpose of an ARP table? Where is it found?</li>
+<li>Imagine the scenario: Steve pings Loopback0 on sea-mdf-r1, when the router goes to send the return traffic how will the L2 &amp; L3 headers look? What does the router use to build it?</li>
+<li>When you ran tcpdump on Bob, what types of traffic did you see?</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-tip"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-tip" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M7.90625 2.15625C4.50944 2.15625 2.15625 4.58563 2.15625 7.54688C2.15625 8.96138 2.76575 9.88281 3.57075 10.8589L3.87837 11.2226C4.19894 11.6021 4.554 12.0218 4.84581 12.4416C5.25406 13.0324 5.61775 13.7296 5.7385 14.5834C5.76728 14.8608 5.68746 15.1386 5.51579 15.3583C5.34413 15.5781 5.09399 15.7228 4.8179 15.7621C4.5418 15.8013 4.26124 15.7321 4.03512 15.5689C3.809 15.4056 3.65493 15.1612 3.60525 14.8867C3.54775 14.4814 3.37094 14.1004 3.07338 13.6692C2.8306 13.3302 2.57055 13.0039 2.29425 12.6917C2.1735 12.5479 2.04556 12.397 1.909 12.2317C1.00769 11.1406 0 9.72613 0 7.54688C0 3.32062 3.39681 0 7.90625 0C12.4157 0 15.8125 3.32062 15.8125 7.54688C15.8125 9.72613 14.8048 11.1406 13.9035 12.2317C13.7669 12.397 13.639 12.5479 13.5183 12.6903C13.2207 13.0424 12.9677 13.3414 12.7406 13.6692C12.4416 14.1004 12.2662 14.4814 12.2087 14.8867C12.1557 15.1584 12.0003 15.3994 11.7747 15.5598C11.5492 15.7202 11.2706 15.7879 10.9965 15.7488C10.7225 15.7096 10.474 15.5667 10.3023 15.3496C10.1306 15.1325 10.0489 14.8577 10.074 14.582C10.1948 13.7296 10.5584 13.0324 10.9667 12.4416C11.2585 12.0218 11.6136 11.6021 11.9341 11.2226C12.0419 11.0961 12.1454 10.9739 12.2403 10.8589C13.0468 9.88281 13.6562 8.96138 13.6562 7.54688C13.6562 4.58563 11.3031 2.15625 7.90625 2.15625ZM4.67188 17.25H11.1406C11.4266 17.25 11.7008 17.3636 11.903 17.5658C12.1052 17.768 12.2188 18.0422 12.2188 18.3281C12.2188 18.6141 12.1052 18.8883 11.903 19.0905C11.7008 19.2927 11.4266 19.4062 11.1406 19.4062H4.67188C4.38594 19.4062 4.11171 19.2927 3.90953 19.0905C3.70734 18.8883 3.59375 18.6141 3.59375 18.3281C3.59375 18.0422 3.70734 17.768 3.90953 17.5658C4.11171 17.3636 4.38594 17.25 4.67188 17.25ZM5.03125 21.9219C5.03125 21.6359 5.14484 21.3617 5.34703 21.1595C5.54921 20.9573 5.82344 20.8438 6.10938 20.8438H9.70312C9.98906 20.8438 10.2633 20.9573 10.4655 21.1595C10.6677 21.3617 10.7812 21.6359 10.7812 21.9219C10.7812 22.2078 10.6677 22.482 10.4655 22.6842C10.2633 22.8864 9.98906 23 9.70312 23H6.10938C5.82344 23 5.54921 22.8864 5.34703 22.6842C5.14484 22.482 5.03125 22.2078 5.03125 21.9219Z" />
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>&quot;Host Access&quot;</h5>
+<p>If SSH isn&#x27;t working: <code v-pre>docker exec -it &lt;container-name&gt; bash</code></p>
+<p>Configure static IP: <code v-pre>sudo ip addr add 10.1.10.10/24 dev eth1</code></p>
+<p><em>Note: This is the last time I will call out the host acccess and configuration commands.  Either refer back or take notes for future labs!</em></p>
+        </div>
+    </div>
+</div>
 
                                 
                                 <!-- Required only on API pages -->

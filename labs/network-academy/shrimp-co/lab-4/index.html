@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806545117107">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,12 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806545117107" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806545117107" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806545117107" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806545117107" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -277,6 +277,181 @@
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
+<doc-anchor-target id="configuration-tasks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="1-host--access-port-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-host--access-port-configuration">#</doc-anchor-trigger>
+        <span>1. Host &amp; Access Port Configuration</span>
+    </h3>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th><strong>Host</strong></th>
+<th><strong>Interface</strong></th>
+<th><strong>IP Address</strong></th>
+<th><strong>VLAN Assignment</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bob</td>
+<td>Eth1</td>
+<td>10.1.10.10/24</td>
+<td>10 (Sales)</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>Eth2</td>
+<td>10.1.20.10/24</td>
+<td>20 (Engineering)</td>
+</tr>
+<tr>
+<td>Steve</td>
+<td>Eth1</td>
+<td>10.1.99.100/24</td>
+<td>99 (IT)</td>
+</tr>
+<tr>
+<td>Linda</td>
+<td>Eth2</td>
+<td>10.1.10.20/24</td>
+<td>10 (Sales)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="2-switch-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-switch-configuration">#</doc-anchor-trigger>
+        <span>2. Switch Configuration</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Configure VLANs per previous labs</li>
+<li>Bundle Eth3 and Eth4 on both switches as an LACP port-channel in <code v-pre>mode active</code>
+<ul>
+<li>Allow all VLANs to traverse the link</li>
+</ul>
+</li>
+<li>Configure both switches with a SVI</li>
+<li>Allow VLANs to reach router sub-interfaces</li>
+</ul>
+<doc-anchor-target id="3-router-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-router-configuration">#</doc-anchor-trigger>
+        <span>3. Router Configuration</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Loopback Interfaces:</strong>
+<ul>
+<li><code v-pre>sea-mdf-r1</code>: <code v-pre>Loopback0</code> with IP <strong>10.255.1.1/32</strong></li>
+<li><code v-pre>sea-mdf-r2</code>: <code v-pre>Loopback0</code> with IP <strong>10.255.1.2/32</strong></li>
+</ul>
+</li>
+<li><strong>Subinterfaces</strong> on both routers, IP addresses according to diagram
+<ul>
+<li><code v-pre>Eth1.10</code> (VLAN 10)</li>
+<li><code v-pre>Eth1.20</code> (VLAN 20)</li>
+<li><code v-pre>Eth2.99</code> (VLAN 99)</li>
+</ul>
+</li>
+</ul>
+<doc-anchor-target id="4-vrrp-configuration-sea-mdf-r1--sea-mdf-r2">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-vrrp-configuration-sea-mdf-r1--sea-mdf-r2">#</doc-anchor-trigger>
+        <span>4. VRRP Configuration (<code v-pre>sea-mdf-r1</code> &amp; <code v-pre>sea-mdf-r2</code>)</span>
+    </h3>
+</doc-anchor-target>
+<p>Configure VRRP on the physical subinterfaces to provide redundant gateways:</p>
+<ul>
+<li><strong>VRRP Group Numbers:</strong> Use VRRP group numbers that match the VLAN IDs (e.g., VLAN 10 uses Group 10).</li>
+<li><strong>Virtual IP Addresses (VIPs):</strong>
+<ul>
+<li>VLAN 10: <strong>10.1.10.1/24</strong></li>
+<li>VLAN 20: <strong>10.1.20.1/24</strong></li>
+<li>VLAN 99: <strong>10.1.99.1/24</strong></li>
+</ul>
+</li>
+<li><strong>Active/Standby Roles (via Priority):</strong>
+<ul>
+<li><strong><code v-pre>sea-mdf-r1</code>:</strong> Set higher priority for VLANs 10 and 99.
+<ul>
+<li>VLAN 10: Master (e.g., Priority 120)</li>
+<li>VLAN 20: Backup (e.g., Priority 90)</li>
+<li>VLAN 99: Master (e.g., Priority 120)</li>
+</ul>
+</li>
+<li><strong><code v-pre>sea-mdf-r2</code>:</strong> Set higher priority for VLAN 20.
+<ul>
+<li>VLAN 10: Backup (e.g., Priority 90)</li>
+<li>VLAN 20: Master (e.g., Priority 120)</li>
+<li>VLAN 99: Backup (e.g., Priority 90)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<doc-anchor-target id="success-criteria">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="primary-goals">
+<template #title>Primary Goals</template>
+<ul>
+<li><strong>Inter-VLAN Connectivity:</strong>
+<ul>
+<li>Bob can ping Alice (VLAN 10 to VLAN 20).</li>
+<li>Linda can ping Steve (VLAN 10 to VLAN 99).</li>
+</ul>
+</li>
+<li><strong>Gateway Reachability:</strong> All hosts can ping their respective Virtual IP (VIP) gateways.</li>
+<li><strong>VRRP State Verification:</strong>
+<ul>
+<li><code v-pre>sea-mdf-r1</code> is the VRRP Master for VLANs 10 and 99.</li>
+<li><code v-pre>sea-mdf-r2</code> is the VRRP Master for VLAN 20.</li>
+<li>Verify VRRP status is &quot;Master&quot; or &quot;Backup&quot; for all groups on both routers.</li>
+</ul>
+</li>
+<li><strong>EtherChannel Status:</strong> The inter-switch Port-Channel (Po1) is operational and bundling interfaces.</li>
+<li><strong>Redundancy Test:</strong>
+<ul>
+<li>Shut down the active VRRP interface on <code v-pre>sea-mdf-r1</code> for VLAN 10; verify <code v-pre>sea-mdf-r2</code> becomes Master for VLAN 10, and Bob can still ping his gateway and Alice.</li>
+<li>Bring the interface back up and verify <code v-pre>sea-mdf-r1</code> preempts and becomes Master again.</li>
+</ul>
+</li>
+</ul>
+</doc-tab>
+<doc-tab v-cloak id="stretch-goals">
+<template #title>Stretch Goals</template>
+<ul>
+<li>Configure <strong>VRRP authentication</strong> (e.g., plaintext or MD5) on all groups.</li>
+<li>Configure routers with a username other than <code v-pre>admin</code> and an encrypted password. SSH to them from Steve.</li>
+<li>Configure an <strong>extended ACL</strong> on a router subinterface (e.g., <code v-pre>Eth2.99</code>) that allows ICMP inbound to the <code v-pre>10.1.99.0/24</code> network and denies everything else, then verify.</li>
+<li>Implement <strong>VRRP tracking</strong> of a physical interface (e.g., <code v-pre>Loopback0</code>) to reduce VRRP priority if the tracked object goes down, forcing a failover.</li>
+</ul>
+</doc-tab>
+</doc-tabs>
+<doc-anchor-target id="verification-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">eos</div>
+<pre translate="no" class="language-none"><code v-pre class="language-none">-placeholder-</code></pre>
+</doc-codeblock></div>
 
                                 
                                 <!-- Required only on API pages -->
