@@ -15,9 +15,9 @@ order: 1000
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
-### VLAN Configuration
+#### VLAN Configuration
 
 Create and configure the following VLANs:
 
@@ -25,13 +25,13 @@ Create and configure the following VLANs:
 - **VLAN 20** - Engineering Department  
 - **VLAN 99** - Network Management
 
-### Host IP Addresses & Switchport Assignment
+#### Host IP Addresses & VLAN Assignment
 
-| Host | Interface | IP Address | VLAN Assignment |
-|------|-----------|------------|-----------------|
-| Bob | Eth1 | 10.1.10.10/24 | 10 (Sales) |
-| Linda | Eth2 | 10.1.10.20/24 | 10 (Sales) |
-| Alice | Eth3 | 10.1.20.10/24 | 20 (Engineering) |
+| **Host** | **VLAN Assignment** | **IP Address** |
+|------|-----------|------------|
+| Bob | 10 (Sales) | 10.1.10.10/24 |
+| Linda | 10 (Sales) | 10.1.10.20/24 |
+| Alice | 20 (Engineering) | 10.1.20.10/24 |
 
 !!!warning
 
@@ -40,22 +40,21 @@ Hosts and devices in the diagram have **two** IP addresses shown. 172.25.20.X is
 
 ---
 
-## :icon-checkbox: Success Criteria
+### :icon-checkbox: Success Criteria
 
-### Primary Goals
+#### Primary Goals
 1. **Connectivity Test**: Bob and Linda can ping each other (same VLAN)
 2. **Isolation Test**: Alice cannot ping Bob or Linda (different VLANs)
 
-### Stretch Goals
+#### Stretch Goals
 - Add descriptive port descriptions to all switchports
 - Configure VLAN 99 SVI on the switch (`interface Vlan99`) with IP `10.1.99.10/24`
-- Make host IP configurations persistent across reboots
+- Take a packet capture of successful pings between Bob & Lind with `tcpdump interface ethernet1 filter icmp`
 
 ---
-
-## :icon-terminal: Verification Commands
-
-```eos
+### :icon-terminal: Verification Commands
++++ Switch Verification
+```bash 
 # Show configured VLANs
 show vlan [brief]
 
@@ -68,6 +67,15 @@ show mac address-table
 # Show configured IP interfaces
 show ip interface brief
 ```
++++ Host Verification
+```bash
+# Show configured IP information
+ifconfig
+
+# Send ICMP echo requests
+ping 10.1.10.20
+```
++++
 
 ---
 
@@ -75,30 +83,24 @@ show ip interface brief
 Confused about syntax?  Hitting `?` will show you all the available options for the next word in your command sequence.  You can even use it after a letter to see which options start with that letter. `c?` will show all options starting with "c"
 !!!
 
-## :icon-key: Key Concepts
+### :icon-key: Key Concepts
 
-### Why VLANs Matter
+#### Why VLANs Matter
 - **Security**: Network segmentation isolates traffic
 - **Broadcast Control**: Reduces broadcast domain size
 - **Organization**: Logical grouping of devices
 
-### Understanding the Topology
-```
-VLAN 10 (Sales)    │  VLAN 20 (Engineering)
-Bob ←→ Linda       │  Alice (isolated)
-```
-
-### Questions to Explore
+#### Questions to Explore
 - What happens when you send a broadcast in VLAN 10?
 - How does the switch learn where each host is located?
-- Why might VLAN 99 SVI show "status down" initially?
+- Why does interface VLAN 99 say **down**/**lowerlayerdown** in the output of `show interfaces status`?
+- When you took the `tcpdump` what parts of the output can you identify?
 
-!!!tip "Quick Access"
-Can't SSH to hosts? Use: `docker exec -it <container-name> bash`
-
-Set static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
+!!!tip Linux host tips
+* Can't SSH to hosts? Use: `docker exec -it <container-name> bash`
+* Set static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 !!!
 
-=== Documentation
+==- :books: Reference Material
 [EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
 ===

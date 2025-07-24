@@ -27,12 +27,12 @@ Create and configure the following VLANs on **both switches**:
 
 ### Host & Access Port Configuration
 
-| **Host** | **Interface** | **IP Address** | **VLAN Assignment** |
-|------|-----------|------------|-----------------|
-| Bob | Eth1 | 10.1.10.10/24 | 10 (Sales) |
-| Alice | Eth2 | 10.1.20.10/24 | 20 (Engineering) |
-| Steve | Eth1 | 10.1.99.100/24 | 99 (IT) |
-| Linda | Eth2 | 10.1.10.20/24 | 10 (Sales) |
+| **Host** | **VLAN Assignment** | **IP Address** |
+|------|------|------|
+| Bob | 10 (Sales) | 10.1.10.10/24 |
+| Alice | 20 (Engineering) | 10.1.20.10/24 |
+| Steve | 99 (IT) | 10.1.99.100/24 |
+| Linda | 10 (Sales) | 10.1.10.20/24 |
 
 ### Switchport Configuration
 
