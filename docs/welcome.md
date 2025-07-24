@@ -20,6 +20,7 @@ description: A hands-on networking lab journal and knowledge base built for aspi
 This site is still under active development — many labs are incomplete or evolving.
 Cloning my GitHub right now won’t give you the full experience.  
 Check back soon for the finished version of my first lab series: **Shrimp Co.** 🦐
+!!!
 
 ## What You'll Find Here
 
