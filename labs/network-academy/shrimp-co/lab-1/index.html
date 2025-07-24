@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806644046755">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806648662454">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806644046755" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806648662454" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806644046755" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806648662454" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806644046755" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806644046755" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806648662454" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806648662454" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.806648662454" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -278,16 +279,16 @@
 </p>
 </doc-panel>
 <doc-anchor-target id="configuration-tasks">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-anchor-target id="vlan-configuration">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#vlan-configuration">#</doc-anchor-trigger>
         <span>VLAN Configuration</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>Create and configure the following VLANs:</p>
 <ul>
@@ -295,40 +296,36 @@
 <li><strong>VLAN 20</strong> - Engineering Department</li>
 <li><strong>VLAN 99</strong> - Network Management</li>
 </ul>
-<doc-anchor-target id="host-ip-addresses--switchport-assignment">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#host-ip-addresses--switchport-assignment">#</doc-anchor-trigger>
-        <span>Host IP Addresses &amp; Switchport Assignment</span>
-    </h3>
+<doc-anchor-target id="host-ip-addresses--vlan-assignment">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#host-ip-addresses--vlan-assignment">#</doc-anchor-trigger>
+        <span>Host IP Addresses &amp; VLAN Assignment</span>
+    </h4>
 </doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
-<th>Host</th>
-<th>Interface</th>
-<th>IP Address</th>
-<th>VLAN Assignment</th>
+<th><strong>Host</strong></th>
+<th><strong>VLAN Assignment</strong></th>
+<th><strong>IP Address</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Bob</td>
-<td>Eth1</td>
-<td>10.1.10.10/24</td>
 <td>10 (Sales)</td>
+<td>10.1.10.10/24</td>
 </tr>
 <tr>
 <td>Linda</td>
-<td>Eth2</td>
-<td>10.1.10.20/24</td>
 <td>10 (Sales)</td>
+<td>10.1.10.20/24</td>
 </tr>
 <tr>
 <td>Alice</td>
-<td>Eth3</td>
-<td>10.1.20.10/24</td>
 <td>20 (Engineering)</td>
+<td>10.1.20.10/24</td>
 </tr>
 </tbody>
 </table>
@@ -351,42 +348,44 @@
 </div>
 <hr>
 <doc-anchor-target id="success-criteria">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M3.75 2h16.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25V3.75C2 2.784 2.784 2 3.75 2ZM3.5 3.75v16.5c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25H3.75a.25.25 0 0 0-.25.25Z"/></g></g></svg> Success Criteria</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-anchor-target id="primary-goals">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#primary-goals">#</doc-anchor-trigger>
         <span>Primary Goals</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <ol>
 <li><strong>Connectivity Test</strong>: Bob and Linda can ping each other (same VLAN)</li>
 <li><strong>Isolation Test</strong>: Alice cannot ping Bob or Linda (different VLANs)</li>
 </ol>
 <doc-anchor-target id="stretch-goals">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#stretch-goals">#</doc-anchor-trigger>
         <span>Stretch Goals</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <ul>
 <li>Add descriptive port descriptions to all switchports</li>
 <li>Configure VLAN 99 SVI on the switch (<code v-pre>interface Vlan99</code>) with IP <code v-pre>10.1.99.10/24</code></li>
-<li>Make host IP configurations persistent across reboots</li>
+<li>Take a packet capture of successful pings between Bob &amp; Lind with <code v-pre>tcpdump interface ethernet1 filter icmp</code></li>
 </ul>
 <hr>
 <doc-anchor-target id="verification-commands">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="switch-verification">
+<template #title>Switch Verification</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">eos</div>
-<pre translate="no" class="language-none"><code v-pre class="language-none"># Show configured VLANs
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Show configured VLANs
 show vlan [brief]
 
 # Show interface status, duplex, speed, and more
@@ -398,6 +397,18 @@ show mac address-table
 # Show configured IP interfaces
 show ip interface brief</code></pre>
 </doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="host-verification">
+<template #title>Host Verification</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Show configured IP information
+ifconfig
+
+# Send ICMP echo requests
+ping 10.1.10.20</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
 <hr>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-tip"></div>
@@ -415,42 +426,33 @@ show ip interface brief</code></pre>
     </div>
 </div>
 <doc-anchor-target id="key-concepts">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#key-concepts">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M16.75 8.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"/><path d="M15.75 0a8.25 8.25 0 1 1-2.541 16.101l-1.636 1.636a1.744 1.744 0 0 1-1.237.513H9.25a.25.25 0 0 0-.25.25v1.448a.876.876 0 0 1-.256.619l-.214.213a.75.75 0 0 1-.545.22H5.25a.25.25 0 0 0-.25.25v1A1.75 1.75 0 0 1 3.25 24h-1.5A1.75 1.75 0 0 1 0 22.25v-2.836c0-.464.185-.908.513-1.236l7.386-7.388A8.249 8.249 0 0 1 15.75 0ZM9 8.25a6.733 6.733 0 0 0 .463 2.462.75.75 0 0 1-.168.804l-7.722 7.721a.25.25 0 0 0-.073.177v2.836c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-1c0-.966.784-1.75 1.75-1.75H7.5v-1c0-.966.784-1.75 1.75-1.75h1.086a.25.25 0 0 0 .177-.073l1.971-1.972a.75.75 0 0 1 .804-.168A6.75 6.75 0 1 0 9 8.25Z"/></g></g></svg> Key Concepts</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-anchor-target id="why-vlans-matter">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#why-vlans-matter">#</doc-anchor-trigger>
         <span>Why VLANs Matter</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <ul>
 <li><strong>Security</strong>: Network segmentation isolates traffic</li>
 <li><strong>Broadcast Control</strong>: Reduces broadcast domain size</li>
 <li><strong>Organization</strong>: Logical grouping of devices</li>
 </ul>
-<doc-anchor-target id="understanding-the-topology">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#understanding-the-topology">#</doc-anchor-trigger>
-        <span>Understanding the Topology</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">VLAN 10 (Sales)    │  VLAN 20 (Engineering)
-Bob ←→ Linda       │  Alice (isolated)</code></pre>
-</doc-codeblock></div>
 <doc-anchor-target id="questions-to-explore">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#questions-to-explore">#</doc-anchor-trigger>
         <span>Questions to Explore</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <ul>
 <li>What happens when you send a broadcast in VLAN 10?</li>
 <li>How does the switch learn where each host is located?</li>
-<li>Why might VLAN 99 SVI show &quot;status down&quot; initially?</li>
+<li>Why does interface VLAN 99 say <strong>down</strong>/<strong>lowerlayerdown</strong> in the output of <code v-pre>show interfaces status</code>?</li>
+<li>When you took the <code v-pre>tcpdump</code> what parts of the output can you identify?</li>
 </ul>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-tip"></div>
@@ -463,14 +465,16 @@ Bob ←→ Linda       │  Alice (isolated)</code></pre>
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-            <h5>&quot;Quick Access&quot;</h5>
-<p>Can&#x27;t SSH to hosts? Use: <code v-pre>docker exec -it &lt;container-name&gt; bash</code></p>
-<p>Set static IP: <code v-pre>sudo ip addr add 10.1.10.10/24 dev eth1</code></p>
+            <h5>Linux host tips</h5>
+<ul>
+<li>Can&#x27;t SSH to hosts? Use: <code v-pre>docker exec -it &lt;container-name&gt; bash</code></li>
+<li>Set static IP: <code v-pre>sudo ip addr add 10.1.10.10/24 dev eth1</code></li>
+</ul>
         </div>
     </div>
 </div>
-<doc-panel id="documentation">
-    <template #title>Documentation</template>
+<doc-panel id="reference-material" collapsed>
+    <template #title><span class="docs-emoji">&#x1F4DA;</span> Reference Material</template>
 <p><a href="https://www.arista.com/en/um-eos/eos-virtual-lans-vlans">EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)</a></p>
 </doc-panel>
 
@@ -565,6 +569,6 @@ Bob ←→ Linda       │  Alice (isolated)</code></pre>
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 1  - VLANs", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 1  - VLANs", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
