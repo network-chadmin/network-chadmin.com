@@ -5,7 +5,7 @@ order: 1000
 ![](/static/network-academy/shrimpco/banner.png)
 
 # Lab 1  - VLANs
-> Shrimp Co. is opening their first office in Seattle, WA, and you're hired as their network administrator. The switch is racked in IDF-A and it's up to you to set up basic layer 2 segmentation
+> Shrimp Co. is opening their first office in Seattle, WA, and you're hired as their network administrator. The switch is racked in IDF-A and it's up to you to set up basic Layer 2 segmentation.
 
 ==- Lab Topology
 ![](https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/01_vlans.png)
@@ -48,7 +48,7 @@ Hosts and devices in the diagram have **two** IP addresses shown. 172.25.20.X is
 
 ### Stretch Goals
 - Add descriptive port descriptions to all switchports
-- Configure VLAN 99 management interface (10.1.99.10/24)
+- Configure VLAN 99 SVI on the switch (`interface Vlan99`) with IP `10.1.99.10/24`
 - Make host IP configurations persistent across reboots
 
 ---
@@ -57,12 +57,12 @@ Hosts and devices in the diagram have **two** IP addresses shown. 172.25.20.X is
 
 ```eos
 # Show configured VLANs
-show vlan brief
+show vlan [brief]
 
-# Show interface status and VLAN membership
+# Show interface status, duplex, speed, and more
 show interfaces status
 
-# Show MAC address table
+# Show MAC address forwarding table
 show mac address-table
 
 # Show configured IP interfaces
@@ -70,6 +70,10 @@ show ip interface brief
 ```
 
 ---
+
+!!!tip
+Confused about syntax?  Hitting `?` will show you all the available options for the next word in your command sequence.  You can even use it after a letter to see which options start with that letter. `c?` will show all options starting with "c"
+!!!
 
 ## :icon-key: Key Concepts
 
@@ -94,3 +98,7 @@ Can't SSH to hosts? Use: `docker exec -it <container-name> bash`
 
 Set static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 !!!
+
+=== Documentation
+[EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
+===

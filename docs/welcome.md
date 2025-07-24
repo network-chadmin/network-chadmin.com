@@ -2,7 +2,7 @@
 title: Welcome
 icon: home
 order: 1000
-description: This site is a personal knowledge base and lab journal as I deepen my expertise in enterprise networking and share what I learn with others.
+description: A hands-on networking lab journal and knowledge base built for aspiring engineers, focused on enterprise routing, switching, and automation.
 ---
 
 ![](https://images.unsplash.com/photo-1682559736721-c2e77ff4c650?q=80&w=3422&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)

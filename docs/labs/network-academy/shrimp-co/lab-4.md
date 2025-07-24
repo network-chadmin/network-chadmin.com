@@ -15,6 +15,13 @@ order: 970
 </p>
 ===
 
+## 🆕 New Concepts Introduced
+- Redundant Layer 3 gateways with VRRP
+- EtherChannel bundling and trunking
+- VRRP failover testing with preemption
+- Basic traffic filtering with ACLs
+- Optional: VRRP authentication & interface tracking
+
 ## :icon-tasklist: Configuration Tasks
 
 ### 1. Host & Access Port Configuration
@@ -84,10 +91,44 @@ Configure VRRP on the physical subinterfaces to provide redundant gateways:
 -   Implement **VRRP tracking** of a physical interface (e.g., `Loopback0`) to reduce VRRP priority if the tracked object goes down, forcing a failover.
 +++
 
+!!!info "Testing VRRP Failover"
+After configuring VRRP:
+1. Use `ping 10.1.10.1` from a host (e.g. Bob)
+2. Shut down the VLAN 10 subinterface on `sea-mdf-r1`
+3. Re-test — traffic should failover to `sea-mdf-r2` automatically
+4. Use `show vrrp` on both routers to confirm role changes
+!!!
+
 ## :icon-terminal: Verification Commands
 
-```eos
--placeholder-
-```
++++ Switch Verification
+```bash
+# Show VLAN and trunk status
+show vlan brief
+show interfaces trunk
+show interfaces status
 
+# Show EtherChannel (Port-Channel) details
+show port-channel summary
+show interfaces Port-Channel1
+```
++++ Router Verification
+```bash
+# Show VRRP status for all interfaces
+show vrrp
+
+# Show subinterfaces and their IPs
+show ip interface brief
+
+# Show ARP and routing table
+show ip arp
+show ip route
+
+# Verify interface tracking (if configured)
+show vrrp track
+```
+=== Documentation
+[EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
+[EOS 4.34.1F - Interface Configuration | Port Channels and LACP)](https://www.arista.com/en/um-eos/eos-port-channels-and-lacp)
+===
 

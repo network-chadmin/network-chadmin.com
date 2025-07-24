@@ -50,7 +50,7 @@ Create and configure the following VLANs on **both switches**:
 
 !!!primary
 
-While traditionally "router-on-a-stick" refers to a single physical interface carrying multiple tagged VLANs, in this lab `sea-mdf-r1` utilizes two physical interfaces (`Eth1` and `Eth2`) in a "multi-stick" design.  This was done for diagram symmetry and doesn't necessarily reflect a best-practice design.
+While traditionally "router-on-a-stick" refers to a single physical interface carrying multiple tagged VLANs, in this lab `sea-mdf-r1` utilizes two physical interfaces (`Eth1` and `Eth2`) in a "multi-stick" design.  This choice was made for visual symmetry and doesn’t necessarily reflect best-practice network design.
 !!!
 
 ---
@@ -58,7 +58,7 @@ While traditionally "router-on-a-stick" refers to a single physical interface ca
 ## :icon-check-circle: Success Criteria
 
 +++ Primary Goals
-- Bob and Alice (Inter-VLAN routing working)
+- Bob and Alice can ping each other (Inter-VLAN routing functioning)
 - All hosts can ping their respective gateways
 - Ping Loopback0 from Linda
 +++ Stretch Goals
@@ -67,12 +67,11 @@ While traditionally "router-on-a-stick" refers to a single physical interface ca
 +++
 
 ## Verification Commands
-
-```cisco
-# === Switch Verification ===
++++ Switch Verification
+```bash
 
 # Show VLAN configuration
-show vlan brief
+show vlan [brief]
 
 # Show trunk interfaces and allowed VLANs
 show interfaces trunk
@@ -81,18 +80,17 @@ show interfaces trunk
 show interfaces status
 
 # Show MAC address table
-show mac address-table
-
-# === Router Verification ===
-
+show mac address-table [dynamic]
+```
++++ Router Verification
+```bash
 # Show ARP table
-
 show ip arp
 
 # Show routing table
-
 show ip route
 ```
++++
 
 ---
 
@@ -111,4 +109,12 @@ If SSH isn't working: `docker exec -it <container-name> bash`
 Configure static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 
 *Note: This is the last time I will call out the host acccess and configuration commands.  Either refer back or take notes for future labs!*
+!!!
+
+=== Documentation
+[EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
+===
+
+!!!warning
+Arista documentation isn't nearly as ubiquitous as Cisco's, so in some cases it may be harder to find a guide for the thing you're trying to configure.  In this case, there's no reference for Layer 3 subinterfaces in their user guide.  The command-line syntax is extremely similar though, so finding a guide for a Cisco configuration will get you most of the way there.
 !!!

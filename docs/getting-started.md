@@ -8,7 +8,7 @@ order: 990
 
 Labs I publish here use [Containerlab](https://containerlab.dev/), a free network lab solution developed by engineers at Nokia. It doesn't require a costly subscription, and in my experience, it's more resource-efficient, more reliable, and a lot more enjoyable than the emulators of years past.
 
-- **Containerlab installed on a Linux PC, Server, WSL or on a Macbook.** The labs here have been built and tested on Ubuntu server 24.04.2 LTS.
+- **Containerlab installed on a Linux PC, server, WSL, or MacBook.** The labs here have been built and tested on Ubuntu server 24.04.2 LTS.
 - **Lab images** — Arista cEOS and Ubuntu Linux
 - **Lab files** available on my [GitHub](https://github.com/network-chadmin/containerlab.git)
 
@@ -24,8 +24,9 @@ This will install all components needed to run Containerlab, including Docker. S
 
 ## Images
 
-!!! A Note on Lab Images
-To ensure the smoothest and most accessible learning experience, all labs in Network Academy now utilize Arista cEOS (Container EOS) images for both routers and switches instead of Cisco IOL.  This provides a stable, consistent lab environment that can be legally and easily downloaded by anyone with an Arista account, allowing you to focus on learning networking concepts without friction.
+!!!info Why cEOS?
+All labs now use Arista cEOS images instead of Cisco IOL.  
+cEOS is legal to download, consistent across platforms, and freely available to anyone with an Arista account — making your lab experience easier and more reliable.
 !!!
 
 ### Network-Host
@@ -34,7 +35,7 @@ This is a custom Ubuntu host with a few extra packages installed like sudo, iper
 ### Arista cEOS
 [Arista](https://www.arista.com/en/support/software-download) offers these images for free once you've created an account. Navigate to "Support → Software Download → cEOS Lab → 4.32 → EOS-4.32.5.1M → cEOS64-lab-4.32.5.1M.tar.xz"
 
-![This is the cEOS version I'll be using in my labs|300x200](/static/getting-started/ceos-version.png)
+![Arista EOS version used in these labs|300x200](/static/getting-started/ceos-version.png)
 
 
 ## Lab files
@@ -56,5 +57,8 @@ Then go ahead and launch your lab:
 ```bash
 containerlab deploy
 ```
+
+If successful, you’ll see output listing your nodes and their connection status.  
+You can now access devices via terminal or your preferred terminal emulator (like SecureCRT, tabby, or PuTTY).
 
 For a more in-depth look at how to administer Containerlab and Docker see my [Containerlab Reference guide](documentation/containerlab-reference).

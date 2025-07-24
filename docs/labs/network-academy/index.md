@@ -1,5 +1,5 @@
 ---
-icon: pencil
+icon: icon-mortar-board
 expanded: true
 label: Network Academy
 order: 940
@@ -10,11 +10,11 @@ order: 940
 > Master networking fundamentals with hands-on labs and enterprise-inspired designs.
 
 # What is Network Academy?
-Network Academy started with a simple goal: help colleagues who were new to networking learn through hands-on labs. What began as internal training material has since grown into a public resource for anyone looking to build real skills through practice.
+Network Academy started as a way to help my coworkers learn networking through hands-on practice. What began as internal training material has grown into a public resource for anyone building real-world skills from the ground up.
 
-I believe labbing — and learning to enjoy labbing — is the secret to success in this field. My goal isn’t just to teach networking concepts, but to inspire you to build your own labs and take ownership of your learning.
+I believe labbing — and learning to enjoy it — is the key to success in this field. My goal isn’t just to teach concepts, but to help you build confidence by building networks.
 
-## Shrimp Co. - Network Fundamentals
+## [Shrimp Co. - Network Fundamentals](/network-academy/shrimp-co)
 
 <figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-transparent.png"
@@ -27,9 +27,11 @@ I believe labbing — and learning to enjoy labbing — is the secret to success
 
 This course begins with a simple single-switch setup and two VLANs, gradually expanding into a full-scale topology with dynamic routing, tunneling, and multiple Linux hosts.
 
-While it's designed with beginners in mind, even seasoned learners will find value in advanced stretch goals like Linux administration and network services.
+While it starts off beginner-friendly, Shrimp Co. ramps up quickly — by the later labs you’ll be building GRE tunnels, running OSPF across multiple areas, and configuring MLAG for redundancy.
 
-## SeaMart - Zero to Routing Hero
+There's less handholding as the series progresses, but that’s intentional. These are real skills you’ll use in the field.
+
+## [SeaMart - Zero to Routing Hero](/network-academy/seamart)
 
 <figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/seamart-transparent.png"
@@ -45,6 +47,8 @@ In the **SeaMart** series, you’ll step into the role of a Campus and WAN engin
 
 Starting with basic static and dynamic routing, you'll gradually build a large-scale routed environment—incorporating advanced concepts like mutual redistribution and route filtering along the way.
 
+## Volt Communications - Mastering BGP
+
 <figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/volt-communications-transparent.png"
          alt="Volt Communications" width="400" height="300">
@@ -52,3 +56,7 @@ Starting with basic static and dynamic routing, you'll gradually build a large-s
         BGP runs the world, how well do you know it?
     </figcaption>
 </figure>
+
+Take on the role of a service provider engineer for Volt Communications, a fictional ISP.  
+This series focuses on Border Gateway Protocol (BGP), the internet’s foundational routing protocol.  
+You’ll dive into peering design, path selection, prefix filtering, and BGP scalability features like route reflectors and confederations.

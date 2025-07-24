@@ -38,7 +38,7 @@ Create and configure the following VLANs on **both switches**:
 
 - Configure the inter-switch link (Eth0/3 on both switches) as an **802.1Q trunk** to carry only VLANs 10,20, and 99.
 - Configure VLAN 99 SVI for sea-a1-asw1 - **10.1.99.10/24**
-- Configure VLAN 99 SVI for sea-a1-asw1 - **10.1.99.20/24**
+- Configure VLAN 99 SVI for sea-b1-asw1 - **10.1.99.20/24**
 
 ---
 
@@ -58,7 +58,7 @@ Create and configure the following VLANs on **both switches**:
 
 ## Verification Commands
 
-```cisco
+```eos
 # Show VLAN configuration
 show vlan brief
 
@@ -69,7 +69,7 @@ show interfaces trunk
 show interfaces status
 
 # Show MAC address table
-show mac address-table
+show mac address-table [dynamic]
 ```
 
 ---
@@ -85,3 +85,7 @@ If SSH isn't working: `docker exec -it <container-name> bash`
 
 Configure static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 !!!
+
+=== Documentation
+[EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
+===
