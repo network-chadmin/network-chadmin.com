@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.806633238986" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -277,6 +278,19 @@
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
+<doc-anchor-target id="-new-concepts-introduced">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#-new-concepts-introduced">#</doc-anchor-trigger>
+        <span><span class="docs-emoji">&#x1F195;</span> New Concepts Introduced</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Redundant Layer 3 gateways with VRRP</li>
+<li>EtherChannel bundling and trunking</li>
+<li>VRRP failover testing with preemption</li>
+<li>Basic traffic filtering with ACLs</li>
+<li>Optional: VRRP authentication &amp; interface tracking</li>
+</ul>
 <doc-anchor-target id="configuration-tasks">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
@@ -442,16 +456,72 @@
 </ul>
 </doc-tab>
 </doc-tabs>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>&quot;Testing VRRP Failover&quot;</h5>
+<p>After configuring VRRP:</p>
+<ol>
+<li>Use <code v-pre>ping 10.1.10.1</code> from a host (e.g. Bob)</li>
+<li>Shut down the VLAN 10 subinterface on <code v-pre>sea-mdf-r1</code></li>
+<li>Re-test — traffic should failover to <code v-pre>sea-mdf-r2</code> automatically</li>
+<li>Use <code v-pre>show vrrp</code> on both routers to confirm role changes</li>
+</ol>
+        </div>
+    </div>
+</div>
 <doc-anchor-target id="verification-commands">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
     </h2>
 </doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="switch-verification">
+<template #title>Switch Verification</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">eos</div>
-<pre translate="no" class="language-none"><code v-pre class="language-none">-placeholder-</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Show VLAN and trunk status
+show vlan brief
+show interfaces trunk
+show interfaces status
+
+# Show EtherChannel (Port-Channel) details
+show port-channel summary
+show interfaces Port-Channel1</code></pre>
 </doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="router-verification">
+<template #title>Router Verification</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Show VRRP status for all interfaces
+show vrrp
+
+# Show subinterfaces and their IPs
+show ip interface brief
+
+# Show ARP and routing table
+show ip arp
+show ip route
+
+# Verify interface tracking (if configured)
+show vrrp track</code></pre>
+</doc-codeblock></div>
+<doc-panel id="documentation">
+    <template #title>Documentation</template>
+<p><a href="https://www.arista.com/en/um-eos/eos-virtual-lans-vlans">EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)</a>
+<a href="https://www.arista.com/en/um-eos/eos-port-channels-and-lacp">EOS 4.34.1F - Interface Configuration | Port Channels and LACP)</a></p>
+</doc-panel>
+</doc-tab>
 
                                 
                                 <!-- Required only on API pages -->
@@ -480,7 +550,7 @@
                                         <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../labs/network-academy/shrimp-co/lab-5/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                                <span class="block mt-1">Lab 5 - Static NAT & Internet</span>
+                                                <span class="block mt-1">Lab 5 - NAT & Internet</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -544,6 +614,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 4 - Basic L2-L3 Redundancy", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 4 - Basic L2-L3 Redundancy", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,12 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -348,7 +348,7 @@
 <ul>
 <li>Configure the inter-switch link (Eth0/3 on both switches) as an <strong>802.1Q trunk</strong> to carry only VLANs 10,20, and 99.</li>
 <li>Configure VLAN 99 SVI for sea-a1-asw1 - <strong>10.1.99.10/24</strong></li>
-<li>Configure VLAN 99 SVI for sea-a1-asw1 - <strong>10.1.99.20/24</strong></li>
+<li>Configure VLAN 99 SVI for sea-b1-asw1 - <strong>10.1.99.20/24</strong></li>
 </ul>
 <hr>
 <doc-anchor-target id="success-criteria">
@@ -384,7 +384,7 @@
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">cisco</div>
+<div class="codeblock-title">eos</div>
 <pre translate="no" class="language-none"><code v-pre class="language-none"># Show VLAN configuration
 show vlan brief
 
@@ -395,7 +395,7 @@ show interfaces trunk
 show interfaces status
 
 # Show MAC address table
-show mac address-table</code></pre>
+show mac address-table [dynamic]</code></pre>
 </doc-codeblock></div>
 <hr>
 <doc-anchor-target id="questions-to-explore">
@@ -427,6 +427,10 @@ show mac address-table</code></pre>
         </div>
     </div>
 </div>
+<doc-panel id="documentation">
+    <template #title>Documentation</template>
+<p><a href="https://www.arista.com/en/um-eos/eos-virtual-lans-vlans">EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)</a></p>
+</doc-panel>
 
                                 
                                 <!-- Required only on API pages -->

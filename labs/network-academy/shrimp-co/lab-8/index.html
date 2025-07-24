@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.806633238986" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -277,6 +278,150 @@
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
+<doc-anchor-target id="configuration-tasks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="layer-2-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#layer-2-configuration">#</doc-anchor-trigger>
+        <span>Layer 2 Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Verify port-channels, trunk links, and VLAN databases are configured from previous labs. Ensure VLANs 10, 20, and 99 have L2 reachability across the switching fabric.</p>
+<doc-anchor-target id="1-configure-spanning-tree">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-configure-spanning-tree">#</doc-anchor-trigger>
+        <span>1. Configure Spanning-Tree</span>
+    </h3>
+</doc-anchor-target>
+<p>Configure <code v-pre>mstp</code> on all switches:</p>
+<ul>
+<li>Define MST region <code v-pre>shrimp-co</code> with instance 1 mapping VLANs 10 and 20</li>
+<li>Set bridge priorities:
+<ul>
+<li><code v-pre>dsw1</code>: priority 4096 (Root)</li>
+<li><code v-pre>dsw2</code>: priority 8192</li>
+</ul>
+</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">spanning-tree mode mstp
+spanning-tree mst configuration
+ name shrimp-co
+ revision 1
+ instance 1 vlan 10,20
+exit
+
+spanning-tree mst 1 priority 4096  # On dsw1
+spanning-tree mst 1 priority 8192  # On dsw2</code></pre>
+</doc-codeblock></div>
+<p>Verify root bridge selection and port states using <code v-pre>show spanning-tree mst</code>.</p>
+<doc-anchor-target id="2-configure-route-summarization-on-routers">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-configure-route-summarization-on-routers">#</doc-anchor-trigger>
+        <span>2. Configure Route Summarization on Routers</span>
+    </h3>
+</doc-anchor-target>
+<p>Summarize access subnet advertisements from distribution switches. Use summary addresses on:</p>
+<ul>
+<li><code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code> to summarize <code v-pre>10.1.0.0/16</code></li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">router ospf 1
+ area 0.0.0.0 range 10.1.0.0 255.255.0.0</code></pre>
+</doc-codeblock></div>
+<p>This reduces LSA size and keeps the OSPF database lean as the network grows.</p>
+<doc-anchor-target id="3-configure-dhcp-server">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-configure-dhcp-server">#</doc-anchor-trigger>
+        <span>3. Configure DHCP Server</span>
+    </h3>
+</doc-anchor-target>
+<p>Deploy a DHCP server on <code v-pre>sea-mdf-dsw1</code> for VLAN 99:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip dhcp excluded-address 10.1.99.1 10.1.99.10
+ip dhcp pool VLAN99
+ network 10.1.99.0 255.255.255.0
+ default-router 10.1.99.1
+ dns-server 8.8.8.8
+ lease 0 4 0</code></pre>
+</doc-codeblock></div>
+<p>Bind DHCP to the SVI and ensure it responds to client requests from the access layer.</p>
+<blockquote>
+<p>Note: This DHCP configuration is for testing purposes. In production, DHCP is often centralized.</p>
+</blockquote>
+<doc-anchor-target id="4-verify-addressing">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-verify-addressing">#</doc-anchor-trigger>
+        <span>4. Verify Addressing</span>
+    </h3>
+</doc-anchor-target>
+<p>Ensure each host on VLAN 99 obtains an IP via DHCP. Validate with <code v-pre>show ip dhcp binding</code> on the DSW.</p>
+<doc-anchor-target id="success-criteria">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="primary-goals">
+<template #title>Primary Goals</template>
+<ul>
+<li>MSTP running with correct root bridge election</li>
+<li>Summarized OSPF routes advertised from routers</li>
+<li>VLAN 99 hosts receiving DHCP addresses</li>
+</ul>
+</doc-tab>
+<doc-tab v-cloak id="stretch-goals">
+<template #title>Stretch Goals</template>
+<ul>
+<li>Observe MSTP failover by disabling a forwarding link</li>
+<li>Deploy DHCP relay from an access switch to test forwarding</li>
+<li>Run <code v-pre>tcpdump</code> on a switch and filter for DHCP</li>
+</ul>
+</doc-tab>
+</doc-tabs>
+<doc-anchor-target id="verification-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="switch-stp--dhcp">
+<template #title>Switch (STP &amp; DHCP)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">show spanning-tree mst
+show spanning-tree mst configuration
+show ip dhcp binding</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="router-ospf-summary">
+<template #title>Router (OSPF Summary)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">show ip ospf database summary
+show ip route ospf</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="host-from-bash-shell-or-cli">
+<template #title>Host (from bash shell or CLI)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip a
+ping 10.1.99.1</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<doc-panel id="documentation" collapsed>
+    <template #title>Documentation</template>
+<ul>
+<li><a href="https://www.arista.com/en/um-eos/eos-l2-stp#ww1106022">EOS - MSTP Configuration</a></li>
+<li><a href="https://www.arista.com/en/um-eos/eos-ip-addressing-and-hostname#topic14156">EOS - DHCP Server</a></li>
+<li><a href="https://www.arista.com/en/um-eos/eos-ip-routing#topic14284">EOS - OSPF Summarization</a></li>
+</ul>
+</doc-panel>
 
                                 
                                 <!-- Required only on API pages -->
@@ -369,6 +514,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 8 - STP, Summarization,& DHCP", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 8 - STP, Summarization,& DHCP", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

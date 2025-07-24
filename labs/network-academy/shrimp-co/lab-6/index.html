@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.806633238986" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -277,6 +278,174 @@
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
+<doc-anchor-target id="configuration-tasks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="layer-2-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#layer-2-configuration">#</doc-anchor-trigger>
+        <span>Layer 2 Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Ensure trunk links, VLAN databases, SVIs, and port-channels are configured across the switches and connected to <code v-pre>sea-mdf-dsw1</code>. VLANs 10, 20, and 99 should have Layer 2 reachability to the DSW.</p>
+<doc-anchor-target id="1-distribution-switch-ip-interfaces">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-distribution-switch-ip-interfaces">#</doc-anchor-trigger>
+        <span>1. Distribution Switch IP Interfaces</span>
+    </h3>
+</doc-anchor-target>
+<p>Configure the following SVIs on <code v-pre>sea-mdf-dsw1</code>:</p>
+<ul>
+<li>VLAN 10: 10.1.10.1/24</li>
+<li>VLAN 20: 10.1.20.1/24</li>
+<li>VLAN 99: 10.1.99.1/24</li>
+</ul>
+<p>Verify host reachability to their respective gateway:</p>
+<ul>
+<li>Bob: 10.1.10.10</li>
+<li>Alice: 10.1.20.10</li>
+<li>Steve: 10.1.99.100</li>
+</ul>
+<doc-anchor-target id="2-static-routes-routers-to-distribution-switch">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-static-routes-routers-to-distribution-switch">#</doc-anchor-trigger>
+        <span>2. Static Routes (Routers to Distribution Switch)</span>
+    </h3>
+</doc-anchor-target>
+<p>On <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>, add static routes for internal VLANs:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip route 10.1.10.0/24 10.1.1.1
+ip route 10.1.20.0/24 10.1.1.1
+ip route 10.1.99.0/24 10.1.1.1</code></pre>
+</doc-codeblock></div>
+<p>Assume the internal-facing interfaces on each router are:</p>
+<ul>
+<li><code v-pre>sea-mdf-r1</code>: <code v-pre>Eth1</code>, IP 10.1.1.2/30</li>
+<li><code v-pre>sea-mdf-r2</code>: <code v-pre>Eth1</code>, IP 10.1.1.6/30</li>
+</ul>
+<doc-anchor-target id="3-default-route-on-distribution-switch">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-default-route-on-distribution-switch">#</doc-anchor-trigger>
+        <span>3. Default Route on Distribution Switch</span>
+    </h3>
+</doc-anchor-target>
+<p>Configure <code v-pre>sea-mdf-dsw1</code> with default routes to each router:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip route 0.0.0.0/0 10.1.1.2
+ip route 0.0.0.0/0 10.1.1.6</code></pre>
+</doc-codeblock></div>
+<p>This allows hosts to access the internet via either router (basic redundancy).</p>
+<doc-anchor-target id="4-dynamic-nat-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-dynamic-nat-configuration">#</doc-anchor-trigger>
+        <span>4. Dynamic NAT Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>On <code v-pre>sea-mdf-r1</code>, configure dynamic NAT using an access list and a NAT pool:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip access-list standard NAT_VLAN99
+ permit 10.1.99.0/24
+
+ip nat pool PUBLIC_POOL 100.10.1.5 100.10.1.10 netmask 255.255.255.240
+ip nat inside source list NAT_VLAN99 pool PUBLIC_POOL overload</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>Mark <code v-pre>Eth2</code> as <code v-pre>ip nat outside</code></li>
+<li>Mark interface facing VLAN 99 as <code v-pre>ip nat inside</code></li>
+</ul>
+<p>Repeat on <code v-pre>sea-mdf-r2</code> (optional for redundancy).</p>
+<doc-anchor-target id="5-verification">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#5-verification">#</doc-anchor-trigger>
+        <span>5. Verification</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Confirm internal host <code v-pre>Steve</code> can access the SeaMart server (<code v-pre>curl http://123.123.123.123</code>)</li>
+<li>Confirm NAT translation is working with <code v-pre>show ip nat translations</code></li>
+<li>Confirm static routes are working by tracing traffic between VLANs</li>
+</ul>
+<doc-anchor-target id="icon-check-circle-success-criteria">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#icon-check-circle-success-criteria">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="primary-goals">
+<template #title>Primary Goals</template>
+<ul>
+<li>Hosts can reach their default gateway on <code v-pre>sea-mdf-dsw1</code></li>
+<li>Steve can access the SeaMart web server</li>
+<li>NAT translations occur via dynamic NAT using a pool</li>
+<li>Static routing works between routers and DSW</li>
+</ul>
+</doc-tab>
+<doc-tab v-cloak id="stretch-goals">
+<template #title>Stretch Goals</template>
+<ul>
+<li>Configure NAT redundancy via VRRP and <code v-pre>track</code> interface for priority failover</li>
+<li>Implement an ACL that limits internet access to VLAN 99</li>
+<li>Use <code v-pre>tcpdump</code> on Arista routers to verify translation behavior</li>
+<li>Add logging for NAT ACL hits</li>
+<li>Ping the public SeaMart server from each host and verify path via traceroute</li>
+</ul>
+</doc-tab>
+</doc-tabs>
+<doc-anchor-target id="icon-terminal-verification-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#icon-terminal-verification-commands">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="router-commands">
+<template #title>Router Commands</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># NAT translations
+show ip nat translations
+
+# Check static routes
+show ip route
+
+# Check NAT interface configuration
+show run interface Ethernet2</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="switch-commands-dsw">
+<template #title>Switch Commands (DSW)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Routing table
+show ip route
+
+# Interface and SVI status
+show ip interface brief</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="host-commands">
+<template #title>Host Commands</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Web test
+curl http://123.123.123.123
+
+# DNS test (if configured)
+dig seamart.com
+
+# Network trace
+traceroute 123.123.123.123</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<doc-panel id="documentation" collapsed>
+    <template #title>Documentation</template>
+<ul>
+<li><a href="https://www.arista.com/en/um-eos/eos-ip-routing">EOS 4.34.1F - Static Routing</a></li>
+<li><a href="https://www.arista.com/en/um-eos/eos-nat">EOS 4.34.1F - NAT Configuration</a></li>
+</ul>
+</doc-panel>
 
                                 
                                 <!-- Required only on API pages -->
@@ -296,7 +465,7 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                                <span class="block mt-1">Lab 5 - Static NAT & Internet</span>
+                                                <span class="block mt-1">Lab 5 - NAT & Internet</span>
                                             </span>
                                         </a>
                                     </div>
@@ -369,6 +538,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 6 - Static Routing", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 6 - Static Routing", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

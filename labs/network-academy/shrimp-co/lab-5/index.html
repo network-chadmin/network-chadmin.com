@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Lab 5 - Static NAT &amp; Internet</title>
-    <meta name="title" content="Lab 5 - Static NAT & Internet">
-    <meta name="description" content="Connect Shrimp Co. to the internet via Volt Communications.">
+    <title>Lab 5 - NAT &amp; Internet</title>
+    <meta name="title" content="Lab 5 - NAT & Internet">
+    <meta name="description" content="Shrimp Co. has connected to the internet via Volt Communications.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-5/">
@@ -19,26 +19,27 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-5/">
-    <meta property="og:title" content="Lab 5 - Static NAT & Internet">
-    <meta property="og:description" content="Connect Shrimp Co. to the internet via Volt Communications.">
+    <meta property="og:title" content="Lab 5 - NAT & Internet">
+    <meta property="og:description" content="Shrimp Co. has connected to the internet via Volt Communications.">
     <meta property="og:image" content="https://network-chadmin.github.io/static/network-academy/shrimpco/banner.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-5/">
-    <meta property="twitter:title" content="Lab 5 - Static NAT & Internet">
-    <meta property="twitter:description" content="Connect Shrimp Co. to the internet via Volt Communications.">
+    <meta property="twitter:title" content="Lab 5 - NAT & Internet">
+    <meta property="twitter:description" content="Shrimp Co. has connected to the internet via Volt Communications.">
     <meta property="twitter:image" content="https://network-chadmin.github.io/static/network-academy/shrimpco/banner.png">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.806633238986" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -252,19 +253,25 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
+<doc-anchor-target id="lab-5---nat--internet" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-5---nat--internet">#</doc-anchor-trigger>
+        <span>Lab 5 - NAT &amp; Internet</span>
+    </h1>
+</doc-anchor-target>
 <p><figure class="content-center">
     <img src="../../../../static/network-academy/shrimpco/banner.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<doc-anchor-target id="lab-5---static-nat--internet" class="break-words">
+<doc-anchor-target id="lab-5---nat--internet" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-5---static-nat--internet">#</doc-anchor-trigger>
-        <span>Lab 5 - Static NAT &amp; Internet</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lab-5---nat--internet">#</doc-anchor-trigger>
+        <span>Lab 5 - NAT &amp; Internet</span>
     </h1>
 </doc-anchor-target>
 <blockquote>
-<p>Connect Shrimp Co. to the internet via Volt Communications. Configure static NAT to allow employees to access SeaMart&#x27;s vendor portal for daily business operations.</p>
+<p>Shrimp Co. has connected to the internet via Volt Communications. Configure NAT so internal hosts can reach the SeaMart web server while maintaining internal addressing.</p>
 </blockquote>
 <doc-panel id="lab-topology" collapsed>
     <template #title>Lab Topology</template>
@@ -277,6 +284,164 @@
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
+<doc-anchor-target id="configuration-tasks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="layer-2-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#layer-2-configuration">#</doc-anchor-trigger>
+        <span>Layer 2 Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Configure VLAN databases, port-channels, trunk links, and SVIs as done in previous labs to ensure L2 connectivity between access switches and the MDF routers. These tasks are assumed and not explicitly outlined below.</p>
+<doc-anchor-target id="1-ip-addressing--reachability">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-ip-addressing--reachability">#</doc-anchor-trigger>
+        <span>1. IP Addressing &amp; Reachability</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Configure the WAN interfaces on <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>:
+<ul>
+<li><code v-pre>Eth2</code> on both routers</li>
+<li>Use provider-assigned space: <code v-pre>100.10.1.0/29</code></li>
+<li><code v-pre>sea-mdf-r1</code>: <code v-pre>100.10.1.2/29</code></li>
+<li><code v-pre>sea-mdf-r2</code>: <code v-pre>100.10.1.3/29</code></li>
+<li>ISP gateway: <code v-pre>100.10.1.1</code></li>
+</ul>
+</li>
+<li>Verify <code v-pre>ping 100.10.1.1</code> works from both routers</li>
+</ul>
+<doc-anchor-target id="2-nat-configuration-static-nat">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-nat-configuration-static-nat">#</doc-anchor-trigger>
+        <span>2. NAT Configuration (Static NAT)</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Configure <strong>static NAT</strong> on <code v-pre>sea-mdf-r1</code> to allow internal host <code v-pre>Steve (10.1.99.100)</code> to access the internet with a public IP:
+<ul>
+<li>Inside IP: <code v-pre>10.1.99.100</code></li>
+<li>Outside IP: <code v-pre>100.10.1.2</code></li>
+</ul>
+</li>
+<li>Ensure return traffic is translated correctly</li>
+</ul>
+<doc-anchor-target id="3-default-routes">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-default-routes">#</doc-anchor-trigger>
+        <span>3. Default Routes</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><p>Configure default route on <code v-pre>sea-mdf-r1</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">ip route 0.0.0.0/0 100.10.1.1</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Configure <strong>Steve</strong> with a default gateway of <code v-pre>10.1.99.1</code></p>
+</li>
+</ul>
+<doc-anchor-target id="4-test-connectivity">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-test-connectivity">#</doc-anchor-trigger>
+        <span>4. Test Connectivity</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>From <strong>Steve</strong>, access the SeaMart web server (<code v-pre>curl http://123.123.123.123</code>)</li>
+<li>Use <code v-pre>tcpdump</code> or <code v-pre>tshark</code> on <code v-pre>sea-mdf-r1</code> to verify NAT translations</li>
+</ul>
+<doc-anchor-target id="success-criteria">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="primary-goals">
+<template #title>Primary Goals</template>
+<ul>
+<li>Steve can <code v-pre>curl</code> the SeaMart server by IP</li>
+<li>NAT translation occurs correctly (seen via <code v-pre>show ip nat translations</code> or debug output)</li>
+<li><code v-pre>sea-mdf-r1</code> has connectivity to the upstream ISP</li>
+</ul>
+</doc-tab>
+<doc-tab v-cloak id="stretch-goals">
+<template #title>Stretch Goals</template>
+<ul>
+<li>Configure an <strong>ACL</strong> to only allow NAT for VLAN 99</li>
+<li>Block <code v-pre>Bob</code> or <code v-pre>Alice</code> from accessing the internet</li>
+<li>Set up <strong>VRRP</strong> between <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code> for failover</li>
+<li>Create a <strong>loopback interface</strong> on <code v-pre>Steve</code>, then configure NAT for that address too</li>
+<li>Use <code v-pre>tcpdump</code> to observe NAT behavior at multiple points (inside interface vs outside)</li>
+</ul>
+</doc-tab>
+</doc-tabs>
+<doc-anchor-target id="verification-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="router-verification">
+<template #title>Router Verification</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Check NAT table
+show ip nat translations
+
+# Debug NAT events
+debug ip nat
+
+# Ping default gateway and internet server
+ping 100.10.1.1
+ping 123.123.123.123
+
+# Check routing table
+show ip route</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="host-verification-steve">
+<template #title>Host Verification (Steve)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Check connectivity
+curl http://123.123.123.123
+
+# Trace path
+traceroute 123.123.123.123
+
+# Monitor packets
+sudo tcpdump -i eth1 -n</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<p>-== Documentation</p>
+<ul>
+<li><a href="https://www.arista.com/en/um-eos/eos-nat">EOS 4.34.1F - NAT Overview</a></li>
+<li><a href="https://curl.se/docs/manpage.html">Linux curl Manual</a>
+===</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>In this lab, the SeaMart web server and ISP router are not student-configurable. They will respond to HTTP and basic ICMP traffic, but cannot be logged into or modified.</p>
+        </div>
+    </div>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
@@ -369,6 +534,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 5 - Static NAT & Internet", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 5 - NAT & Internet", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

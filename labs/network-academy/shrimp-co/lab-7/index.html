@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.806633238986" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -277,6 +278,159 @@
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 </doc-panel>
+<doc-anchor-target id="configuration-tasks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="layer-2-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#layer-2-configuration">#</doc-anchor-trigger>
+        <span>Layer 2 Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Ensure trunk links, VLAN databases, SVIs, and port-channels are configured to provide Layer 2 reachability between all access and distribution switches.</p>
+<doc-anchor-target id="1-configure-gateway-svis-vrrp">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-configure-gateway-svis-vrrp">#</doc-anchor-trigger>
+        <span>1. Configure Gateway SVIs (VRRP)</span>
+    </h3>
+</doc-anchor-target>
+<p>On both distribution switches (<code v-pre>sea-mdf-dsw1</code> and <code v-pre>sea-mdf-dsw2</code>), configure SVIs with the following addresses and enable VRRP:</p>
+<ul>
+<li>VLAN 10: 10.1.10.1 (VRRP VIP)</li>
+<li>VLAN 20: 10.1.20.1 (VRRP VIP)</li>
+<li>VLAN 99: 10.1.99.1 (VRRP VIP)</li>
+</ul>
+<p>Assign actual IPs to the switches (.2 and .3) and ensure VRRP priority is configured to prefer <code v-pre>dsw1</code>.</p>
+<doc-anchor-target id="2-enable-ospf-on-routers-and-distribution-switches">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-enable-ospf-on-routers-and-distribution-switches">#</doc-anchor-trigger>
+        <span>2. Enable OSPF on Routers and Distribution Switches</span>
+    </h3>
+</doc-anchor-target>
+<p>Use OSPF process ID 1 across all routing devices. Include the following interfaces:</p>
+<ul>
+<li>All point-to-point links between routers and distribution switches</li>
+<li>Loopback interfaces</li>
+<li>VLAN interfaces (on DSWs only)</li>
+</ul>
+<p>Use OSPF area 0.0.0.0 for all interfaces in this lab.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">router ospf 1
+ network 10.1.10.0 0.0.0.255 area 0.0.0.0
+ network 10.1.20.0 0.0.0.255 area 0.0.0.0
+ network 10.1.99.0 0.0.0.255 area 0.0.0.0
+ network 10.255.1.0 0.0.0.255 area 0.0.0.0
+ network 172.20.25.0 0.0.0.255 area 0.0.0.0</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="3-configure-pat-on-routers">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-configure-pat-on-routers">#</doc-anchor-trigger>
+        <span>3. Configure PAT on Routers</span>
+    </h3>
+</doc-anchor-target>
+<p>On both <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>, configure PAT using the following:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip access-list standard NAT_INSIDE
+ permit 10.1.0.0 0.0.255.255
+
+ip nat inside source list NAT_INSIDE interface Ethernet3 overload</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>Mark <code v-pre>Eth3</code> as <code v-pre>ip nat outside</code></li>
+<li>Mark interface facing internal subnets (DSWs) as <code v-pre>ip nat inside</code></li>
+</ul>
+<p>Ensure only one router is actively used via default route advertisement in OSPF, or configure FHRP tracking/failover in stretch goals.</p>
+<doc-anchor-target id="4-ospf-default-route-injection">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-ospf-default-route-injection">#</doc-anchor-trigger>
+        <span>4. OSPF Default Route Injection</span>
+    </h3>
+</doc-anchor-target>
+<p>Inject a default route from each router into OSPF:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip route 0.0.0.0 0.0.0.0 [next-hop]
+router ospf 1
+ default-information originate</code></pre>
+</doc-codeblock></div>
+<p>This enables internet access through dynamically chosen paths.</p>
+<doc-anchor-target id="success-criteria">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="primary-goals">
+<template #title>Primary Goals</template>
+<ul>
+<li>VRRP functioning across VLAN gateways</li>
+<li>Full OSPF adjacency and convergence</li>
+<li>Hosts can access the SeaMart web server through PAT</li>
+<li>Default route is learned dynamically from OSPF</li>
+</ul>
+</doc-tab>
+</doc-tabs>
+<doc-tabs>
+<doc-tab v-cloak id="stretch-goals">
+<template #title>Stretch Goals</template>
+<ul>
+<li>Configure route preference using OSPF cost</li>
+<li>Use <code v-pre>track</code> to monitor upstream interfaces and trigger VRRP failover</li>
+<li>Log NAT translations and verify with <code v-pre>tcpdump</code></li>
+<li>Disable default-information originate on one router and observe failover</li>
+<li>Access OSPF database and LSAs to validate topology propagation</li>
+</ul>
+</doc-tab>
+</doc-tabs>
+<doc-anchor-target id="verification-commands">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
+    </h2>
+</doc-anchor-target>
+<doc-tabs>
+<doc-tab v-cloak id="router-commands">
+<template #title>Router Commands</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># NAT translations
+show ip nat translations
+
+# OSPF neighbor relationships
+show ip ospf neighbor
+
+# Default route in routing table
+show ip route</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="switch-commands-dsw">
+<template #title>Switch Commands (DSW)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Verify VRRP
+show vrrp
+
+# Check OSPF status
+show ip ospf interface brief</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="host-commands">
+<template #title>Host Commands</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">curl http://123.123.123.123
+traceroute 123.123.123.123
+dig seamart.com</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<doc-panel id="documentation" collapsed>
+    <template #title>Documentation</template>
+<ul>
+<li><a href="https://www.arista.com/en/um-eos/eos-ip-routing">EOS 4.34.1F - OSPF Configuration</a></li>
+<li><a href="https://www.arista.com/en/um-eos/eos-nat">EOS 4.34.1F - NAT Configuration</a></li>
+</ul>
+</doc-panel>
 
                                 
                                 <!-- Required only on API pages -->
@@ -369,6 +523,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 7 - PAT & Dynamic Routing", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Lab 7 - PAT & Dynamic Routing", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

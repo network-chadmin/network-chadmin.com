@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../static/router-icon.png" rel="icon">
-    <link href="../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.806561180875" defer></script>
+    <script data-cfasync="false" src="../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.806633238986" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -267,7 +267,7 @@
 </doc-anchor-target>
 <p>Labs I publish here use <a href="https://containerlab.dev/">Containerlab</a>, a free network lab solution developed by engineers at Nokia. It doesn&#x27;t require a costly subscription, and in my experience, it&#x27;s more resource-efficient, more reliable, and a lot more enjoyable than the emulators of years past.</p>
 <ul>
-<li><strong>Containerlab installed on a Linux PC, Server, WSL or on a Macbook.</strong> The labs here have been built and tested on Ubuntu server 24.04.2 LTS.</li>
+<li><strong>Containerlab installed on a Linux PC, server, WSL, or MacBook.</strong> The labs here have been built and tested on Ubuntu server 24.04.2 LTS.</li>
 <li><strong>Lab images</strong> — Arista cEOS and Ubuntu Linux</li>
 <li><strong>Lab files</strong> available on my <a href="https://github.com/network-chadmin/containerlab.git">GitHub</a></li>
 </ul>
@@ -289,10 +289,10 @@
     </h2>
 </doc-anchor-target>
 <div class="flex mb-6">
-    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-primary"></div>
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
     <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
         <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-primary" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
                 <g fill="currentColor"><g>
                     <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
                     <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
@@ -301,8 +301,9 @@
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-            <h5>A Note on Lab Images</h5>
-<p>To ensure the smoothest and most accessible learning experience, all labs in Network Academy now utilize Arista cEOS (Container EOS) images for both routers and switches instead of Cisco IOL.  This provides a stable, consistent lab environment that can be legally and easily downloaded by anyone with an Arista account, allowing you to focus on learning networking concepts without friction.</p>
+            <h5>Why cEOS?</h5>
+<p>All labs now use Arista cEOS images instead of Cisco IOL.<br />
+cEOS is legal to download, consistent across platforms, and freely available to anyone with an Arista account — making your lab experience easier and more reliable.</p>
         </div>
     </div>
 </div>
@@ -321,8 +322,8 @@
 </doc-anchor-target>
 <p><a href="https://www.arista.com/en/support/software-download">Arista</a> offers these images for free once you&#x27;ve created an account. Navigate to &quot;Support → Software Download → cEOS Lab → 4.32 → EOS-4.32.5.1M → cEOS64-lab-4.32.5.1M.tar.xz&quot;</p>
 <p><figure class="content-center">
-    <img src="../static/getting-started/ceos-version.png" alt="This is the cEOS version I'll be using in my labs" class="rounded-image-rounded border-image-border border-image-border-width" width="300" height="200" />
-    <figcaption class="caption">This is the cEOS version I'll be using in my labs</figcaption>
+    <img src="../static/getting-started/ceos-version.png" alt="Arista EOS version used in these labs" class="rounded-image-rounded border-image-border border-image-border-width" width="300" height="200" />
+    <figcaption class="caption">Arista EOS version used in these labs</figcaption>
 </figure>
 </p>
 <doc-anchor-target id="lab-files">
@@ -343,6 +344,8 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">containerlab deploy</code></pre>
 </doc-codeblock></div>
+<p>If successful, you’ll see output listing your nodes and their connection status.<br />
+You can now access devices via terminal or your preferred terminal emulator (like SecureCRT, tabby, or PuTTY).</p>
 <p>For a more in-depth look at how to administer Containerlab and Docker see my <a href="../documentation/containerlab-reference/">Containerlab Reference guide</a>.</p>
 
                                 

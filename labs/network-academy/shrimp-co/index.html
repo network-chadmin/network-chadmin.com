@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806561180875">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806633238986">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,12 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../static/router-icon.png" rel="icon">
-    <link href="../../../resources/css/retype.css?v=3.11.0.806561180875" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.11.0.806633238986" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../resources/js/search.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.11.0.806561180875" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/search.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.11.0.806633238986" data-turbo-eval="false" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -269,14 +269,14 @@
         <span>Welcome to Shrimp Co.</span>
     </h2>
 </doc-anchor-target>
-<p>This is my beginner friendly lab series where you play the role of network administrator for Shrimp Co, a growing company based out of Seattle, WA.  You&#x27;ll start with a single network closet and basic layer 2 connectivity, slowly increasing the size and complexity of your network as the series goes on.  Eventually. we&#x27;ll build up to large headquarters incorporating several layers of redundancy, dynamic routing, and a basic WAN.</p>
+<p>This is my beginner friendly lab series where you play the role of network administrator for Shrimp Co, a growing company based out of Seattle, WA.  You&#x27;ll start with a single network closet and basic layer 2 connectivity, slowly increasing the size and complexity of your network as the series goes on.  Eventually. we&#x27;ll build up to a large headquarters incorporating several layers of redundancy, dynamic routing, and a basic WAN.</p>
 <doc-anchor-target id="philosophy">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#philosophy">#</doc-anchor-trigger>
         <span>Philosophy</span>
     </h3>
 </doc-anchor-target>
-<p>Each lab will build on the one before it, utilizing the same network devices while adding new hardware, and new protocols/technologies.  While some configuration will be pre-existing, you&#x27;ll be configuring the devices from scratch each time.  This allows you to become familiar with the network as you would one you work in, and develop important muscle memory on the command-line.</p>
+<p>Each lab builds on the previous one, reusing familiar devices while introducing new hardware, protocols, and technologies.  While some configuration will be pre-existing, you&#x27;ll be configuring the devices from scratch each time.  This allows you to become familiar with the network as you would one you work in, and develop important muscle memory on the command-line.</p>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
     <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
@@ -291,7 +291,14 @@
         </div>
         <div class="pr-5 ml-3 w-full">
             <h5>Who is this for?</h5>
-<p>Shrimp Co. is aimed at beginners to computer networking or IT professionals looking to ramp up their understanding of enterprise networking concepts.  While it is beginner friendly, basic understanding of networking, Cisco CLI, and Linux will be helpful.  Structure, goals, and tips are given, but research of the protocols and configuration are left up to the engineer.  Helpful white papers are linked in the reference section of each lab.</p>
+<p>Shrimp Co. is designed for:</p>
+<ul>
+<li>Beginners to networking</li>
+<li>IT professionals building foundational knowledge</li>
+<li>Self-starters who learn best by doing</li>
+</ul>
+<p>While beginner-friendly, a basic understanding of networking, Cisco CLI, and Linux will be helpful. Labs provide structure, objectives, and tips — but protocol research and command syntax are left to you, just like in the real world.</p>
+<p>Helpful references are linked in each lab’s documentation.</p>
         </div>
     </div>
 </div>
@@ -301,29 +308,42 @@
         <span>Before you start</span>
     </h3>
 </doc-anchor-target>
-<ol>
-<li>Navigate to your <code v-pre>~/containerlab</code> directory and pull the latest updates from the repository with <code v-pre>git pull origin main</code> and if you don&#x27;t have the repo cloned yet visit Getting Started.</li>
-<li>If you have SecureCRT make sure to upload the .xml file included in the repo for SSH sessions and commands.</li>
-<li>The docker management subnet for this set of labs is 172.20.25.0/24; in order for the SSH sessions to work you&#x27;ll either need a route with a next-hop of your Ubuntu host or if you&#x27;re using my SecureCRT sessions you can use an existing session as a jump host:</li>
-</ol>
+<p><strong>1.</strong> Navigate to your <code v-pre>~/containerlab</code> directory and pull the latest updates from the repository with <code v-pre>git pull origin main</code> and if you don&#x27;t have the repo cloned yet visit Getting Started.
+<strong>2.</strong> If you have SecureCRT make sure to upload the .xml file included in the repo for SSH sessions and commands.
+<strong>3.</strong> The Docker management subnet for these labs is <code v-pre>172.20.25.0/24</code>.<br />
+To make SSH work:</p>
+<ul>
+<li>Add a static route on your local machine with your Ubuntu host as the next hop</li>
+<li><strong>Or</strong>, if using SecureCRT, configure one session as a jump host (see screenshot)</li>
+</ul>
 <p><figure class="content-center">
-    <img src="../../../static/network-academy/shrimpco/index-crt.png" alt="Create a session to for your Ubuntu host with automated login and choose it here for every session." class="rounded-image-rounded border-image-border border-image-border-width" />
-    <figcaption class="caption">Create a session to for your Ubuntu host with automated login and choose it here for every session.</figcaption>
+    <img src="../../../static/network-academy/shrimpco/index-crt.png" alt="Create a session for your Ubuntu host with automated login and choose it here for every session." class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption">Create a session for your Ubuntu host with automated login and choose it here for every session.</figcaption>
 </figure>
 </p>
-<ol start="4">
-<li>Every device has a different management address, even ones with the same hostname between labs.  This was done incase the labs are being run on a server with multiple users and allows multiple  labs to be run without conflict, except for two of the same lab. s</li>
-<li>Each device tag has both the Docker management IP address, and the in-lab management IP address.  Both will be shown on the device tags on each lab topology.</li>
-</ol>
+<p><strong>4.</strong> Each lab reuses hostnames (like <code v-pre>sea-a1-asw1</code>, <code v-pre>sea-mdf-r1</code>, etc.), but assigns unique management IPs per device instance. This allows labs to run side-by-side without port conflicts — helpful in multi-user environments.</p>
+<p><strong>5.</strong> Each device tag has both the Docker management IP address, and the in-lab management IP address.  Both will be shown on the device tags on each lab topology.</p>
 <p><figure class="content-center">
     <img src="../../../static/network-academy/shrimpco/index-topology.png" alt="172.16.25.62 is the docker management IP, while 10.1.99.30 is the one you will configure in-lab." class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption">172.16.25.62 is the docker management IP, while 10.1.99.30 is the one you will configure in-lab.</figcaption>
 </figure>
 </p>
-<ol start="6">
-<li>Emulated networks like these can be buggy at times and certain things that may not work exactly like they do on a physical device.  An example of this is if <em>SW1 Eth0/1 &lt;---&gt; Eth0/1 SW2</em> are connected and you shut down <em>Eth0/1</em> on <em>SW1</em>, the Line Protocol would go down on the SW2 side in the real world, but that won&#x27;t happen with these emulated devices.  If your network isn&#x27;t working how you think it should, these things do get goofy sometimes</li>
-<li>Have fun and reach out to me at <a href="mailto:heetland.chad@gmail.com">heetland.chad@gmail.com</a> for any comments, questions, or feedback!</li>
-</ol>
+<p><strong>6.</strong> Emulated networks like these can be buggy at times and certain things that may not work exactly like they do on a physical device.  An example of this is if <em>SW1 Eth0/1 &lt;---&gt; Eth0/1 SW2</em> are connected and you shut down <em>Eth0/1</em> on <em>SW1</em>, the Line Protocol would go down on the SW2 side in the real world, but that won&#x27;t happen with these emulated devices.  If your network isn&#x27;t working how you think it should, these things do get goofy sometimes
+<strong>7.</strong> Have fun and reach out to me at <a href="mailto:heetland.chad@gmail.com">heetland.chad@gmail.com</a> for any comments, questions, or feedback!</p>
+<doc-anchor-target id="what-youll-learn">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#what-youll-learn">#</doc-anchor-trigger>
+        <span>What You&#x27;ll Learn</span>
+    </h2>
+</doc-anchor-target>
+<p>By the end of this series, you&#x27;ll have experience with:</p>
+<ul>
+<li>VLANs and trunking</li>
+<li>Static and dynamic routing (OSPF)</li>
+<li>GRE and IPsec tunneling</li>
+<li>Basic network services (NAT, DHCP, DNS)</li>
+<li>Linux-based host tools and troubleshooting</li>
+</ul>
 
                                 
                                 <!-- Required only on API pages -->
