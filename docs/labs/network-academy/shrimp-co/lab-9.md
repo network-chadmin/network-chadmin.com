@@ -21,15 +21,14 @@ order: 920
 
 * Use the following area assignments:
 
-  * Area 0.0.0.0: Core (SEA MDF routers and DSWs)
+  * Area 0: Core (SEA MDF routers and DSWs)
   * Area 1: Milwaukee site
-  * Area 2: New Orleans site
+  * Area 2: Minneapolis site
 
 Include the loopbacks and GRE tunnel interfaces in the appropriate areas.
 
 ```bash
 router ospf 1
- router-id 1.1.1.1
  network 10.255.1.0 0.0.0.255 area 0.0.0.0
  network 172.20.25.0 0.0.0.255 area 0.0.0.0
  network 172.16.0.0 0.0.255.255 area 1
@@ -58,8 +57,8 @@ Configure route summarization on ABRs (`sea-mdf-r1` and `sea-mdf-r2`) to reduce 
 
 ```bash
 router ospf 1
- area 1 range 172.16.0.0 255.255.0.0
- area 2 range 172.18.0.0 255.255.0.0
+ area 1 range 10.2.0.0 255.255.0.0
+ area 2 range 10.3.0.0 255.255.0.0
 ```
 
 ### 4. Configure MLAG for Access Layer

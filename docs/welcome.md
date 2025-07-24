@@ -10,18 +10,16 @@ description: A hands-on networking lab journal and knowledge base built for aspi
 ## About Me
 
 > My name is Chad and I'm an Enterprise Network Engineer for Sub-Zero, Wolf, & Cove.  
-> While being born and raised in the Twin Cities, I've been based out of Scottsdale, AZ since late 2023.  
+> Born and raised in the Twin Cities, I’ve been based in Scottsdale, AZ since late 2023.  
 > I have a CCNP: Enterprise with a concentration in Advanced Routing and Services (ENARSI).  
 > When I'm not working or in my lab, you can find me hiking, traveling, or out by the pool.
 
 ![](https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/ccnp-badge.jpg)
 
-!!!warning Warning
-This site and the labs within are currently unfinished and a work-in-progress.  
-Cloning my GitHub in its current state will not result in the full experience.  
-Check back soon for the finished version of my first lab set, **Shrimp Co.**
-!!!
-
+!!!warning Work in Progress
+This site is still under active development — many labs are incomplete or evolving.
+Cloning my GitHub right now won’t give you the full experience.  
+Check back soon for the finished version of my first lab series: **Shrimp Co.** 🦐
 
 ## What You'll Find Here
 
