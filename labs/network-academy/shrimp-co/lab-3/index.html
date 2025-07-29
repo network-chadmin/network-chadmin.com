@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806648662454">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807113208093">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.806648662454" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.807113208093" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.806648662454" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807113208093" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.806648662454" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.806648662454" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.806648662454" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807113208093" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807113208093" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807113208093" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -292,9 +292,9 @@
 </doc-anchor-target>
 <p>Create and configure the following VLANs on <strong>both switches</strong>:</p>
 <ul>
-<li><strong>VLAN 10</strong> - Sales Department</li>
-<li><strong>VLAN 20</strong> - Engineering Department</li>
-<li><strong>VLAN 99</strong> - Network Management</li>
+<li><strong>VLAN 10</strong> - Sales</li>
+<li><strong>VLAN 20</strong> - Engineering</li>
+<li><strong>VLAN 99</strong> - IT</li>
 </ul>
 <doc-anchor-target id="host--access-port-configuration">
     <h3>
@@ -342,7 +342,8 @@
     </h3>
 </doc-anchor-target>
 <ul>
-<li>Configure the inter-switch link (Eth0/3 on both switches) as an <strong>802.1Q trunk</strong> to carry only VLANs 10,20, and 99.</li>
+<li>Configure the inter-switch link (Eth3 on both switches) as trunk to carry only VLANs 10,20, and 99.</li>
+<li>Configure switch uplinks to router (Eth4 on both switches) as a trunk, allowing only necessary VLANs.</li>
 <li>Configure VLAN 99 SVI for sea-a1-asw1 - <strong>10.1.99.10/24</strong></li>
 <li>Configure VLAN 99 SVI for sea-b1-asw1 - <strong>10.1.99.20/24</strong></li>
 </ul>
@@ -362,6 +363,22 @@
 </li>
 <li>Configure Loopback0 with IP <strong>10.255.1.1/32</strong></li>
 </ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-warning"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-warning" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Because Arista EOS uses the same code train for both switches and routers you need enabling routing globally with the command <code v-pre>ip routing</code> alongside specifying when a port is routed by issuing <code v-pre>no switchport</code> on the physical interface.  This does <strong>not</strong> need to be done on the subinterface.</p>
+        </div>
+    </div>
+</div>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-primary"></div>
     <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
@@ -398,8 +415,9 @@
 <doc-tab v-cloak id="stretch-goals">
 <template #title>Stretch Goals</template>
 <ul>
-<li>Run <code v-pre>sudo tcpdump -i eth1 -n</code> on Bob.  Ping Bob from Linda and Alice.</li>
-<li>Configure router with SSH access and local user account other than admin, SSH to it from Steve</li>
+<li>Run <code v-pre>tcpdump interface ethernet4 filter tcp</code> on <strong>sea-b1-asw1</strong></li>
+<li>Configure router with local user account other than admin, SSH to it from Steve.</li>
+<li>Look for the mac-addresses in the L2 header in your tcpdump and find on what interfaces the switch learned them.  Then, on each device find a command that will output that interface&#x27;s mac address to your terminal.</li>
 </ul>
 </doc-tab>
 </doc-tabs>
@@ -424,7 +442,7 @@ show interfaces trunk
 show interfaces status
 
 # Show MAC address table
-show mac address-table [dynamic]</code></pre>
+show mac address-table [address] [dynamic] </code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="router-verification">
@@ -452,7 +470,6 @@ show ip route</code></pre>
 <li>Why do hosts need default gateways configured now when they didn&#x27;t before?</li>
 <li>What&#x27;s the purpose of an ARP table? Where is it found?</li>
 <li>Imagine the scenario: Steve pings Loopback0 on sea-mdf-r1, when the router goes to send the return traffic how will the L2 &amp; L3 headers look? What does the router use to build it?</li>
-<li>When you ran tcpdump on Bob, what types of traffic did you see?</li>
 </ul>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-tip"></div>
@@ -467,8 +484,8 @@ show ip route</code></pre>
         <div class="pr-5 ml-3 w-full">
             <h5>&quot;Host Access&quot;</h5>
 <p>If SSH isn&#x27;t working: <code v-pre>docker exec -it &lt;container-name&gt; bash</code></p>
-<p>Configure static IP: <code v-pre>sudo ip addr add 10.1.10.10/24 dev eth1</code></p>
-<p><em>Note: This is the last time I will call out the host acccess and configuration commands.  Either refer back or take notes for future labs!</em></p>
+<p>Configure static IP: <code v-pre>sudo ip addr add 10.1.10.10/24 dev eth1</code>
+Configure default route: <code v-pre>sudo ip route add default via 10.1.20.1 dev eth1</code></p>
         </div>
     </div>
 </div>
@@ -488,7 +505,7 @@ show ip route</code></pre>
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>Arista documentation isn&#x27;t nearly as ubiquitous as Cisco&#x27;s, so in some cases it may be harder to find a guide for the thing you&#x27;re trying to configure.  In this case, there&#x27;s no reference for Layer 3 subinterfaces in their user guide.  The command-line syntax is extremely similar though, so finding a guide for a Cisco configuration will get you most of the way there.</p>
+<p>Arista documentation isn&#x27;t nearly as ubiquitous as Cisco&#x27;s, nor can you find many beginner-friendly resources.  In this case, there&#x27;s no reference for Layer 3 subinterfaces in their user guide at all.  The command-line syntax is extremely similar to Cisco though, so finding a guide for a Cisco configuration will get you most of the way there.  I recommend <a href="https://www.network.lessons.com">Network Lessons</a></p>
         </div>
     </div>
 </div>
