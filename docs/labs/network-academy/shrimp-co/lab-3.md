@@ -21,9 +21,9 @@ order: 980
 
 Create and configure the following VLANs on **both switches**:
 
-- **VLAN 10** - Sales Department
-- **VLAN 20** - Engineering Department  
-- **VLAN 99** - Network Management
+- **VLAN 10** - Sales
+- **VLAN 20** - Engineering 
+- **VLAN 99** - IT
 
 ### Host & Access Port Configuration
 
@@ -36,7 +36,8 @@ Create and configure the following VLANs on **both switches**:
 
 ### Switchport Configuration
 
-- Configure the inter-switch link (Eth0/3 on both switches) as an **802.1Q trunk** to carry only VLANs 10,20, and 99.
+- Configure the inter-switch link (Eth3 on both switches) as trunk to carry only VLANs 10,20, and 99.
+- Configure switch uplinks to router (Eth4 on both switches) as a trunk, allowing only necessary VLANs.
 - Configure VLAN 99 SVI for sea-a1-asw1 - **10.1.99.10/24**
 - Configure VLAN 99 SVI for sea-b1-asw1 - **10.1.99.20/24**
 
@@ -48,8 +49,11 @@ Create and configure the following VLANs on **both switches**:
     - Eth2.99 with IP **10.1.99.1/24**
 - Configure Loopback0 with IP **10.255.1.1/32**
 
-!!!primary
+!!!warning
+Because Arista EOS uses the same code train for both switches and routers you need enabling routing globally with the command `ip routing` alongside specifying when a port is routed by issuing `no switchport` on the physical interface.  This does **not** need to be done on the subinterface.
+!!!
 
+!!!primary
 While traditionally "router-on-a-stick" refers to a single physical interface carrying multiple tagged VLANs, in this lab `sea-mdf-r1` utilizes two physical interfaces (`Eth1` and `Eth2`) in a "multi-stick" design.  This choice was made for visual symmetry and doesn’t necessarily reflect best-practice network design.
 !!!
 
@@ -62,8 +66,9 @@ While traditionally "router-on-a-stick" refers to a single physical interface ca
 - All hosts can ping their respective gateways
 - Ping Loopback0 from Linda
 +++ Stretch Goals
-- Run `sudo tcpdump -i eth1 -n` on Bob.  Ping Bob from Linda and Alice.
-- Configure router with SSH access and local user account other than admin, SSH to it from Steve
+- Run `tcpdump interface ethernet4 filter tcp` on **sea-b1-asw1**
+- Configure router with local user account other than admin, SSH to it from Steve.
+- Look for the mac-addresses in the L2 header in your tcpdump and find on what interfaces the switch learned them.  Then, on each device find a command that will output that interface's mac address to your terminal.
 +++
 
 ## Verification Commands
@@ -80,7 +85,7 @@ show interfaces trunk
 show interfaces status
 
 # Show MAC address table
-show mac address-table [dynamic]
+show mac address-table [address] [dynamic] 
 ```
 +++ Router Verification
 ```bash
@@ -101,14 +106,12 @@ show ip route
 - Why do hosts need default gateways configured now when they didn't before?
 - What's the purpose of an ARP table? Where is it found?
 - Imagine the scenario: Steve pings Loopback0 on sea-mdf-r1, when the router goes to send the return traffic how will the L2 & L3 headers look? What does the router use to build it?
-- When you ran tcpdump on Bob, what types of traffic did you see?
 
 !!!tip "Host Access"
 If SSH isn't working: `docker exec -it <container-name> bash`
 
 Configure static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
-
-*Note: This is the last time I will call out the host acccess and configuration commands.  Either refer back or take notes for future labs!*
+Configure default route: `sudo ip route add default via 10.1.20.1 dev eth1`
 !!!
 
 === Documentation
@@ -116,5 +119,5 @@ Configure static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 ===
 
 !!!warning
-Arista documentation isn't nearly as ubiquitous as Cisco's, so in some cases it may be harder to find a guide for the thing you're trying to configure.  In this case, there's no reference for Layer 3 subinterfaces in their user guide.  The command-line syntax is extremely similar though, so finding a guide for a Cisco configuration will get you most of the way there.
+Arista documentation isn't nearly as ubiquitous as Cisco's, nor can you find many beginner-friendly resources.  In this case, there's no reference for Layer 3 subinterfaces in their user guide at all.  The command-line syntax is extremely similar to Cisco though, so finding a guide for a Cisco configuration will get you most of the way there.  I recommend [Network Lessons](https://www.network.lessons.com)
 !!!

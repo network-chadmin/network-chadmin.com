@@ -21,9 +21,9 @@ order: 1000
 
 Create and configure the following VLANs:
 
-- **VLAN 10** - Sales Department
-- **VLAN 20** - Engineering Department  
-- **VLAN 99** - Network Management
+- **VLAN 10** - Sales
+- **VLAN 20** - Engineering
+- **VLAN 99** - IT
 
 #### Host IP Addresses & VLAN Assignment
 

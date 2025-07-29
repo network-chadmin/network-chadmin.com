@@ -21,9 +21,9 @@ order: 990
 
 Create and configure the following VLANs on **both switches**:
 
-- **VLAN 10** - Sales Department
-- **VLAN 20** - Engineering Department  
-- **VLAN 99** - Network Management
+- **VLAN 10** - Sales
+- **VLAN 20** - Engineering 
+- **VLAN 99** - IT
 
 ### Host & Access Port Configuration
 
@@ -48,17 +48,18 @@ Create and configure the following VLANs on **both switches**:
 - Bob and Linda can ping each other (both in VLAN 10)
 - Alice cannot ping Bob or Linda (Different VLANs)
 - sea-a1-asw1 can ping sea-b1-asw1 VLAN 99 SVI
-- Steve can both VLAN SVIs
+- Steve can ping both VLAN SVIs
 - VLAN database consistent across both switches
 +++ Stretch Goals
 - SSH to sea-a1-asw1 from Steve
 - SSH to sea-b1-asw1 from sea-a1-asw1
 - Configure port descriptions for all interfaces
+- Configure access-list `DENY_ICMP` and apply it so you cannot ping between VLAN 99 SVIs, but you can SSH
 +++
 
 ## Verification Commands
 
-```eos
+```bash eos
 # Show VLAN configuration
 show vlan brief
 
@@ -87,5 +88,6 @@ Configure static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 !!!
 
 === Documentation
-[EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
+* [EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
+* [EOS 4.34.1F - ACLs & Route-Maps](https://www.arista.com/en/um-eos/eos-acls-and-route-maps#xx1151204)
 ===

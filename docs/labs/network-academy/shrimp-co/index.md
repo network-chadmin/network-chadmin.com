@@ -26,7 +26,7 @@ Helpful references are linked in each lab’s documentation.
 
 ### Before you start
 
-**1.** Navigate to your `~/containerlab` directory and pull the latest updates from the repository with `git pull origin main` and if you don't have the repo cloned yet visit Getting Started.
+**1.** Navigate to your `~/containerlab` directory and pull the latest updates from the repository with `git pull origin main`. If you don't have the repo cloned yet visit Getting Started.
 **2.** If you have SecureCRT make sure to upload the .xml file included in the repo for SSH sessions and commands.
 **3.** The Docker management subnet for these labs is `172.20.25.0/24`.  
 To make SSH work:
@@ -41,7 +41,8 @@ To make SSH work:
 
 ![172.16.25.62 is the docker management IP, while 10.1.99.30 is the one you will configure in-lab.](/static/network-academy/shrimpco/index-topology.png)
 
-**6.** Emulated networks like these can be buggy at times and certain things that may not work exactly like they do on a physical device.  An example of this is if *SW1 Eth0/1 <---> Eth0/1 SW2* are connected and you shut down *Eth0/1* on *SW1*, the Line Protocol would go down on the SW2 side in the real world, but that won't happen with these emulated devices.  If your network isn't working how you think it should, these things do get goofy sometimes
+**6.** Emulated networks like these can be buggy at times and certain things that may not work exactly like they do on a physical device.  If your network isn't working how you think it should it's probably still your fault, but know these things can get goofy sometimes.
+
 **7.** Have fun and reach out to me at heetland.chad@gmail.com for any comments, questions, or feedback! 
 
 ## What You'll Learn

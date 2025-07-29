@@ -1,5 +1,5 @@
 ---
-icon: icon-mortar-board
+icon: mortar-board
 expanded: true
 label: Network Academy
 order: 940
@@ -14,7 +14,7 @@ Network Academy started as a way to help my coworkers learn networking through h
 
 I believe labbing — and learning to enjoy it — is the key to success in this field. My goal isn’t just to teach concepts, but to help you build confidence by building networks.
 
-## [Shrimp Co. - Network Fundamentals](/network-academy/shrimp-co)
+## [Shrimp Co. - Network Fundamentals](/labs/network-academy/shrimp-co/)
 
 <figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-transparent.png"
@@ -31,7 +31,7 @@ While it starts off beginner-friendly, Shrimp Co. ramps up quickly — by the la
 
 There's less handholding as the series progresses, but that’s intentional. These are real skills you’ll use in the field.
 
-## [SeaMart - Zero to Routing Hero](/network-academy/seamart)
+## [SeaMart - Zero to Routing Hero](/labs/network-academy/seamart/) (Coming Soon)
 
 <figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/seamart-transparent.png"
@@ -47,7 +47,7 @@ In the **SeaMart** series, you’ll step into the role of a Campus and WAN engin
 
 Starting with basic static and dynamic routing, you'll gradually build a large-scale routed environment—incorporating advanced concepts like mutual redistribution and route filtering along the way.
 
-## Volt Communications - Mastering BGP
+## Volt Communications - Mastering BGP (Coming Soon)
 
 <figure style="width: 400px; text-align: center;">
     <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/volt-communications-transparent.png"
