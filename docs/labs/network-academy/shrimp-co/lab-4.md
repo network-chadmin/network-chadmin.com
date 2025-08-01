@@ -4,7 +4,7 @@ order: 970
 ---
 ![](/static/network-academy/shrimpco/banner.png)
 
-# Lab 4 - Basic L2-L3 Redundancy
+# Lab 4 - Redundancy
 > As Shrimp Co. grows, network reliability becomes critical. Deploy HSRP and EtherChannel to eliminate single points of failure in your network design.
 
 ==- Lab Topology
@@ -14,13 +14,6 @@ order: 970
 <em>Tip: Individual topology files are available in the diagrams folder on my<strong><a href="https://github.com/network-chadmin/containerlab/tree/main/network-academy/shrimp-co/diagrams" style="color: #6b7280;"> Github</a></strong></em>
 </p>
 ===
-
-## 🆕 New Concepts Introduced
-- Redundant Layer 3 gateways with VRRP
-- EtherChannel bundling and trunking
-- VRRP failover testing with preemption
-- Basic traffic filtering with ACLs
-- Optional: VRRP authentication & interface tracking
 
 ## :icon-tasklist: Configuration Tasks
 
@@ -38,8 +31,8 @@ order: 970
 - Configure VLANs per previous labs
 - Bundle Eth3 and Eth4 on both switches as an LACP port-channel in `mode active`
     - Allow all VLANs to traverse the link
-- Configure both switches with a SVI
-- Allow VLANs to reach router sub-interfaces
+- Configure both switches SVI's per diagram
+- Ensure L2 reachability to router sub-interfaces
 
 ### 3. Router Configuration
 
@@ -55,6 +48,10 @@ order: 970
 
 Configure VRRP on the physical subinterfaces to provide redundant gateways:
 
+!!!warning
+VRRP requires `ip routing` be enabled to function
+!!!
+
 - **VRRP Group Numbers:** Use VRRP group numbers that match the VLAN IDs (e.g., VLAN 10 uses Group 10).
 - **Virtual IP Addresses (VIPs):**
     - VLAN 10: **10.1.10.1/24**
@@ -69,6 +66,14 @@ Configure VRRP on the physical subinterfaces to provide redundant gateways:
         - VLAN 10: Backup (e.g., Priority 90)
         - VLAN 20: Master (e.g., Priority 120)
         - VLAN 99: Backup (e.g., Priority 90)
+
+```bash Base VRRP Config
+ip routing
+!
+interface eth1.10
+ vrrp 10 ipv4 10.1.10.1
+```
+
 ## :icon-check-circle: Success Criteria
 
 +++ Primary Goals
@@ -80,22 +85,23 @@ Configure VRRP on the physical subinterfaces to provide redundant gateways:
     -   `sea-mdf-r1` is the VRRP Master for VLANs 10 and 99.
     -   `sea-mdf-r2` is the VRRP Master for VLAN 20.
     -   Verify VRRP status is "Master" or "Backup" for all groups on both routers.
--   **EtherChannel Status:** The inter-switch Port-Channel (Po1) is operational and bundling interfaces.
+-   **EtherChannel Status:** The inter-switch Port-Channel (Po1) has both Eth3 & Eth4 as bundled and In-Sync.
 -   **Redundancy Test:**
     -   Shut down the active VRRP interface on `sea-mdf-r1` for VLAN 10; verify `sea-mdf-r2` becomes Master for VLAN 10, and Bob can still ping his gateway and Alice.
     -   Bring the interface back up and verify `sea-mdf-r1` preempts and becomes Master again.
 +++ Stretch Goals
 -   Configure **VRRP authentication** (e.g., plaintext or MD5) on all groups.
 -   Configure routers with a username other than `admin` and an encrypted password. SSH to them from Steve.
--   Configure an **extended ACL** on a router subinterface (e.g., `Eth2.99`) that allows ICMP inbound to the `10.1.99.0/24` network and denies everything else, then verify.
--   Implement **VRRP tracking** of a physical interface (e.g., `Loopback0`) to reduce VRRP priority if the tracked object goes down, forcing a failover.
+-   Configure ACL **ALLOW_ICMP** on both `sea-a1-asw1` & `sea-b1-asw1` allowing ICMP from any source to any destination.  Can Steve still SSH to `sea-mdf-r1`?  Why or why not? 
+-   Ensure Steve can ping `Loopback0` on both routers
+- Capture VRRP traffic with `tcpdump`.  What is the destination IP address for that traffic?
 +++
 
 !!!info "Testing VRRP Failover"
 After configuring VRRP:
-1. Use `ping 10.1.10.1` from a host (e.g. Bob)
+1. Use `ping 10.1.10.1` from Bob
 2. Shut down the VLAN 10 subinterface on `sea-mdf-r1`
-3. Re-test — traffic should failover to `sea-mdf-r2` automatically
+3. Did Bob drop any pings?
 4. Use `show vrrp` on both routers to confirm role changes
 !!!
 
@@ -109,13 +115,13 @@ show interfaces trunk
 show interfaces status
 
 # Show EtherChannel (Port-Channel) details
-show port-channel summary
+show port-channel dense
 show interfaces Port-Channel1
 ```
 +++ Router Verification
 ```bash
 # Show VRRP status for all interfaces
-show vrrp
+show vrrp [brief]
 
 # Show subinterfaces and their IPs
 show ip interface brief
@@ -123,12 +129,16 @@ show ip interface brief
 # Show ARP and routing table
 show ip arp
 show ip route
-
-# Verify interface tracking (if configured)
-show vrrp track
 ```
+
+### Questions to Explore
+* Why couldn't Steve ping Loopback0 on `sea-mdf-r1`, but not `sea-mdf-r2` initially?  Think through the packet walk.
+* If the gateway IP address stays the same, how do your host's traffic arrive at the active interface?
+
++++
 === Documentation
 [EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
 [EOS 4.34.1F - Interface Configuration | Port Channels and LACP)](https://www.arista.com/en/um-eos/eos-port-channels-and-lacp)
+[EOS 4.34.1F User Manual - VRRP and VARP](https://www.arista.com/en/support/advisories-notices/end-of-support/77-support/quick-start-guide/um-eos?start=70)
 ===
 
