@@ -22,26 +22,25 @@ order: 960
 
 ### Layer 2 Configuration
 
-Configure VLAN databases, port-channels, trunk links, and SVIs as done in previous labs to ensure L2 connectivity between access switches and the MDF routers. These tasks are assumed and not explicitly outlined below.
+Configure VLAN databases, port-channels, trunk links, and SVIs as done in previous labs to ensure L2 connectivity between hosts and their gateways. These tasks are assumed and not explicitly outlined below.
 
 ### 1. IP Addressing & Reachability
 
 * Configure the WAN interfaces on `sea-mdf-r1` and `sea-mdf-r2`:
 
   * `Eth2` on both routers
-  * Use provider-assigned space: `100.10.1.0/29`
-  * `sea-mdf-r1`: `100.10.1.2/29`
-  * `sea-mdf-r2`: `100.10.1.3/29`
+  * Use provider-assigned space: `100.10.1.0/29` & `100.10.1.8/29`
+  * `sea-mdf-r1`: IP - `100.10.1.2/29` Gateway - `100.10.1.1
+  * `sea-mdf-r2`: IP - `100.10.1.10/29` Gateway - 100.10.1.9
   * ISP gateway: `100.10.1.1`
 * Verify `ping 100.10.1.1` works from both routers
 
-### 2. NAT Configuration (Static NAT)
+### 2. PAT Configuration (Port-address translation)
 
 * Configure **static NAT** on `sea-mdf-r1` to allow internal host `Steve (10.1.99.100)` to access the internet with a public IP:
 
   * Inside IP: `10.1.99.100`
   * Outside IP: `100.10.1.2`
-* Ensure return traffic is translated correctly
 
 ### 3. Default Routes
 

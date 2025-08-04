@@ -92,8 +92,7 @@ interface eth1.10
 +++ Stretch Goals
 -   Configure **VRRP authentication** (e.g., plaintext or MD5) on all groups.
 -   Configure routers with a username other than `admin` and an encrypted password. SSH to them from Steve.
--   Configure ACL **ALLOW_ICMP** on both `sea-a1-asw1` & `sea-b1-asw1` allowing ICMP from any source to any destination.  Can Steve still SSH to `sea-mdf-r1`?  Why or why not? 
--   Ensure Steve can ping `Loopback0` on both routers
+-   Configure ACL **ALLOW_ICMP** on both `sea-a1-asw1` & `sea-b1-asw1`  Eth5 allowing ICMP from any source to any destination outbound.  Can Steve still SSH to `sea-mdf-r1`?  Why or why not? 
 - Capture VRRP traffic with `tcpdump`.  What is the destination IP address for that traffic?
 +++
 
@@ -132,7 +131,8 @@ show ip route
 ```
 
 ### Questions to Explore
-* Why couldn't Steve ping Loopback0 on `sea-mdf-r1`, but not `sea-mdf-r2` initially?  Think through the packet walk.
+* Steve can ping 10.255.1.1 (Loopback0 on `sea-mdf-r1`), but not 10.255.1.2.  Why?
+What would need to change in the network for both pings to succeed?
 * If the gateway IP address stays the same, how do your host's traffic arrive at the active interface?
 
 +++
