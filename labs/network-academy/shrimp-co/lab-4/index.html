@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807326897426">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807654791985">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.807326897426" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.807654791985" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807326897426" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807326897426" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807326897426" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807326897426" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807654791985" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -456,8 +456,7 @@ interface eth1.10
 <ul>
 <li>Configure <strong>VRRP authentication</strong> (e.g., plaintext or MD5) on all groups.</li>
 <li>Configure routers with a username other than <code v-pre>admin</code> and an encrypted password. SSH to them from Steve.</li>
-<li>Configure ACL <strong>ALLOW_ICMP</strong> on both <code v-pre>sea-a1-asw1</code> &amp; <code v-pre>sea-b1-asw1</code> allowing ICMP from any source to any destination.  Can Steve still SSH to <code v-pre>sea-mdf-r1</code>?  Why or why not?</li>
-<li>Ensure Steve can ping <code v-pre>Loopback0</code> on both routers</li>
+<li>Configure ACL <strong>ALLOW_ICMP</strong> on both <code v-pre>sea-a1-asw1</code> &amp; <code v-pre>sea-b1-asw1</code>  Eth5 allowing ICMP from any source to any destination outbound.  Can Steve still SSH to <code v-pre>sea-mdf-r1</code>?  Why or why not?</li>
 <li>Capture VRRP traffic with <code v-pre>tcpdump</code>.  What is the destination IP address for that traffic?</li>
 </ul>
 </doc-tab>
@@ -526,8 +525,11 @@ show ip route</code></pre>
     </h3>
 </doc-anchor-target>
 <ul>
-<li>Why couldn&#x27;t Steve ping Loopback0 on <code v-pre>sea-mdf-r1</code>, but not <code v-pre>sea-mdf-r2</code> initially?  Think through the packet walk.</li>
-<li>If the gateway IP address stays the same, how do your host&#x27;s traffic arrive at the active interface?</li>
+<li><p>Steve can ping 10.255.1.1 (Loopback0 on <code v-pre>sea-mdf-r1</code>), but not 10.255.1.2.  Why?
+What would need to change in the network for both pings to succeed?</p>
+</li>
+<li><p>If the gateway IP address stays the same, how do your host&#x27;s traffic arrive at the active interface?</p>
+</li>
 </ul>
 </doc-tab>
 </doc-tabs>

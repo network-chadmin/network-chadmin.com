@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807326897426">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807654791985">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.807326897426" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.807654791985" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807326897426" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807326897426" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807326897426" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807326897426" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807654791985" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -296,7 +296,7 @@
         <span>Layer 2 Configuration</span>
     </h3>
 </doc-anchor-target>
-<p>Configure VLAN databases, port-channels, trunk links, and SVIs as done in previous labs to ensure L2 connectivity between access switches and the MDF routers. These tasks are assumed and not explicitly outlined below.</p>
+<p>Configure VLAN databases, port-channels, trunk links, and SVIs as done in previous labs to ensure L2 connectivity between hosts and their gateways. These tasks are assumed and not explicitly outlined below.</p>
 <doc-anchor-target id="1-ip-addressing--reachability">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#1-ip-addressing--reachability">#</doc-anchor-trigger>
@@ -307,18 +307,18 @@
 <li>Configure the WAN interfaces on <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>:
 <ul>
 <li><code v-pre>Eth2</code> on both routers</li>
-<li>Use provider-assigned space: <code v-pre>100.10.1.0/29</code></li>
-<li><code v-pre>sea-mdf-r1</code>: <code v-pre>100.10.1.2/29</code></li>
-<li><code v-pre>sea-mdf-r2</code>: <code v-pre>100.10.1.3/29</code></li>
+<li>Use provider-assigned space: <code v-pre>100.10.1.0/29</code> &amp; <code v-pre>100.10.1.8/29</code></li>
+<li><code v-pre>sea-mdf-r1</code>: IP - <code v-pre>100.10.1.2/29</code> Gateway - &#x60;100.10.1.1</li>
+<li><code v-pre>sea-mdf-r2</code>: IP - <code v-pre>100.10.1.10/29</code> Gateway - 100.10.1.9</li>
 <li>ISP gateway: <code v-pre>100.10.1.1</code></li>
 </ul>
 </li>
 <li>Verify <code v-pre>ping 100.10.1.1</code> works from both routers</li>
 </ul>
-<doc-anchor-target id="2-nat-configuration-static-nat">
+<doc-anchor-target id="2-pat-configuration-port-address-translation">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-nat-configuration-static-nat">#</doc-anchor-trigger>
-        <span>2. NAT Configuration (Static NAT)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-pat-configuration-port-address-translation">#</doc-anchor-trigger>
+        <span>2. PAT Configuration (Port-address translation)</span>
     </h3>
 </doc-anchor-target>
 <ul>
@@ -328,7 +328,6 @@
 <li>Outside IP: <code v-pre>100.10.1.2</code></li>
 </ul>
 </li>
-<li>Ensure return traffic is translated correctly</li>
 </ul>
 <doc-anchor-target id="3-default-routes">
     <h3>
