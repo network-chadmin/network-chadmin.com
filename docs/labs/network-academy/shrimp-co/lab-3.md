@@ -15,9 +15,9 @@ order: 980
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
-### VLAN Configuration
+#### VLAN Configuration
 
 Create and configure the following VLANs on **both switches**:
 
@@ -25,7 +25,7 @@ Create and configure the following VLANs on **both switches**:
 - **VLAN 20** - Engineering 
 - **VLAN 99** - IT
 
-### Host & Access Port Configuration
+#### Host & Access Port Configuration
 
 | **Host** | **VLAN Assignment** | **IP Address** |
 |------|------|------|
@@ -34,14 +34,14 @@ Create and configure the following VLANs on **both switches**:
 | Steve | 99 (IT) | 10.1.99.100/24 |
 | Linda | 10 (Sales) | 10.1.10.20/24 |
 
-### Switchport Configuration
+#### Switchport Configuration
 
 - Configure the inter-switch link (Eth3 on both switches) as trunk to carry only VLANs 10,20, and 99.
 - Configure switch uplinks to router (Eth4 on both switches) as a trunk, allowing only necessary VLANs.
 - Configure VLAN 99 SVI for sea-a1-asw1 - **10.1.99.10/24**
 - Configure VLAN 99 SVI for sea-b1-asw1 - **10.1.99.20/24**
 
-### Router Configuration
+#### Router Configuration
 
 - Configure gateways as subinterfaces for inter-VLAN routing:
     - Eth1.10 with IP **10.1.10.1/24**
@@ -59,7 +59,7 @@ While traditionally "router-on-a-stick" refers to a single physical interface ca
 
 ---
 
-## :icon-check-circle: Success Criteria
+### :icon-check-circle: Success Criteria
 
 +++ Primary Goals
 - Bob and Alice can ping each other (Inter-VLAN routing functioning)
@@ -71,7 +71,7 @@ While traditionally "router-on-a-stick" refers to a single physical interface ca
 - Look for the mac-addresses in the L2 header in your tcpdump and find on what interfaces the switch learned them.  Then, on each device find a command that will output that interface's mac address to your terminal.
 +++
 
-## Verification Commands
+### Verification Commands
 +++ Switch Verification
 ```bash
 

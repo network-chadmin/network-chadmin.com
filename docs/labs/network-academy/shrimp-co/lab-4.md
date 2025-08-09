@@ -15,7 +15,7 @@ order: 970
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
 ### 1. Host & Access Port Configuration
 
@@ -26,7 +26,7 @@ order: 970
 | Steve | 99 (IT) | 10.1.99.100/24 |
 | Linda | 10 (Sales) | 10.1.10.20/24 |
 
-### 2. Switch Configuration
+#### 2. Switch Configuration
 
 - Configure VLANs per previous labs
 - Bundle Eth3 and Eth4 on both switches as an LACP port-channel in `mode active`
@@ -34,7 +34,7 @@ order: 970
 - Configure both switches SVI's per diagram
 - Ensure L2 reachability to router sub-interfaces
 
-### 3. Router Configuration
+#### 3. Router Configuration
 
 - **Loopback Interfaces:**
     - `sea-mdf-r1`: `Loopback0` with IP **10.255.1.1/32**
@@ -44,7 +44,7 @@ order: 970
     - `Eth1.20` (VLAN 20)
     - `Eth2.99` (VLAN 99)
 
-### 4. HSRP Configuration (`sea-mdf-r1` & `sea-mdf-r2`)
+#### 4. HSRP Configuration (`sea-mdf-r1` & `sea-mdf-r2`)
 
 Configure HSRP on the physical subinterfaces to provide redundant gateways:
 
@@ -63,7 +63,7 @@ Configure HSRP on the physical subinterfaces to provide redundant gateways:
         - VLAN 20: Active (e.g., Priority 120)
         - VLAN 99: Standby (e.g., Priority 90)
 
-## :icon-check-circle: Success Criteria
+### :icon-check-circle: Success Criteria
 
 +++ Primary Goals
 -   **Inter-VLAN Connectivity:**
@@ -93,7 +93,7 @@ After configuring HSRP:
 4. Use `show standby brief` on both routers to confirm role changes
 !!!
 
-## :icon-terminal: Verification Commands
+### :icon-terminal: Verification Commands
 
 +++ Switch Verification
 ```bash
@@ -119,7 +119,7 @@ show ip arp
 show ip route
 ```
 
-### Questions to Explore
+#### Questions to Explore
 - Steve can ping 10.255.1.1 (Loopback0 on `sea-mdf-r1`), but not 10.255.1.2.  Why?
     - What configuration changes are needed for both pings to succeed?
 - If the gateway IP address stays the same, how do your host's traffic arrive at the active interface?

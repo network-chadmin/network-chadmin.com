@@ -7,9 +7,9 @@ start:
   pro: true
 
 branding:
-  title: Network-Chadmin
-  label: Labs & Docs
-  logo: static/router-icon(2).png
+  title: NETWORK CHADMIN
+  label: Docs
+  logo: static/welcome/network-chadmin_notext.png
   logoAlign: left
 
 links:
@@ -35,7 +35,7 @@ footer:
       link: mailto:heetland.chad@gmail.com
       icon: mail
 
-favicon: static/router-icon.png
+favicon: static/welcome/network-chadmin_notext.png
 
 edit:
   repo: https://github.com/network-chadmin/network-chadmin.github.io
@@ -43,26 +43,16 @@ edit:
   branch: main
   label: Edit this page
 
-poweredByRetype: false
-
 search:
   preload: true
 
 theme:
   base:
-    base-color: "#2563eb"           # Blue for links and accents
-    base-bg: "#fafbfc"              # Brighter, cleaner white background
-    base-link-weight: 500
-    image-rounded: 0.5rem
-    code-bg: "#f1f5f9"              # Light blue-gray for code blocks
-    code-color: "#334155"           # Dark slate for code text
+    base-color: "#5a998f"            # teal from your mark (drives links, accents)
+    base-text:  "#425457"            # your dark gray text
+    heading-text: "#425457"
   dark:
-    base-color: "#60a5fa"           # Light blue for links and accents
-    base-bg: "#1a202c"              # Lighter dark background (less black)
-    base-link-weight: 500
-    code-bg: "#2d3748"              # Lighter dark for code blocks
-    code-color: "#f7fafc"           # Light text in code
+    base-color: "#5a998f"
 
-css: |
-  h2 { color: #3b82f6; }
-  [data-theme="dark"] h2 { color: #60a5fa; }
+css:
+  - /static/custom.css

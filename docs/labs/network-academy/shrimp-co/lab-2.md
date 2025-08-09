@@ -15,9 +15,9 @@ order: 990
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
-### VLAN Configuration
+#### VLAN Configuration
 
 Create and configure the following VLANs on **both switches**:
 
@@ -25,7 +25,7 @@ Create and configure the following VLANs on **both switches**:
 - **VLAN 20** - Engineering 
 - **VLAN 99** - IT
 
-### Host & Access Port Configuration
+#### Host & Access Port Configuration
 
 | **Host** | **VLAN Assignment** | **IP Address** |
 |------|------|------|
@@ -34,7 +34,7 @@ Create and configure the following VLANs on **both switches**:
 | Steve | 99 (IT) | 10.1.99.100/24 |
 | Linda | 10 (Sales) | 10.1.10.20/24 |
 
-### Switchport Configuration
+#### Switchport Configuration
 
 - Configure the inter-switch link (Eth0/3 on both switches) as an **802.1Q trunk** to carry only VLANs 10,20, and 99.
 - Configure VLAN 99 SVI for sea-a1-asw1 - **10.1.99.10/24**
@@ -42,7 +42,7 @@ Create and configure the following VLANs on **both switches**:
 
 ---
 
-## :icon-check-circle: Success Criteria
+### :icon-check-circle: Success Criteria
 
 +++ Primary Goals
 - Bob and Linda can ping each other (both in VLAN 10)
@@ -57,7 +57,7 @@ Create and configure the following VLANs on **both switches**:
 - Configure access-list `DENY_ICMP` and apply it so you cannot ping between VLAN 99 SVIs, but you can SSH
 +++
 
-## Verification Commands
+### Verification Commands
 
 ```bash eos
 # Show VLAN configuration
