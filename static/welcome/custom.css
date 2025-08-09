@@ -1,0 +1,4 @@
+/* Reduce brand title font size */
+.retype-navbar .branding__title {
+  font-size: 1rem !important;  /* adjust as needed, default ~1.25rem */
+}
