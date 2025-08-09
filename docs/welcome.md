@@ -61,3 +61,4 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 - Additions and fixes to existing Shrimp Co labs
 - Finished up to Lab 7 of Shrimp Co.!
 - Changed Shrimp Co. to back to using Cisco IOL for routers due to EOS lack of NAT support.
+- Branding update!
