@@ -87,7 +87,7 @@ If SSH isn't working: `docker exec -it <container-name> bash`
 Configure static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 !!!
 
-=== Documentation
+=== :books: Documentation
 * [EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
 * [EOS 4.34.1F - ACLs & Route-Maps](https://www.arista.com/en/um-eos/eos-acls-and-route-maps#xx1151204)
 ===

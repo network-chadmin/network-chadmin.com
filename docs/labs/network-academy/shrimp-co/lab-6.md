@@ -15,100 +15,62 @@ order: 950
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
-### Layer 2 Configuration
+#### 1. Layer 2 Configuration
 
 Ensure trunk links, VLAN databases, SVIs, and port-channels are configured across the switches and connected to `sea-mdf-dsw1`. VLANs 10, 20, and 99 should have Layer 2 reachability to the DSW.
 
-### 1. Distribution Switch IP Interfaces
+#### 2. Distribution Switch Configuration
 
-Configure the following SVIs on `sea-mdf-dsw1`:
+- Configure the following SVIs on `sea-mdf-dsw1`:
+  - **VLAN 10**: `10.1.10.1/24`
+  - **VLAN 20**: `10.1.20.1/24`
+  - **VLAN 99**: `10.1.99.1/24`
+- Configure **Eth0/3** & **Eth1/0** as routed interfaces according to the diagram.
+- Configure a default route that uses `sea-mdf-r1` Eth0/1 as a next-hop.
+- Configure a secondary default route that uses `sea-mdf-r2` Eth0/1 as a next-hop with an administrative distance of 10.
 
-* VLAN 10: 10.1.10.1/24
-* VLAN 20: 10.1.20.1/24
-* VLAN 99: 10.1.99.1/24
+#### 3. Router Configuration
 
-Verify host reachability to their respective gateway:
+- On `sea-mdf-r1` and `sea-mdf-r2`, add static routes to `sea-mdf-dsw1` for each subnet/VLAN.
+- Configure loopback and routed interfaces according to the diagram.
+- Configure **dynamic NAT** to choose from a pool of addresses (not PAT/overload).  
+  Specify the exact source subnets in your access list.
 
-* Bob: 10.1.10.10
-* Alice: 10.1.20.10
-* Steve: 10.1.99.100
+!!!tip Emulator Quirks
+When I ran through this lab myself I struggled to get dynamic NAT working as intended until I applied my NAT access-list inbound on `sea-mdf-r2` Eth0/1, because I wanted to see ACL hits as a sanity check.  Pings immediately started going through even after removal of the ACL.  This is not behavior you'd see on a real router and a good reminder that these emulated environments can be goofy.
+!!!
 
-### 2. Static Routes (Routers to Distribution Switch)
-
-On `sea-mdf-r1` and `sea-mdf-r2`, add static routes for internal VLANs:
-
-```bash
-ip route 10.1.10.0/24 10.1.1.1
-ip route 10.1.20.0/24 10.1.1.1
-ip route 10.1.99.0/24 10.1.1.1
-```
-
-Assume the internal-facing interfaces on each router are:
-
-* `sea-mdf-r1`: `Eth1`, IP 10.1.1.2/30
-* `sea-mdf-r2`: `Eth1`, IP 10.1.1.6/30
-
-### 3. Default Route on Distribution Switch
-
-Configure `sea-mdf-dsw1` with default routes to each router:
-
-```bash
-ip route 0.0.0.0/0 10.1.1.2
-ip route 0.0.0.0/0 10.1.1.6
-```
-
-This allows hosts to access the internet via either router (basic redundancy).
-
-### 4. Dynamic NAT Configuration
-
-On `sea-mdf-r1`, configure dynamic NAT using an access list and a NAT pool:
-
-```bash
-ip access-list standard NAT_VLAN99
- permit 10.1.99.0/24
-
-ip nat pool PUBLIC_POOL 100.10.1.5 100.10.1.10 netmask 255.255.255.240
-ip nat inside source list NAT_VLAN99 pool PUBLIC_POOL overload
-```
-
-* Mark `Eth2` as `ip nat outside`
-* Mark interface facing VLAN 99 as `ip nat inside`
-
-Repeat on `sea-mdf-r2` (optional for redundancy).
-
-### 5. Verification
-
-* Confirm internal host `Steve` can access the SeaMart server (`curl http://123.123.123.123`)
-* Confirm NAT translation is working with `show ip nat translations`
-* Confirm static routes are working by tracing traffic between VLANs
-
-## \:icon-check-circle: Success Criteria
+### \:icon-check-circle: Success Criteria
 
 +++ Primary Goals
-
-* Hosts can reach their default gateway on `sea-mdf-dsw1`
-* Steve can access the SeaMart web server
-* NAT translations occur via dynamic NAT using a pool
-* Static routing works between routers and DSW
-
+- **Layer 3 Reachability:**  
+  - All hosts can ping the SeaMart web server (`123.123.123.123`).
+- **Dynamic NAT:**  
+  - NAT translations occur correctly and can be confirmed on both routers with `show ip nat translations`.
 +++ Stretch Goals
+- **Extended ACL:**  
+  - Implement an ACL on VLAN 10 & VLAN 20 SVIs that denies hosts in those VLANs from SSHing outside of their own subnet, but allows all other traffic.  
+  - Validate by attempting to SSH from Bob or Alice to `Loopback0` on `sea-mdf-r1`.
+- **Local Linux Name Server Configuration:**  
+  - Edit `/etc/resolv.conf` on Linux hosts to use `8.8.8.8` as a nameserver.  
+  - Validate with `curl http://seamart.com`.
+- **IP SLA Failover:**  
+  - Configure IP SLA so that internet-bound traffic takes the path through `sea-mdf-r2` if `100.10.1.1` is unreachable.  
+    - Verify the gateway of last resort changes on `sea-mdf-dsw1` after issuing `shutdown` on Eth0/1 on `sea-mdf-r1`.
++++
 
-* Configure NAT redundancy via VRRP and `track` interface for priority failover
-* Implement an ACL that limits internet access to VLAN 99
-* Use `tcpdump` on Arista routers to verify translation behavior
-* Add logging for NAT ACL hits
-* Ping the public SeaMart server from each host and verify path via traceroute
-  +++
-
-## \:icon-terminal: Verification Commands
+### \:icon-terminal: Verification Commands
 
 +++ Router Commands
 
 ```bash
 # NAT translations
 show ip nat translations
+
+# NAT statistics
+show ip nat statistics
 
 # Check static routes
 show ip route
@@ -117,7 +79,7 @@ show ip route
 show run interface Ethernet2
 ```
 
-+++ Switch Commands (DSW)
++++ Distribution Switch Commands
 
 ```bash
 # Routing table
@@ -125,6 +87,9 @@ show ip route
 
 # Interface and SVI status
 show ip interface brief
+
+# Show configured routes in the running configuration
+show running-config | include route
 ```
 
 +++ Host Commands
@@ -134,16 +99,23 @@ show ip interface brief
 curl http://123.123.123.123
 
 # DNS test (if configured)
-dig seamart.com
+nslookup seamart.com
 
 # Network trace
 traceroute 123.123.123.123
 ```
-
++++ 
+### Questions to explore
+- How does the router know which inside addresses to translate when using dynamic NAT with a pool?
+- If you add a new VLAN to the network, what changes are required to allow internet access?
+- Why is default route through R1 preferred over R2?
+- What are some pitfalls you can imagine with the use of static routes?
+- curl seamart.com and check your NAT translations. What are the differences between the addresses in the output?
 +++
 
-==- Documentation
-* [EOS 4.34.1F - Static Routing](https://www.arista.com/en/um-eos/eos-ip-routing)
-* [EOS 4.34.1F - NAT Configuration](https://www.arista.com/en/um-eos/eos-nat)
+==- :books: Documentation
+- [EOS 4.34.1F - Static Routing](https://www.arista.com/en/um-eos/eos-ip-routing)
+- [EOS 4.34.1F - NAT Configuration](https://www.arista.com/en/um-eos/eos-nat)
+- [How to Set DNS Nameservers on Ubuntu 22.04?](https://itslinuxfoss.com/set-dns-nameservers-ubuntu-22-04/)
 ===
 

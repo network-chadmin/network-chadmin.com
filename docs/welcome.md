@@ -58,6 +58,6 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 ## Recent Updates 7/22
 
-- Migrated website to Cloudflare!
-- Purchased network-chadmin.com domain
-- Changed Network Academy to use exclusively Arista cEOS instead of Cisco IOL
+- Additions and fixes to existing Shrimp Co labs
+- Finished up to Lab 7 of Shrimp Co.!
+- Changed Shrimp Co. to back to using Cisco IOL for routers due to EOS lack of NAT support.

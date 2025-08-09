@@ -15,92 +15,71 @@ order: 940
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
-### Layer 2 Configuration
-
+#### Layer 2 Configuration
 Ensure trunk links, VLAN databases, SVIs, and port-channels are configured to provide Layer 2 reachability between all access and distribution switches.
 
-### 1. Configure Gateway SVIs (VRRP)
-
+#### 1. Configure Gateway SVIs (VRRP)
 On both distribution switches (`sea-mdf-dsw1` and `sea-mdf-dsw2`), configure SVIs with the following addresses and enable VRRP:
 
-* VLAN 10: 10.1.10.1 (VRRP VIP)
-* VLAN 20: 10.1.20.1 (VRRP VIP)
-* VLAN 99: 10.1.99.1 (VRRP VIP)
+- **VLAN 10:** `10.1.10.1` (VRRP VIP)
+- **VLAN 20:** `10.1.20.1` (VRRP VIP)
+- **VLAN 99:** `10.1.99.1` (VRRP VIP)
 
-Assign actual IPs to the switches (.2 and .3) and ensure VRRP priority is configured to prefer `dsw1`.
+Assign actual IPs (.2 and .3) to the switches.  
+Configure VRRP priority so that `dsw1` is preferred for VLANs 10 & 99, and `dsw2` is preferred for VLAN 20.
 
-### 2. Enable OSPF on Routers and Distribution Switches
+#### 2. Enable OSPF on Routers and Distribution Switches
+- Use OSPF process ID **1** across all routing devices.
+- Use **exact network statements** to advertise networks into OSPF (do not summarize).
+- Advertise:
+  - All point-to-point links between routers and distribution switches
+  - Loopback interfaces
+  - VLAN interfaces (distribution switches only)
+- Configure all interfaces in **area 0**.
+- Use the command `passive-interface default` under OSPF configuration mode. Form adjacencies only on /30 transit networks and between VLAN 99 SVIs.
 
-Use OSPF process ID 1 across all routing devices. Include the following interfaces:
+!!!warning "Multi-Vendor Simulation"
+These labs simulate a common real-world scenario: a multi-vendor environment.  
+While OSPF operates the same under the hood, vendor syntax will differ. Reference the documentation for both platforms to configure it correctly.
+!!!
 
-* All point-to-point links between routers and distribution switches
-* Loopback interfaces
-* VLAN interfaces (on DSWs only)
+#### 3. Configure PAT on Routers
+- On both `sea-mdf-r1` and `sea-mdf-r2`, configure PAT (port address translation / overload).
+- Use **standard access-list 1** to specify exact source subnets for NAT/PAT.
 
-Use OSPF area 0.0.0.0 for all interfaces in this lab.
+#### 4. OSPF Default Route Injection
+- Configure a static default route with a next-hop of the Volt Communications provider edge router.
+- Inject this default route into your OSPF process so that it is learned by both distribution switches.
 
-```bash
-router ospf 1
- network 10.1.10.0 0.0.0.255 area 0.0.0.0
- network 10.1.20.0 0.0.0.255 area 0.0.0.0
- network 10.1.99.0 0.0.0.255 area 0.0.0.0
- network 10.255.1.0 0.0.0.255 area 0.0.0.0
- network 172.20.25.0 0.0.0.255 area 0.0.0.0
-```
+---
 
-### 3. Configure PAT on Routers
-
-On both `sea-mdf-r1` and `sea-mdf-r2`, configure PAT using the following:
-
-```bash
-ip access-list standard NAT_INSIDE
- permit 10.1.0.0 0.0.255.255
-
-ip nat inside source list NAT_INSIDE interface Ethernet3 overload
-```
-
-* Mark `Eth3` as `ip nat outside`
-* Mark interface facing internal subnets (DSWs) as `ip nat inside`
-
-Ensure only one router is actively used via default route advertisement in OSPF, or configure FHRP tracking/failover in stretch goals.
-
-### 4. OSPF Default Route Injection
-
-Inject a default route from each router into OSPF:
-
-```bash
-ip route 0.0.0.0 0.0.0.0 [next-hop]
-router ospf 1
- default-information originate
-```
-
-This enables internet access through dynamically chosen paths.
-
-## :icon-check-circle: Success Criteria
+### :icon-check-circle: Success Criteria
 
 +++ Primary Goals
-
-* VRRP functioning across VLAN gateways
-* Full OSPF adjacency and convergence
-* Hosts can access the SeaMart web server through PAT
-* Default route is learned dynamically from OSPF
-  +++
-
+- **VRRP**
+    - VLAN 10 & 99 are *Master*, VLAN 20 is *Backup* on `sea-mdf-dsw1`.
+- **OSPF Convergence**
+    - Each distribution switch has **three** full adjacencies; each router has **two**.
+- **SeaMart Server Reachability**
+    - Every host can ping SeaMart's IP address (`123.123.123.123`).
+- **OSPF Default Route Injection**
+    - Default route on the distribution switches is learned dynamically via OSPF.
 +++ Stretch Goals
+- **VRRP Efficiency & Security**
+    - Configure VRRP timers for faster failover and enable MD5 authentication.
+- **OSPF Packet Capture**
+    - Use `tcpdump` on a distribution switch interface where you expect to see OSPF Hellos.
+- **Name Resolution**
+    - Enable Linux hosts to resolve and curl seamart.com with either method you've learned so far.
++++
 
-* Configure route preference using OSPF cost
-* Use `track` to monitor upstream interfaces and trigger VRRP failover
-* Log NAT translations and verify with `tcpdump`
-* Disable default-information originate on one router and observe failover
-* Access OSPF database and LSAs to validate topology propagation
-  +++
+---
 
-## :icon-terminal: Verification Commands
+### :icon-terminal: Verification Commands
 
 +++ Router Commands
-
 ```bash
 # NAT translations
 show ip nat translations
@@ -112,8 +91,7 @@ show ip ospf neighbor
 show ip route
 ```
 
-+++ Switch Commands (DSW)
-
++++ Distribution Switch Commands
 ```bash
 # Verify VRRP
 show vrrp
@@ -123,17 +101,27 @@ show ip ospf interface brief
 ```
 
 +++ Host Commands
-
 ```bash
+# Validate HTTP reachability
 curl http://123.123.123.123
-traceroute 123.123.123.123
-dig seamart.com
-```
 
+# Show routed path to a destination
+traceroute 123.123.123.123
+
+# Test DNS resolution
+nslookup seamart.com
+```
 +++
 
-==- Documentation
-* [EOS 4.34.1F - OSPF Configuration](https://www.arista.com/en/um-eos/eos-ip-routing)
-* [EOS 4.34.1F - NAT Configuration](https://www.arista.com/en/um-eos/eos-nat)
-===
+### Questions to Explore
+* When designing a network, why might you choose VRRP instead of HSRP?  
+* From your OSPF Hello packet capture, what information can you extract about neighbors and timers?  
+* Why might your OSPF-learned default route differ between devices?  
+* What advantages does OSPF offer over static routing in this design?  
 
+==- :books: Documentation
+- [EOS 4.34.1F - OSPF Configuration](https://www.arista.com/en/um-eos/eos-ip-routing)
+- [IP Routing: OSPF Configuration Guide (Cisco IOS XE)](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html)
+- [EOS 4.34.1F - NAT Configuration](https://www.arista.com/en/um-eos/eos-nat)
+- [EOS 4.34.1F - VRRP and VARP](https://www.arista.com/en/um-eos/eos-vrrp-and-varp)
+===

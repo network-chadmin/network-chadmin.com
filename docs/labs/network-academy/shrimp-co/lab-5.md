@@ -8,7 +8,7 @@ order: 960
 
 # Lab 5 - NAT & Internet
 
-> Shrimp Co. has connected to the internet via Volt Communications. Configure NAT so internal hosts can reach the SeaMart web server while maintaining internal addressing.
+> Shrimp Co. has connected to the internet via Volt Communications. Configure static NAT so Bob in Sales can reach the SeaMart web server while maintaining internal addressing.
 
 ==- Lab Topology
 ![](https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/05_nat-internet.png)
@@ -18,60 +18,52 @@ order: 960
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
-### Layer 2 Configuration
+#### 1. Layer 2 Configuration
 
 Configure VLAN databases, port-channels, trunk links, and SVIs as done in previous labs to ensure L2 connectivity between hosts and their gateways. These tasks are assumed and not explicitly outlined below.
 
-### 1. IP Addressing & Reachability
+#### 2. Router Configuration
 
 * Configure the WAN interfaces on `sea-mdf-r1` and `sea-mdf-r2`:
 
-  * `Eth2` on both routers
+  * `Eth0/2` on both routers
   * Use provider-assigned space: `100.10.1.0/29` & `100.10.1.8/29`
-  * `sea-mdf-r1`: IP - `100.10.1.2/29` Gateway - `100.10.1.1
-  * `sea-mdf-r2`: IP - `100.10.1.10/29` Gateway - 100.10.1.9
+  * `sea-mdf-r1`: IP - `100.10.1.2/29` Gateway - `100.10.1.1`
+  * `sea-mdf-r2`: IP - `100.10.1.10/29` Gateway - `100.10.1.9`
   * ISP gateway: `100.10.1.1`
 * Verify `ping 100.10.1.1` works from both routers
 
-### 2. PAT Configuration (Port-address translation)
+#### 3. Static NAT
 
-* Configure **static NAT** on `sea-mdf-r1` to allow internal host `Steve (10.1.99.100)` to access the internet with a public IP:
+* Configure **static NAT** on `sea-mdf-r1` to allow internal host `Bob (10.1.10.10)` to access the internet with a public IP:
 
-  * Inside IP: `10.1.99.100`
+  * Inside IP: `10.1.10.10`
   * Outside IP: `100.10.1.2`
 
-### 3. Default Routes
+ !!!info ISP & Server Access
+ As a way of maintaining realism, the Volt Communications router and SeaMart server cannot be SSH'd to.  If you really want to put on multiple hats, you can access the devices directly via docker commands.
+ !!!
 
-* Configure default route on `sea-mdf-r1`:
-
-  ```
-  ip route 0.0.0.0/0 100.10.1.1
-  ```
-* Configure **Steve** with a default gateway of `10.1.99.1`
-
-### 4. Test Connectivity
-
-* From **Steve**, access the SeaMart web server (`curl http://123.123.123.123`)
-* Use `tcpdump` or `tshark` on `sea-mdf-r1` to verify NAT translations
-
-## :icon-check-circle: Success Criteria
+### :icon-check-circle: Success Criteria
 
 +++ Primary Goals
 
-* Steve can `curl` the SeaMart server by IP
-* NAT translation occurs correctly (seen via `show ip nat translations` or debug output)
-* `sea-mdf-r1` has connectivity to the upstream ISP
+- **L3 Reacability**
+  * All hosts can ping each other
+- **Bob's Internet Connectivity**
+  - Bob can ping SeaMart server at `123.123.123.123`
+- **Nat Translation**
+  - NAT translation occurs correctly (seen via `show ip nat translations` or debug output)
   +++ Stretch Goals
-* Configure an **ACL** to only allow NAT for VLAN 99
-* Block `Bob` or `Alice` from accessing the internet
-* Set up **VRRP** between `sea-mdf-r1` and `sea-mdf-r2` for failover
-* Create a **loopback interface** on `Steve`, then configure NAT for that address too
-* Use `tcpdump` to observe NAT behavior at multiple points (inside interface vs outside)
+- **Extended ACL** 
+  - Configure ACL on `sea-mdf-r1 Eth0/1.10 that allows ICMP but not SSH to any destination.  Confirm by trying to SSH to Loopback0.
+- **Linux Host File Configuration
+  - Find a way to add a local DNS entry to Bob's host file so he can ping seamart.com
 +++
 
-## :icon-terminal: Verification Commands
+### :icon-terminal: Verification Commands
 
 +++ Router Verification
 
@@ -90,7 +82,7 @@ ping 123.123.123.123
 show ip route
 ```
 
-+++ Host Verification (Steve)
++++ Host Verification
 
 ```bash
 # Check connectivity
@@ -105,11 +97,16 @@ sudo tcpdump -i eth1 -n
 
 +++
 
--== Documentation
-* [EOS 4.34.1F - NAT Overview](https://www.arista.com/en/um-eos/eos-nat)
-* [Linux curl Manual](https://curl.se/docs/manpage.html)
-===
+### :icon-question: Questions to Explore
+
+- Why do pings fail to the SeaMart server before NAT is configured?
+- If more employees want to access the internet, what problem do we run into?
+- Is static NAT a scalable solution?  Why or why not?
 
 !!!info
-In this lab, the SeaMart web server and ISP router are not student-configurable. They will respond to HTTP and basic ICMP traffic, but cannot be logged into or modified.
+In these labs, the SeaMart web server and ISP router are not meant to be configured by students. If you'd like to break the immersion and access the devices you can do so using docker commands.
 !!!
+
+==- :books: Documentation
+* [IP Addressing: NAT Configuration Guide, Cisco IOS XE Release 2](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_nat/configuration/xe-2/nat-xe-2-book/iadnat-addr-consv.html#GUID-DB135563-E01D-4C49-AD69-F95B3F1C5E67) (Go to "Configuring Static Translation of Inside Source Addresses)
+===

@@ -95,6 +95,18 @@ show ip arp
 # Show routing table
 show ip route
 ```
++++ Host Verification
+```bash
+# Test reachability
+ping X.X.X.X # (ping 10.1.20.1)
+
+# Show network interface information
+ifconfig
+
+# Show default route/routing information
+ip route show
+```
+
 +++
 
 ---
@@ -114,7 +126,7 @@ Configure static IP: `sudo ip addr add 10.1.10.10/24 dev eth1`
 Configure default route: `sudo ip route add default via 10.1.20.1 dev eth1`
 !!!
 
-=== Documentation
+=== :books: Documentation
 [EOS 4.34.1F - Layer 2 Configuration | Virtual VLANs (VLANS)](https://www.arista.com/en/um-eos/eos-virtual-lans-vlans)
 ===
 
