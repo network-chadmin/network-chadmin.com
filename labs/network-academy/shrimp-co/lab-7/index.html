@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807654791985">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.808077577838">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.807654791985" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.808077577838" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807654791985" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.808077577838" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -279,117 +279,149 @@
 </p>
 </doc-panel>
 <doc-anchor-target id="configuration-tasks">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-anchor-target id="layer-2-configuration">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#layer-2-configuration">#</doc-anchor-trigger>
         <span>Layer 2 Configuration</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>Ensure trunk links, VLAN databases, SVIs, and port-channels are configured to provide Layer 2 reachability between all access and distribution switches.</p>
 <doc-anchor-target id="1-configure-gateway-svis-vrrp">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#1-configure-gateway-svis-vrrp">#</doc-anchor-trigger>
         <span>1. Configure Gateway SVIs (VRRP)</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>On both distribution switches (<code v-pre>sea-mdf-dsw1</code> and <code v-pre>sea-mdf-dsw2</code>), configure SVIs with the following addresses and enable VRRP:</p>
 <ul>
-<li>VLAN 10: 10.1.10.1 (VRRP VIP)</li>
-<li>VLAN 20: 10.1.20.1 (VRRP VIP)</li>
-<li>VLAN 99: 10.1.99.1 (VRRP VIP)</li>
+<li><strong>VLAN 10:</strong> <code v-pre>10.1.10.1</code> (VRRP VIP)</li>
+<li><strong>VLAN 20:</strong> <code v-pre>10.1.20.1</code> (VRRP VIP)</li>
+<li><strong>VLAN 99:</strong> <code v-pre>10.1.99.1</code> (VRRP VIP)</li>
 </ul>
-<p>Assign actual IPs to the switches (.2 and .3) and ensure VRRP priority is configured to prefer <code v-pre>dsw1</code>.</p>
+<p>Assign actual IPs (.2 and .3) to the switches.<br />
+Configure VRRP priority so that <code v-pre>dsw1</code> is preferred for VLANs 10 &amp; 99, and <code v-pre>dsw2</code> is preferred for VLAN 20.</p>
 <doc-anchor-target id="2-enable-ospf-on-routers-and-distribution-switches">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#2-enable-ospf-on-routers-and-distribution-switches">#</doc-anchor-trigger>
         <span>2. Enable OSPF on Routers and Distribution Switches</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
-<p>Use OSPF process ID 1 across all routing devices. Include the following interfaces:</p>
+<ul>
+<li>Use OSPF process ID <strong>1</strong> across all routing devices.</li>
+<li>Use <strong>exact network statements</strong> to advertise networks into OSPF (do not summarize).</li>
+<li>Advertise:
 <ul>
 <li>All point-to-point links between routers and distribution switches</li>
 <li>Loopback interfaces</li>
-<li>VLAN interfaces (on DSWs only)</li>
+<li>VLAN interfaces (distribution switches only)</li>
 </ul>
-<p>Use OSPF area 0.0.0.0 for all interfaces in this lab.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">router ospf 1
- network 10.1.10.0 0.0.0.255 area 0.0.0.0
- network 10.1.20.0 0.0.0.255 area 0.0.0.0
- network 10.1.99.0 0.0.0.255 area 0.0.0.0
- network 10.255.1.0 0.0.0.255 area 0.0.0.0
- network 172.20.25.0 0.0.0.255 area 0.0.0.0</code></pre>
-</doc-codeblock></div>
+</li>
+<li>Configure all interfaces in <strong>area 0</strong>.</li>
+<li>Use the command <code v-pre>passive-interface default</code> under OSPF configuration mode. Form adjacencies only on /30 transit networks and between VLAN 99 SVIs.</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-warning"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-warning" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>&quot;Multi-Vendor Simulation&quot;</h5>
+<p>These labs simulate a common real-world scenario: a multi-vendor environment.<br />
+While OSPF operates the same under the hood, vendor syntax will differ. Reference the documentation for both platforms to configure it correctly.</p>
+        </div>
+    </div>
+</div>
 <doc-anchor-target id="3-configure-pat-on-routers">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#3-configure-pat-on-routers">#</doc-anchor-trigger>
         <span>3. Configure PAT on Routers</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
-<p>On both <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>, configure PAT using the following:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip access-list standard NAT_INSIDE
- permit 10.1.0.0 0.0.255.255
-
-ip nat inside source list NAT_INSIDE interface Ethernet3 overload</code></pre>
-</doc-codeblock></div>
 <ul>
-<li>Mark <code v-pre>Eth3</code> as <code v-pre>ip nat outside</code></li>
-<li>Mark interface facing internal subnets (DSWs) as <code v-pre>ip nat inside</code></li>
+<li>On both <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>, configure PAT (port address translation / overload).</li>
+<li>Use <strong>standard access-list 1</strong> to specify exact source subnets for NAT/PAT.</li>
 </ul>
-<p>Ensure only one router is actively used via default route advertisement in OSPF, or configure FHRP tracking/failover in stretch goals.</p>
 <doc-anchor-target id="4-ospf-default-route-injection">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#4-ospf-default-route-injection">#</doc-anchor-trigger>
         <span>4. OSPF Default Route Injection</span>
-    </h3>
+    </h4>
 </doc-anchor-target>
-<p>Inject a default route from each router into OSPF:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip route 0.0.0.0 0.0.0.0 [next-hop]
-router ospf 1
- default-information originate</code></pre>
-</doc-codeblock></div>
-<p>This enables internet access through dynamically chosen paths.</p>
+<ul>
+<li>Configure a static default route with a next-hop of the Volt Communications provider edge router.</li>
+<li>Inject this default route into your OSPF process so that it is learned by both distribution switches.</li>
+</ul>
+<hr>
 <doc-anchor-target id="success-criteria">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-tabs>
 <doc-tab v-cloak id="primary-goals">
 <template #title>Primary Goals</template>
 <ul>
-<li>VRRP functioning across VLAN gateways</li>
-<li>Full OSPF adjacency and convergence</li>
-<li>Hosts can access the SeaMart web server through PAT</li>
-<li>Default route is learned dynamically from OSPF</li>
+<li><strong>VRRP</strong>
+<ul>
+<li>VLAN 10 &amp; 99 are <em>Master</em>, VLAN 20 is <em>Backup</em> on <code v-pre>sea-mdf-dsw1</code>.</li>
+</ul>
+</li>
+<li><strong>OSPF Convergence</strong>
+<ul>
+<li>Each distribution switch has <strong>three</strong> full adjacencies; each router has <strong>two</strong>.</li>
+</ul>
+</li>
+<li><strong>SeaMart Server Reachability</strong>
+<ul>
+<li>Every host can ping SeaMart&#x27;s IP address (<code v-pre>123.123.123.123</code>).</li>
+</ul>
+</li>
+<li><strong>OSPF Default Route Injection</strong>
+<ul>
+<li>Default route on the distribution switches is learned dynamically via OSPF.</li>
+</ul>
+</li>
 </ul>
 </doc-tab>
-</doc-tabs>
-<doc-tabs>
 <doc-tab v-cloak id="stretch-goals">
 <template #title>Stretch Goals</template>
 <ul>
-<li>Configure route preference using OSPF cost</li>
-<li>Use <code v-pre>track</code> to monitor upstream interfaces and trigger VRRP failover</li>
-<li>Log NAT translations and verify with <code v-pre>tcpdump</code></li>
-<li>Disable default-information originate on one router and observe failover</li>
-<li>Access OSPF database and LSAs to validate topology propagation</li>
+<li><strong>VRRP Efficiency &amp; Security</strong>
+<ul>
+<li>Configure VRRP timers for faster failover and enable MD5 authentication.</li>
+</ul>
+</li>
+<li><strong>OSPF Packet Capture</strong>
+<ul>
+<li>Use <code v-pre>tcpdump</code> on a distribution switch interface where you expect to see OSPF Hellos.</li>
+</ul>
+</li>
+<li><strong>Name Resolution</strong>
+<ul>
+<li>Enable Linux hosts to resolve and curl seamart.com with either method you&#x27;ve learned so far.</li>
+</ul>
+</li>
 </ul>
 </doc-tab>
 </doc-tabs>
+<hr>
 <doc-anchor-target id="verification-commands">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-tabs>
 <doc-tab v-cloak id="router-commands">
@@ -405,8 +437,8 @@ show ip ospf neighbor
 show ip route</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="switch-commands-dsw">
-<template #title>Switch Commands (DSW)</template>
+<doc-tab v-cloak id="distribution-switch-commands">
+<template #title>Distribution Switch Commands</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># Verify VRRP
 show vrrp
@@ -418,17 +450,36 @@ show ip ospf interface brief</code></pre>
 <doc-tab v-cloak id="host-commands">
 <template #title>Host Commands</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">curl http://123.123.123.123
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Validate HTTP reachability
+curl http://123.123.123.123
+
+# Show routed path to a destination
 traceroute 123.123.123.123
-dig seamart.com</code></pre>
+
+# Test DNS resolution
+nslookup seamart.com</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
+<doc-anchor-target id="questions-to-explore">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#questions-to-explore">#</doc-anchor-trigger>
+        <span>Questions to Explore</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>When designing a network, why might you choose VRRP instead of HSRP?</li>
+<li>From your OSPF Hello packet capture, what information can you extract about neighbors and timers?</li>
+<li>Why might your OSPF-learned default route differ between devices?</li>
+<li>What advantages does OSPF offer over static routing in this design?</li>
+</ul>
 <doc-panel id="documentation" collapsed>
-    <template #title>Documentation</template>
+    <template #title><span class="docs-emoji">&#x1F4DA;</span> Documentation</template>
 <ul>
 <li><a href="https://www.arista.com/en/um-eos/eos-ip-routing">EOS 4.34.1F - OSPF Configuration</a></li>
+<li><a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html">IP Routing: OSPF Configuration Guide (Cisco IOS XE)</a></li>
 <li><a href="https://www.arista.com/en/um-eos/eos-nat">EOS 4.34.1F - NAT Configuration</a></li>
+<li><a href="https://www.arista.com/en/um-eos/eos-vrrp-and-varp">EOS 4.34.1F - VRRP and VARP</a></li>
 </ul>
 </doc-panel>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807654791985">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.808077577838">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.807654791985" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.808077577838" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807654791985" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.808077577838" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -279,127 +279,118 @@
 </p>
 </doc-panel>
 <doc-anchor-target id="configuration-tasks">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="layer-2-configuration">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#layer-2-configuration">#</doc-anchor-trigger>
-        <span>Layer 2 Configuration</span>
     </h3>
+</doc-anchor-target>
+<doc-anchor-target id="1-layer-2-configuration">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-layer-2-configuration">#</doc-anchor-trigger>
+        <span>1. Layer 2 Configuration</span>
+    </h4>
 </doc-anchor-target>
 <p>Ensure trunk links, VLAN databases, SVIs, and port-channels are configured across the switches and connected to <code v-pre>sea-mdf-dsw1</code>. VLANs 10, 20, and 99 should have Layer 2 reachability to the DSW.</p>
-<doc-anchor-target id="1-distribution-switch-ip-interfaces">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-distribution-switch-ip-interfaces">#</doc-anchor-trigger>
-        <span>1. Distribution Switch IP Interfaces</span>
-    </h3>
-</doc-anchor-target>
-<p>Configure the following SVIs on <code v-pre>sea-mdf-dsw1</code>:</p>
-<ul>
-<li>VLAN 10: 10.1.10.1/24</li>
-<li>VLAN 20: 10.1.20.1/24</li>
-<li>VLAN 99: 10.1.99.1/24</li>
-</ul>
-<p>Verify host reachability to their respective gateway:</p>
-<ul>
-<li>Bob: 10.1.10.10</li>
-<li>Alice: 10.1.20.10</li>
-<li>Steve: 10.1.99.100</li>
-</ul>
-<doc-anchor-target id="2-static-routes-routers-to-distribution-switch">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-static-routes-routers-to-distribution-switch">#</doc-anchor-trigger>
-        <span>2. Static Routes (Routers to Distribution Switch)</span>
-    </h3>
-</doc-anchor-target>
-<p>On <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>, add static routes for internal VLANs:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip route 10.1.10.0/24 10.1.1.1
-ip route 10.1.20.0/24 10.1.1.1
-ip route 10.1.99.0/24 10.1.1.1</code></pre>
-</doc-codeblock></div>
-<p>Assume the internal-facing interfaces on each router are:</p>
-<ul>
-<li><code v-pre>sea-mdf-r1</code>: <code v-pre>Eth1</code>, IP 10.1.1.2/30</li>
-<li><code v-pre>sea-mdf-r2</code>: <code v-pre>Eth1</code>, IP 10.1.1.6/30</li>
-</ul>
-<doc-anchor-target id="3-default-route-on-distribution-switch">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-default-route-on-distribution-switch">#</doc-anchor-trigger>
-        <span>3. Default Route on Distribution Switch</span>
-    </h3>
-</doc-anchor-target>
-<p>Configure <code v-pre>sea-mdf-dsw1</code> with default routes to each router:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip route 0.0.0.0/0 10.1.1.2
-ip route 0.0.0.0/0 10.1.1.6</code></pre>
-</doc-codeblock></div>
-<p>This allows hosts to access the internet via either router (basic redundancy).</p>
-<doc-anchor-target id="4-dynamic-nat-configuration">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#4-dynamic-nat-configuration">#</doc-anchor-trigger>
-        <span>4. Dynamic NAT Configuration</span>
-    </h3>
-</doc-anchor-target>
-<p>On <code v-pre>sea-mdf-r1</code>, configure dynamic NAT using an access list and a NAT pool:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">ip access-list standard NAT_VLAN99
- permit 10.1.99.0/24
-
-ip nat pool PUBLIC_POOL 100.10.1.5 100.10.1.10 netmask 255.255.255.240
-ip nat inside source list NAT_VLAN99 pool PUBLIC_POOL overload</code></pre>
-</doc-codeblock></div>
-<ul>
-<li>Mark <code v-pre>Eth2</code> as <code v-pre>ip nat outside</code></li>
-<li>Mark interface facing VLAN 99 as <code v-pre>ip nat inside</code></li>
-</ul>
-<p>Repeat on <code v-pre>sea-mdf-r2</code> (optional for redundancy).</p>
-<doc-anchor-target id="5-verification">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#5-verification">#</doc-anchor-trigger>
-        <span>5. Verification</span>
-    </h3>
+<doc-anchor-target id="2-distribution-switch-configuration">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-distribution-switch-configuration">#</doc-anchor-trigger>
+        <span>2. Distribution Switch Configuration</span>
+    </h4>
 </doc-anchor-target>
 <ul>
-<li>Confirm internal host <code v-pre>Steve</code> can access the SeaMart server (<code v-pre>curl http://123.123.123.123</code>)</li>
-<li>Confirm NAT translation is working with <code v-pre>show ip nat translations</code></li>
-<li>Confirm static routes are working by tracing traffic between VLANs</li>
+<li>Configure the following SVIs on <code v-pre>sea-mdf-dsw1</code>:
+<ul>
+<li><strong>VLAN 10</strong>: <code v-pre>10.1.10.1/24</code></li>
+<li><strong>VLAN 20</strong>: <code v-pre>10.1.20.1/24</code></li>
+<li><strong>VLAN 99</strong>: <code v-pre>10.1.99.1/24</code></li>
 </ul>
+</li>
+<li>Configure <strong>Eth0/3</strong> &amp; <strong>Eth1/0</strong> as routed interfaces according to the diagram.</li>
+<li>Configure a default route that uses <code v-pre>sea-mdf-r1</code> Eth0/1 as a next-hop.</li>
+<li>Configure a secondary default route that uses <code v-pre>sea-mdf-r2</code> Eth0/1 as a next-hop with an administrative distance of 10.</li>
+</ul>
+<doc-anchor-target id="3-router-configuration">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-router-configuration">#</doc-anchor-trigger>
+        <span>3. Router Configuration</span>
+    </h4>
+</doc-anchor-target>
+<ul>
+<li>On <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>, add static routes to <code v-pre>sea-mdf-dsw1</code> for each subnet/VLAN.</li>
+<li>Configure loopback and routed interfaces according to the diagram.</li>
+<li>Configure <strong>dynamic NAT</strong> to choose from a pool of addresses (not PAT/overload).<br />
+Specify the exact source subnets in your access list.</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-tip"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-tip" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M7.90625 2.15625C4.50944 2.15625 2.15625 4.58563 2.15625 7.54688C2.15625 8.96138 2.76575 9.88281 3.57075 10.8589L3.87837 11.2226C4.19894 11.6021 4.554 12.0218 4.84581 12.4416C5.25406 13.0324 5.61775 13.7296 5.7385 14.5834C5.76728 14.8608 5.68746 15.1386 5.51579 15.3583C5.34413 15.5781 5.09399 15.7228 4.8179 15.7621C4.5418 15.8013 4.26124 15.7321 4.03512 15.5689C3.809 15.4056 3.65493 15.1612 3.60525 14.8867C3.54775 14.4814 3.37094 14.1004 3.07338 13.6692C2.8306 13.3302 2.57055 13.0039 2.29425 12.6917C2.1735 12.5479 2.04556 12.397 1.909 12.2317C1.00769 11.1406 0 9.72613 0 7.54688C0 3.32062 3.39681 0 7.90625 0C12.4157 0 15.8125 3.32062 15.8125 7.54688C15.8125 9.72613 14.8048 11.1406 13.9035 12.2317C13.7669 12.397 13.639 12.5479 13.5183 12.6903C13.2207 13.0424 12.9677 13.3414 12.7406 13.6692C12.4416 14.1004 12.2662 14.4814 12.2087 14.8867C12.1557 15.1584 12.0003 15.3994 11.7747 15.5598C11.5492 15.7202 11.2706 15.7879 10.9965 15.7488C10.7225 15.7096 10.474 15.5667 10.3023 15.3496C10.1306 15.1325 10.0489 14.8577 10.074 14.582C10.1948 13.7296 10.5584 13.0324 10.9667 12.4416C11.2585 12.0218 11.6136 11.6021 11.9341 11.2226C12.0419 11.0961 12.1454 10.9739 12.2403 10.8589C13.0468 9.88281 13.6562 8.96138 13.6562 7.54688C13.6562 4.58563 11.3031 2.15625 7.90625 2.15625ZM4.67188 17.25H11.1406C11.4266 17.25 11.7008 17.3636 11.903 17.5658C12.1052 17.768 12.2188 18.0422 12.2188 18.3281C12.2188 18.6141 12.1052 18.8883 11.903 19.0905C11.7008 19.2927 11.4266 19.4062 11.1406 19.4062H4.67188C4.38594 19.4062 4.11171 19.2927 3.90953 19.0905C3.70734 18.8883 3.59375 18.6141 3.59375 18.3281C3.59375 18.0422 3.70734 17.768 3.90953 17.5658C4.11171 17.3636 4.38594 17.25 4.67188 17.25ZM5.03125 21.9219C5.03125 21.6359 5.14484 21.3617 5.34703 21.1595C5.54921 20.9573 5.82344 20.8438 6.10938 20.8438H9.70312C9.98906 20.8438 10.2633 20.9573 10.4655 21.1595C10.6677 21.3617 10.7812 21.6359 10.7812 21.9219C10.7812 22.2078 10.6677 22.482 10.4655 22.6842C10.2633 22.8864 9.98906 23 9.70312 23H6.10938C5.82344 23 5.54921 22.8864 5.34703 22.6842C5.14484 22.482 5.03125 22.2078 5.03125 21.9219Z" />
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Emulator Quirks</h5>
+<p>When I ran through this lab myself I struggled to get dynamic NAT working as intended until I applied my NAT access-list inbound on <code v-pre>sea-mdf-r2</code> Eth0/1, because I wanted to see ACL hits as a sanity check.  Pings immediately started going through even after removal of the ACL.  This is not behavior you&#x27;d see on a real router and a good reminder that these emulated environments can be goofy.</p>
+        </div>
+    </div>
+</div>
 <doc-anchor-target id="icon-check-circle-success-criteria">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#icon-check-circle-success-criteria">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-tabs>
 <doc-tab v-cloak id="primary-goals">
 <template #title>Primary Goals</template>
 <ul>
-<li>Hosts can reach their default gateway on <code v-pre>sea-mdf-dsw1</code></li>
-<li>Steve can access the SeaMart web server</li>
-<li>NAT translations occur via dynamic NAT using a pool</li>
-<li>Static routing works between routers and DSW</li>
+<li><strong>Layer 3 Reachability:</strong>
+<ul>
+<li>All hosts can ping the SeaMart web server (<code v-pre>123.123.123.123</code>).</li>
+</ul>
+</li>
+<li><strong>Dynamic NAT:</strong>
+<ul>
+<li>NAT translations occur correctly and can be confirmed on both routers with <code v-pre>show ip nat translations</code>.</li>
+</ul>
+</li>
 </ul>
 </doc-tab>
 <doc-tab v-cloak id="stretch-goals">
 <template #title>Stretch Goals</template>
 <ul>
-<li>Configure NAT redundancy via VRRP and <code v-pre>track</code> interface for priority failover</li>
-<li>Implement an ACL that limits internet access to VLAN 99</li>
-<li>Use <code v-pre>tcpdump</code> on Arista routers to verify translation behavior</li>
-<li>Add logging for NAT ACL hits</li>
-<li>Ping the public SeaMart server from each host and verify path via traceroute</li>
+<li><strong>Extended ACL:</strong>
+<ul>
+<li>Implement an ACL on VLAN 10 &amp; VLAN 20 SVIs that denies hosts in those VLANs from SSHing outside of their own subnet, but allows all other traffic.</li>
+<li>Validate by attempting to SSH from Bob or Alice to <code v-pre>Loopback0</code> on <code v-pre>sea-mdf-r1</code>.</li>
+</ul>
+</li>
+<li><strong>Local Linux Name Server Configuration:</strong>
+<ul>
+<li>Edit <code v-pre>/etc/resolv.conf</code> on Linux hosts to use <code v-pre>8.8.8.8</code> as a nameserver.</li>
+<li>Validate with <code v-pre>curl http://seamart.com</code>.</li>
+</ul>
+</li>
+<li><strong>IP SLA Failover:</strong>
+<ul>
+<li>Configure IP SLA so that internet-bound traffic takes the path through <code v-pre>sea-mdf-r2</code> if <code v-pre>100.10.1.1</code> is unreachable.
+<ul>
+<li>Verify the gateway of last resort changes on <code v-pre>sea-mdf-dsw1</code> after issuing <code v-pre>shutdown</code> on Eth0/1 on <code v-pre>sea-mdf-r1</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </doc-tab>
 </doc-tabs>
 <doc-anchor-target id="icon-terminal-verification-commands">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#icon-terminal-verification-commands">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-tabs>
 <doc-tab v-cloak id="router-commands">
@@ -408,6 +399,9 @@ ip nat inside source list NAT_VLAN99 pool PUBLIC_POOL overload</code></pre>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># NAT translations
 show ip nat translations
 
+# NAT statistics
+show ip nat statistics
+
 # Check static routes
 show ip route
 
@@ -415,14 +409,17 @@ show ip route
 show run interface Ethernet2</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="switch-commands-dsw">
-<template #title>Switch Commands (DSW)</template>
+<doc-tab v-cloak id="distribution-switch-commands">
+<template #title>Distribution Switch Commands</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># Routing table
 show ip route
 
 # Interface and SVI status
-show ip interface brief</code></pre>
+show ip interface brief
+
+# Show configured routes in the running configuration
+show running-config | include route</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="host-commands">
@@ -432,18 +429,33 @@ show ip interface brief</code></pre>
 curl http://123.123.123.123
 
 # DNS test (if configured)
-dig seamart.com
+nslookup seamart.com
 
 # Network trace
 traceroute 123.123.123.123</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
+<doc-anchor-target id="questions-to-explore">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#questions-to-explore">#</doc-anchor-trigger>
+        <span>Questions to explore</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>How does the router know which inside addresses to translate when using dynamic NAT with a pool?</li>
+<li>If you add a new VLAN to the network, what changes are required to allow internet access?</li>
+<li>Why is default route through R1 preferred over R2?</li>
+<li>What are some pitfalls you can imagine with the use of static routes?</li>
+<li>curl seamart.com and check your NAT translations. What are the differences between the addresses in the output?
++++</li>
+</ul>
 <doc-panel id="documentation" collapsed>
-    <template #title>Documentation</template>
+    <template #title><span class="docs-emoji">&#x1F4DA;</span> Documentation</template>
 <ul>
 <li><a href="https://www.arista.com/en/um-eos/eos-ip-routing">EOS 4.34.1F - Static Routing</a></li>
 <li><a href="https://www.arista.com/en/um-eos/eos-nat">EOS 4.34.1F - NAT Configuration</a></li>
+<li><a href="https://itslinuxfoss.com/set-dns-nameservers-ubuntu-22-04/">How to Set DNS Nameservers on Ubuntu 22.04?</a></li>
 </ul>
 </doc-panel>
 

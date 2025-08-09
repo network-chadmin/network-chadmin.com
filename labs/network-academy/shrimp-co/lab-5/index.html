@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807654791985">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.808077577838">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/router-icon.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.807654791985" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.808077577838" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.807654791985" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.807654791985" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.808077577838" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.808077577838" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -271,7 +271,7 @@
     </h1>
 </doc-anchor-target>
 <blockquote>
-<p>Shrimp Co. has connected to the internet via Volt Communications. Configure NAT so internal hosts can reach the SeaMart web server while maintaining internal addressing.</p>
+<p>Shrimp Co. has connected to the internet via Volt Communications. Configure static NAT so Bob in Sales can reach the SeaMart web server while maintaining internal addressing.</p>
 </blockquote>
 <doc-panel id="lab-topology" collapsed>
     <template #title>Lab Topology</template>
@@ -285,106 +285,116 @@
 </p>
 </doc-panel>
 <doc-anchor-target id="configuration-tasks">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="layer-2-configuration">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#layer-2-configuration">#</doc-anchor-trigger>
-        <span>Layer 2 Configuration</span>
     </h3>
+</doc-anchor-target>
+<doc-anchor-target id="1-layer-2-configuration">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-layer-2-configuration">#</doc-anchor-trigger>
+        <span>1. Layer 2 Configuration</span>
+    </h4>
 </doc-anchor-target>
 <p>Configure VLAN databases, port-channels, trunk links, and SVIs as done in previous labs to ensure L2 connectivity between hosts and their gateways. These tasks are assumed and not explicitly outlined below.</p>
-<doc-anchor-target id="1-ip-addressing--reachability">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-ip-addressing--reachability">#</doc-anchor-trigger>
-        <span>1. IP Addressing &amp; Reachability</span>
-    </h3>
+<doc-anchor-target id="2-router-configuration">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-router-configuration">#</doc-anchor-trigger>
+        <span>2. Router Configuration</span>
+    </h4>
 </doc-anchor-target>
 <ul>
 <li>Configure the WAN interfaces on <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>:
 <ul>
-<li><code v-pre>Eth2</code> on both routers</li>
+<li><code v-pre>Eth0/2</code> on both routers</li>
 <li>Use provider-assigned space: <code v-pre>100.10.1.0/29</code> &amp; <code v-pre>100.10.1.8/29</code></li>
-<li><code v-pre>sea-mdf-r1</code>: IP - <code v-pre>100.10.1.2/29</code> Gateway - &#x60;100.10.1.1</li>
-<li><code v-pre>sea-mdf-r2</code>: IP - <code v-pre>100.10.1.10/29</code> Gateway - 100.10.1.9</li>
+<li><code v-pre>sea-mdf-r1</code>: IP - <code v-pre>100.10.1.2/29</code> Gateway - <code v-pre>100.10.1.1</code></li>
+<li><code v-pre>sea-mdf-r2</code>: IP - <code v-pre>100.10.1.10/29</code> Gateway - <code v-pre>100.10.1.9</code></li>
 <li>ISP gateway: <code v-pre>100.10.1.1</code></li>
 </ul>
 </li>
 <li>Verify <code v-pre>ping 100.10.1.1</code> works from both routers</li>
 </ul>
-<doc-anchor-target id="2-pat-configuration-port-address-translation">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-pat-configuration-port-address-translation">#</doc-anchor-trigger>
-        <span>2. PAT Configuration (Port-address translation)</span>
-    </h3>
+<doc-anchor-target id="3-static-nat">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-static-nat">#</doc-anchor-trigger>
+        <span>3. Static NAT</span>
+    </h4>
 </doc-anchor-target>
 <ul>
-<li>Configure <strong>static NAT</strong> on <code v-pre>sea-mdf-r1</code> to allow internal host <code v-pre>Steve (10.1.99.100)</code> to access the internet with a public IP:
+<li>Configure <strong>static NAT</strong> on <code v-pre>sea-mdf-r1</code> to allow internal host <code v-pre>Bob (10.1.10.10)</code> to access the internet with a public IP:
 <ul>
-<li>Inside IP: <code v-pre>10.1.99.100</code></li>
+<li>Inside IP: <code v-pre>10.1.10.10</code></li>
 <li>Outside IP: <code v-pre>100.10.1.2</code></li>
 </ul>
 </li>
 </ul>
-<doc-anchor-target id="3-default-routes">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-default-routes">#</doc-anchor-trigger>
-        <span>3. Default Routes</span>
-    </h3>
-</doc-anchor-target>
-<ul>
-<li><p>Configure default route on <code v-pre>sea-mdf-r1</code>:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">ip route 0.0.0.0/0 100.10.1.1</code></pre>
-</doc-codeblock></div>
-</li>
-<li><p>Configure <strong>Steve</strong> with a default gateway of <code v-pre>10.1.99.1</code></p>
-</li>
-</ul>
-<doc-anchor-target id="4-test-connectivity">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#4-test-connectivity">#</doc-anchor-trigger>
-        <span>4. Test Connectivity</span>
-    </h3>
-</doc-anchor-target>
-<ul>
-<li>From <strong>Steve</strong>, access the SeaMart web server (<code v-pre>curl http://123.123.123.123</code>)</li>
-<li>Use <code v-pre>tcpdump</code> or <code v-pre>tshark</code> on <code v-pre>sea-mdf-r1</code> to verify NAT translations</li>
-</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>ISP &amp; Server Access</h5>
+<p>As a way of maintaining realism, the Volt Communications router and SeaMart server cannot be SSH&#x27;d to.  If you really want to put on multiple hats, you can access the devices directly via docker commands.</p>
+        </div>
+    </div>
+</div>
 <doc-anchor-target id="success-criteria">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M17.28 9.28a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Success Criteria</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-tabs>
 <doc-tab v-cloak id="primary-goals">
 <template #title>Primary Goals</template>
 <ul>
-<li>Steve can <code v-pre>curl</code> the SeaMart server by IP</li>
+<li><strong>L3 Reacability</strong>
+<ul>
+<li>All hosts can ping each other</li>
+</ul>
+</li>
+<li><strong>Bob&#x27;s Internet Connectivity</strong>
+<ul>
+<li>Bob can ping SeaMart server at <code v-pre>123.123.123.123</code></li>
+</ul>
+</li>
+<li><strong>Nat Translation</strong>
+<ul>
 <li>NAT translation occurs correctly (seen via <code v-pre>show ip nat translations</code> or debug output)</li>
-<li><code v-pre>sea-mdf-r1</code> has connectivity to the upstream ISP</li>
+</ul>
+</li>
 </ul>
 </doc-tab>
 <doc-tab v-cloak id="stretch-goals">
 <template #title>Stretch Goals</template>
 <ul>
-<li>Configure an <strong>ACL</strong> to only allow NAT for VLAN 99</li>
-<li>Block <code v-pre>Bob</code> or <code v-pre>Alice</code> from accessing the internet</li>
-<li>Set up <strong>VRRP</strong> between <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code> for failover</li>
-<li>Create a <strong>loopback interface</strong> on <code v-pre>Steve</code>, then configure NAT for that address too</li>
-<li>Use <code v-pre>tcpdump</code> to observe NAT behavior at multiple points (inside interface vs outside)</li>
+<li><strong>Extended ACL</strong>
+<ul>
+<li>Configure ACL on &#x60;sea-mdf-r1 Eth0/1.10 that allows ICMP but not SSH to any destination.  Confirm by trying to SSH to Loopback0.</li>
+</ul>
+</li>
+<li>**Linux Host File Configuration
+<ul>
+<li>Find a way to add a local DNS entry to Bob&#x27;s host file so he can ping seamart.com</li>
+</ul>
+</li>
 </ul>
 </doc-tab>
 </doc-tabs>
 <doc-anchor-target id="verification-commands">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></g></g></svg> Verification Commands</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <doc-tabs>
 <doc-tab v-cloak id="router-verification">
@@ -404,8 +414,8 @@ ping 123.123.123.123
 show ip route</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="host-verification-steve">
-<template #title>Host Verification (Steve)</template>
+<doc-tab v-cloak id="host-verification">
+<template #title>Host Verification</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># Check connectivity
 curl http://123.123.123.123
@@ -418,11 +428,16 @@ sudo tcpdump -i eth1 -n</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
-<p>-== Documentation</p>
+<doc-anchor-target id="questions-to-explore">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#questions-to-explore">#</doc-anchor-trigger>
+        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M10.97 8.265a1.45 1.45 0 0 0-.487.57.75.75 0 0 1-1.341-.67c.2-.402.513-.826.997-1.148C10.627 6.69 11.244 6.5 12 6.5c.658 0 1.369.195 1.934.619a2.45 2.45 0 0 1 1.004 2.006c0 1.033-.513 1.72-1.027 2.215-.19.183-.399.358-.579.508l-.147.123a4.329 4.329 0 0 0-.435.409v1.37a.75.75 0 1 1-1.5 0v-1.473c0-.237.067-.504.247-.736.22-.28.486-.517.718-.714l.183-.153.001-.001c.172-.143.324-.27.47-.412.368-.355.569-.676.569-1.136a.953.953 0 0 0-.404-.806C12.766 8.118 12.384 8 12 8c-.494 0-.814.121-1.03.265ZM13 17a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Questions to Explore</span>
+    </h3>
+</doc-anchor-target>
 <ul>
-<li><a href="https://www.arista.com/en/um-eos/eos-nat">EOS 4.34.1F - NAT Overview</a></li>
-<li><a href="https://curl.se/docs/manpage.html">Linux curl Manual</a>
-===</li>
+<li>Why do pings fail to the SeaMart server before NAT is configured?</li>
+<li>If more employees want to access the internet, what problem do we run into?</li>
+<li>Is static NAT a scalable solution?  Why or why not?</li>
 </ul>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
@@ -437,10 +452,16 @@ sudo tcpdump -i eth1 -n</code></pre>
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>In this lab, the SeaMart web server and ISP router are not student-configurable. They will respond to HTTP and basic ICMP traffic, but cannot be logged into or modified.</p>
+<p>In these labs, the SeaMart web server and ISP router are not meant to be configured by students. If you&#x27;d like to break the immersion and access the devices you can do so using docker commands.</p>
         </div>
     </div>
 </div>
+<doc-panel id="documentation" collapsed>
+    <template #title><span class="docs-emoji">&#x1F4DA;</span> Documentation</template>
+<ul>
+<li><a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_nat/configuration/xe-2/nat-xe-2-book/iadnat-addr-consv.html#GUID-DB135563-E01D-4C49-AD69-F95B3F1C5E67">IP Addressing: NAT Configuration Guide, Cisco IOS XE Release 2</a> (Go to &quot;Configuring Static Translation of Inside Source Addresses)</li>
+</ul>
+</doc-panel>
 
                                 
                                 <!-- Required only on API pages -->
@@ -460,7 +481,7 @@ sudo tcpdump -i eth1 -n</code></pre>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                                <span class="block mt-1">Lab 4 - Redundancy</span>
+                                                <span class="block mt-1">Lab 4 - Basic Redundancy</span>
                                             </span>
                                         </a>
                                     </div>
