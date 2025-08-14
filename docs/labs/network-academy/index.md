@@ -17,7 +17,7 @@ I believe labbing — and learning to enjoy it — is the key to success in this
 ## [Shrimp Co. - Network Fundamentals](/labs/network-academy/shrimp-co/)
 
 <figure style="width: 400px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/shrimpco-transparent.png"
+    <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.com/refs/heads/main/docs/static/network-academy/shrimp-co.png"
          alt="Shrimp Co." width="400" height="300">
     <figcaption style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px;"> Enterprise Infrastructure, built from scratch.
     </figcaption>
@@ -33,7 +33,13 @@ There's less handholding as the series progresses, but that’s intentional. The
 
 ## [SeaMart - Zero to Routing Hero](/labs/network-academy/seamart/) (Coming Soon)
 
-![A magnificent journey through layer 3](/docs/static/network-academy/shrimp-co.png)
+<figure style="width: 400px; text-align: center;">
+    <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.com/refs/heads/main/docs/static/network-academy/seamart.png"
+         alt="SeaMart" width="400" height="300">
+    <figcaption style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px;">
+        A magnificent journey through layer 3.
+    </figcaption>
+</figure>
 
 Routing is a core skill in computer networking. Mastering it not only makes you a more valuable engineer, but it’s essential for those pursuing design and architecture roles.
 
