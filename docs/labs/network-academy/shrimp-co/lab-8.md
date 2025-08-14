@@ -4,8 +4,8 @@ order: 930
 ---
 ![](/static/network-academy/shrimpco/banner.png)
 
-# Lab 8 - STP, Summarization,& DHCP
-> Shrimp Co.'s growing workforce requires streamlined network operations. Optimize STP for efficient redundancy, implement route summarization for scalability, and deploy DHCP for simplified device management.
+# Lab 8 - STP, Summarization, & DHCP
+> Shrimp Co.'s growing workforce requires more efficient Layer 2 resilience, streamlined routing, and simplified host IP management. Configure spanning-tree for redundancy, summarize routes for scalability, and deploy DHCP services for VLANs across the network.
 
 ==- Lab Topology
 ![](https://raw.githubusercontent.com/network-chadmin/containerlab/refs/heads/main/network-academy/shrimp-co/diagrams/08_stp-summarization-dhcp.png)
@@ -18,108 +18,106 @@ order: 930
 ## :icon-tasklist: Configuration Tasks
 
 ### Layer 2 Configuration
+Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from previous labs. Confirm Layer 2 reachability for the following VLANs:
+- **VLAN 10** – Sales
+- **VLAN 20** – Engineering
+- **VLAN 30** – Marketing *(New)*
+- **VLAN 99** – IT
 
-Verify port-channels, trunk links, and VLAN databases are configured from previous labs. Ensure VLANs 10, 20, and 99 have L2 reachability across the switching fabric.
-
-### 1. Configure Spanning-Tree
-
-Configure `mstp` on all switches:
-
-* Define MST region `shrimp-co` with instance 1 mapping VLANs 10 and 20
-* Set bridge priorities:
-
-  * `dsw1`: priority 4096 (Root)
-  * `dsw2`: priority 8192
-
-```bash
-spanning-tree mode mstp
-spanning-tree mst configuration
- name shrimp-co
- revision 1
- instance 1 vlan 10,20
-exit
-
-spanning-tree mst 1 priority 4096  # On dsw1
-spanning-tree mst 1 priority 8192  # On dsw2
-```
-
-Verify root bridge selection and port states using `show spanning-tree mst`.
+### 1. Configure Spanning Tree (RSTP or PVST+)
+- Enable **RSTP** or **PVST+** on all switches.
+- Assign root bridge priorities so that:
+  - `sea-mdf-dsw1` is the root for VLANs 10 and 99
+  - `sea-mdf-dsw2` is the root for VLANs 20 and 30
+- Verify root bridge election and port roles using the appropriate show commands.
 
 ### 2. Configure Route Summarization on Routers
+- On `sea-mdf-r1` and `sea-mdf-r2`, summarize all access VLAN networks into **10.1.0.0/16** before advertising into OSPF.
+- Ensure only summarized routes are seen by upstream peers.
 
-Summarize access subnet advertisements from distribution switches. Use summary addresses on:
+### 3. Configure DHCP on Routers
+- Configure a DHCP pool for each VLAN (10, 20, 30, 99) on `sea-mdf-r1` and `sea-mdf-r2`.
+- Use **DHCP relay** on each distribution switch SVI to forward client requests to both routers.
+- Exclude gateway IP addresses and any reserved host IPs.
 
-* `sea-mdf-r1` and `sea-mdf-r2` to summarize `10.1.0.0/16`
+### 4. Verification
+- Confirm that hosts in each VLAN receive correct IP, gateway, and DNS information.
+- Validate route summarization in OSPF.
+- Test spanning-tree failover by shutting down a forwarding link.
 
-```bash
-router ospf 1
- area 0.0.0.0 range 10.1.0.0 255.255.0.0
-```
-
-This reduces LSA size and keeps the OSPF database lean as the network grows.
-
-### 3. Configure DHCP Server
-
-Deploy a DHCP server on `sea-mdf-dsw1` for VLAN 99:
-
-```bash
-ip dhcp excluded-address 10.1.99.1 10.1.99.10
-ip dhcp pool VLAN99
- network 10.1.99.0 255.255.255.0
- default-router 10.1.99.1
- dns-server 8.8.8.8
- lease 0 4 0
-```
-
-Bind DHCP to the SVI and ensure it responds to client requests from the access layer.
-
-> Note: This DHCP configuration is for testing purposes. In production, DHCP is often centralized.
-
-### 4. Verify Addressing
-
-Ensure each host on VLAN 99 obtains an IP via DHCP. Validate with `show ip dhcp binding` on the DSW.
+---
 
 ## :icon-check-circle: Success Criteria
 
 +++ Primary Goals
-
-* MSTP running with correct root bridge election
-* Summarized OSPF routes advertised from routers
-* VLAN 99 hosts receiving DHCP addresses
+- **Spanning Tree**
+    - Correct root bridge election per VLAN
+    - No Layer 2 loops, redundant links in blocking/alternate state
+- **Route Summarization**
+    - Routers advertise a single summary route for access VLANs into OSPF
+- **DHCP**
+    - All VLANs receive DHCP leases from routers via relay
 +++ Stretch Goals
-* Observe MSTP failover by disabling a forwarding link
-* Deploy DHCP relay from an access switch to test forwarding
-* Run `tcpdump` on a switch and filter for DHCP
+- Test DHCP failover by shutting down one router’s DHCP service
+- Observe STP convergence time after link failure
+- Capture and inspect a DHCP Discover and Offer exchange
 +++
+
+---
 
 ## :icon-terminal: Verification Commands
 
-+++ Switch (STP & DHCP)
-
++++ Switch Commands
 ```bash
-show spanning-tree mst
-show spanning-tree mst configuration
-show ip dhcp binding
+# Spanning-tree verification
+show spanning-tree
+show spanning-tree vlan 10
+show spanning-tree vlan 20
+show spanning-tree vlan 30
+show spanning-tree vlan 99
+
+# DHCP relay status
+show ip interface brief
 ```
 
-+++ Router (OSPF Summary)
-
-```bash
++++ Router Commands
+\`\`\`bash
+# OSPF route summary
 show ip ospf database summary
+
+# DHCP bindings
+show ip dhcp binding
+
+# Routing table
 show ip route ospf
 ```
 
-+++ Host (from bash shell or CLI)
-
++++ Host Commands
 ```bash
+# IP and default gateway
 ip a
-ping 10.1.99.1
+
+# Gateway reachability
+ping <default_gateway>
+
+# Internet reachability test
+curl http://123.123.123.123
 ```
 
-+++
+---
+
+### Questions to Explore
+* How does spanning-tree decide which ports go into a blocking state?  
+* What are the trade-offs between PVST+ and RSTP?  
+* Why is route summarization beneficial in large OSPF domains?  
+* How does DHCP relay know where to forward client requests?  
+* What happens to DHCP clients if both routers’ DHCP services fail?
+
+---
 
 ==- Documentation
-* [EOS - MSTP Configuration](https://www.arista.com/en/um-eos/eos-l2-stp#ww1106022)
-* [EOS - DHCP Server](https://www.arista.com/en/um-eos/eos-ip-addressing-and-hostname#topic14156)
-* [EOS - OSPF Summarization](https://www.arista.com/en/um-eos/eos-ip-routing#topic14284)
+* [EOS - Spanning Tree Configuration](https://www.arista.com/en/um-eos/eos-l2-stp)
+* [EOS - DHCP Relay](https://www.arista.com/en/um-eos/eos-ip-addressing-and-hostname)
+* [EOS - OSPF Summarization](https://www.arista.com/en/um-eos/eos-ip-routing)
 ===
+```

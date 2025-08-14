@@ -33,13 +33,7 @@ There's less handholding as the series progresses, but that’s intentional. The
 
 ## [SeaMart - Zero to Routing Hero](/labs/network-academy/seamart/) (Coming Soon)
 
-<figure style="width: 400px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/seamart-transparent.png"
-         alt="SeaMart" width="400" height="300">
-    <figcaption style="font-style: italic; color: #6b7280; font-size: 0.875rem; margin-top: 8px;">
-        A magnificent journey through layer 3.
-    </figcaption>
-</figure>
+![A magnificent journey through layer 3](/docs/static/network-academy/shrimp-co.png)
 
 Routing is a core skill in computer networking. Mastering it not only makes you a more valuable engineer, but it’s essential for those pursuing design and architecture roles.
 

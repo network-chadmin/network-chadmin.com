@@ -116,8 +116,8 @@ nslookup seamart.com
 ### Questions to Explore
 * When designing a network, why might you choose VRRP instead of HSRP?  
 * From your OSPF Hello packet capture, what information can you extract about neighbors and timers?  
-* Why might your OSPF-learned default route differ between devices?  
-* What advantages does OSPF offer over static routing in this design?  
+* Why is your OSPF learned default route on the distribution swiches labeled differently than the others? 
+* What advantages does dynamic routing like OSPF offer over static routing?
 
 ==- :books: Documentation
 - [EOS 4.34.1F - OSPF Configuration](https://www.arista.com/en/um-eos/eos-ip-routing)
