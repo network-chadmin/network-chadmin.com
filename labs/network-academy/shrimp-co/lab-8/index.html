@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.808514198332">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.809203522693">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/welcome/network-chadmin_notext.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.808514198332" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.809203522693" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.808514198332" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.809203522693" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.808514198332" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.808514198332" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.808514198332" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.809203522693" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.809203522693" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.809203522693" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -407,33 +407,21 @@ show ip interface brief</code></pre>
 </doc-tab>
 <doc-tab v-cloak id="router-commands">
 <template #title>Router Commands</template>
-<p>&#x60;&#x60;&#x60;bash</p>
-<doc-anchor-target id="ospf-route-summary">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ospf-route-summary">#</doc-anchor-trigger>
-        <span>OSPF route summary</span>
-    </h1>
-</doc-anchor-target>
-<p>show ip ospf database summary</p>
-<doc-anchor-target id="dhcp-bindings">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#dhcp-bindings">#</doc-anchor-trigger>
-        <span>DHCP bindings</span>
-    </h1>
-</doc-anchor-target>
-<p>show ip dhcp binding</p>
-<doc-anchor-target id="routing-table">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#routing-table">#</doc-anchor-trigger>
-        <span>Routing table</span>
-    </h1>
-</doc-anchor-target>
-<p>show ip route ospf</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">
-+++ Host Commands
-```bash
-# IP and default gateway
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># OSPF route summary
+show ip ospf database summary
+
+# DHCP bindings
+show ip dhcp binding
+
+# Routing table
+show ip route ospf</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="host-commands">
+<template #title>Host Commands</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># IP and default gateway
 ip a
 
 # Gateway reachability
@@ -442,6 +430,8 @@ ping &lt;default_gateway&gt;
 # Internet reachability test
 curl http://123.123.123.123</code></pre>
 </doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
 <hr>
 <doc-anchor-target id="questions-to-explore">
     <h3>
@@ -465,10 +455,6 @@ curl http://123.123.123.123</code></pre>
 <li><a href="https://www.arista.com/en/um-eos/eos-ip-routing">EOS - OSPF Summarization</a></li>
 </ul>
 </doc-panel>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none"> </code></pre>
-</doc-codeblock></div>
-</doc-tab>
 
                                 
                                 <!-- Required only on API pages -->
