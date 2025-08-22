@@ -15,6 +15,11 @@ order: 1000
 </p>
 ===
 
+!!!info Login Credentials
+ *Linux Host:* labuser/admin \
+ *Router/Switch:* admin/admin
+!!!
+
 ### :icon-tasklist: Configuration Tasks
 
 #### VLAN Configuration

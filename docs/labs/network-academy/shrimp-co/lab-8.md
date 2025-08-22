@@ -81,7 +81,7 @@ show ip interface brief
 ```
 
 +++ Router Commands
-\`\`\`bash
+```bash
 # OSPF route summary
 show ip ospf database summary
 
@@ -103,6 +103,7 @@ ping <default_gateway>
 # Internet reachability test
 curl http://123.123.123.123
 ```
++++
 
 ---
 
@@ -120,4 +121,3 @@ curl http://123.123.123.123
 * [EOS - DHCP Relay](https://www.arista.com/en/um-eos/eos-ip-addressing-and-hostname)
 * [EOS - OSPF Summarization](https://www.arista.com/en/um-eos/eos-ip-routing)
 ===
-```

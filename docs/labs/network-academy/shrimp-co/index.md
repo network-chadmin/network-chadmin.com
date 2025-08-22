@@ -43,7 +43,19 @@ To make SSH work:
 
 **6.** Emulated networks like these can be buggy at times and certain things that may not work exactly like they do on a physical device.  If your network isn't working how you think it should it's probably still your fault, but know these things can get goofy sometimes.
 
-**7.** Have fun and reach out to me at heetland.chad@gmail.com for any comments, questions, or feedback! 
+!!!danger Container Versions
+The YML files reference an **image** and **version** for each container as `image: vrnetlab/cisco_iol:17.15.01`. You can use a different version of cEOS or Cisco IOL than is referenced in the lab files, but you'll need to change the version tag for every device in the YML file before you deploy. 
+
+Let's say when you convert your Cisco IOL image to a container using vrnetlab it's now 17.15.02. Change that tag on every Cisco IOL device in your lab YML file.
+
+```yml
+sea-mdf-r2:
+    kind: cisco_iol
+    mgmt-ipv4: 172.20.25.65
+    image: vrnetlab/cisco_iol:17.15.01
+```
+Failing to match the container versions in the YML file with the containers in your Docker install will cause your lab not to launch.
+!!!
 
 ## What You'll Learn
 
