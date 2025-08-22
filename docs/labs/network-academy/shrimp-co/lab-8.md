@@ -31,19 +31,22 @@ Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from 
   - `sea-mdf-dsw2` is the root for VLANs 20 and 30
 - Verify root bridge election and port roles using the appropriate show commands.
 
-### 2. Configure Route Summarization on Routers
-- On `sea-mdf-r1` and `sea-mdf-r2`, summarize all access VLAN networks into **10.1.0.0/16** before advertising into OSPF.
-- Ensure only summarized routes are seen by upstream peers.
+### 2. Configure Distribution Switches
+- On `sea-mdf-dsw1` and `sea-mdf-dsw2`, use a single network statement to advertise a single summary route into OSPF.
+- Ensure summary route is seen on `sea-mdf-r1` and `sea-mdf-r2`
+- Utilize `passive-interface default` under your OSPF process configuration and enable adjacencies on only on Eth5, Eth6, and VLAN 99.
 
-### 3. Configure DHCP on Routers
-- Configure a DHCP pool for each VLAN (10, 20, 30, 99) on `sea-mdf-r1` and `sea-mdf-r2`.
-- Use **DHCP relay** on each distribution switch SVI to forward client requests to both routers.
-- Exclude gateway IP addresses and any reserved host IPs.
+### 3. Configure Routers
+- Configure OSPF to form adjacencies on Eth0/1 and Eth0/2
+- Originate a default route into OSPF with a next-hop of your ISP
+- Set up a DHCP server and pool for each VLAN (10, 20, 30, 99) on either `sea-mdf-r1` or `sea-mdf-r2`.
+- Use **DHCP relay** on SVI's to forward client requests to your DHCP server.
+- Exclude gateway IP addresses from your DHCP pools.
 
-### 4. Verification
-- Confirm that hosts in each VLAN receive correct IP, gateway, and DNS information.
-- Validate route summarization in OSPF.
-- Test spanning-tree failover by shutting down a forwarding link.
+!!!tip Linux host DHCP commands
+* `sudo dhclient -v eth1` - Requests DHCP lease + verbose output flag
+* `sudo dhclient -r eth1` - Release existing lease
+!!!
 
 ---
 
@@ -51,16 +54,17 @@ Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from 
 
 +++ Primary Goals
 - **Spanning Tree**
-    - Correct root bridge election per VLAN
-    - No Layer 2 loops, redundant links in blocking/alternate state
-- **Route Summarization**
-    - Routers advertise a single summary route for access VLANs into OSPF
+    - `sea-mdf-dsw1` is root bridge for VLAN 10,20
+    - `sea-mdf-dsw2` is root bridge for VLAN 30,99
+- **Routing**
+    - Routers are learning a single summary route for all four departments at Shrimp Co.
+    - All Loopbacks are reachable from hosts.
+    - You can curl http://seamart.com from a host that got DHCP
 - **DHCP**
-    - All VLANs receive DHCP leases from routers via relay
+    - All hosts receive a DHCP lease
 +++ Stretch Goals
-- Test DHCP failover by shutting down one router’s DHCP service
-- Observe STP convergence time after link failure
-- Capture and inspect a DHCP Discover and Offer exchange
+- Capture and inspect a DHCP Discover and Offer exchange in a tcpdump on an access switch | `tcpdump interface [ethernet X] filter udp`
+- Configure OSPF with neighbor authentication
 +++
 
 ---
@@ -70,14 +74,10 @@ Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from 
 +++ Switch Commands
 ```bash
 # Spanning-tree verification
-show spanning-tree
 show spanning-tree vlan 10
 show spanning-tree vlan 20
 show spanning-tree vlan 30
 show spanning-tree vlan 99
-
-# DHCP relay status
-show ip interface brief
 ```
 
 +++ Router Commands
@@ -95,13 +95,13 @@ show ip route ospf
 +++ Host Commands
 ```bash
 # IP and default gateway
-ip a
+ip route show
 
 # Gateway reachability
 ping <default_gateway>
 
 # Internet reachability test
-curl http://123.123.123.123
+curl http://seamart.com
 ```
 +++
 
@@ -109,11 +109,7 @@ curl http://123.123.123.123
 
 ### Questions to Explore
 * How does spanning-tree decide which ports go into a blocking state?  
-* What are the trade-offs between PVST+ and RSTP?  
-* Why is route summarization beneficial in large OSPF domains?  
-* How does DHCP relay know where to forward client requests?  
-* What happens to DHCP clients if both routers’ DHCP services fail?
-
+* What is the benefit of route-summarization?
 ---
 
 ==- Documentation

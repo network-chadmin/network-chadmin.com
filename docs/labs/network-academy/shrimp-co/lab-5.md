@@ -58,8 +58,8 @@ Configure VLAN databases, port-channels, trunk links, and SVIs as done in previo
   - NAT translation occurs correctly (seen via `show ip nat translations` or debug output)
   +++ Stretch Goals
 - **Extended ACL** 
-  - Configure ACL on `sea-mdf-r1 Eth0/1.10 that allows ICMP but not SSH to any destination.  Confirm by trying to SSH to Loopback0.
-- **Linux Host File Configuration
+  - Configure ACL on `sea-mdf-r1` Eth0/1.10 that allows ICMP but not SSH to any destination.  Confirm by trying to SSH to Loopback0.
+- **Linux Host File Configuration**
   - Find a way to add a local DNS entry to Bob's host file so he can ping seamart.com
 +++
 

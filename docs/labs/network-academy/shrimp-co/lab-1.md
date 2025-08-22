@@ -39,7 +39,6 @@ Create and configure the following VLANs:
 | Alice | 20 (Engineering) | 10.1.20.10/24 |
 
 !!!warning
-
 Hosts and devices in the diagram have **two** IP addresses shown. 172.25.20.X is a docker management subnet that's pre-configured and allows you SSH access, while the 10.X.X.X will be configured by you in the lab.
 !!!
 
