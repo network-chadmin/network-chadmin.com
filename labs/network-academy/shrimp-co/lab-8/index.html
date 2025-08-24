@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.809220808523">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.809369346253">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/welcome/network-chadmin_notext.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.809220808523" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.809369346253" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.809220808523" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.809369346253" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.809220808523" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.809220808523" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.809220808523" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.809369346253" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.809369346253" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.809369346253" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -290,21 +290,21 @@
         <span>Layer 2 Configuration</span>
     </h3>
 </doc-anchor-target>
-<p>Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from previous labs. Confirm Layer 2 reachability for the following VLANs:</p>
+<p>Ensure trunk links, VLAN databases, SVIs, port-channels are configured from previous labs. Confirm Layer 2 reachability for the following VLANs:</p>
 <ul>
 <li><strong>VLAN 10</strong> – Sales</li>
 <li><strong>VLAN 20</strong> – Engineering</li>
 <li><strong>VLAN 30</strong> – Marketing <em>(New)</em></li>
 <li><strong>VLAN 99</strong> – IT</li>
 </ul>
-<doc-anchor-target id="1-configure-spanning-tree-rstp-or-pvst">
+<doc-anchor-target id="1-configure-rapid-per-vlan-spanning-tree">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-configure-spanning-tree-rstp-or-pvst">#</doc-anchor-trigger>
-        <span>1. Configure Spanning Tree (RSTP or PVST+)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-configure-rapid-per-vlan-spanning-tree">#</doc-anchor-trigger>
+        <span>1. Configure Rapid Per-VLAN Spanning-Tree</span>
     </h3>
 </doc-anchor-target>
 <ul>
-<li>Enable <strong>RSTP</strong> or <strong>PVST+</strong> on all switches.</li>
+<li>Enable <strong>PVST+</strong> on all switches.</li>
 <li>Assign root bridge priorities so that:
 <ul>
 <li><code v-pre>sea-mdf-dsw1</code> is the root for VLANs 10 and 99</li>
@@ -320,6 +320,7 @@
     </h3>
 </doc-anchor-target>
 <ul>
+<li>Configure VRRP according to the diagram, load-balancing active gateways between <code v-pre>dsw1</code> and <code v-pre>dsw2</code> and implementing md5 authentication</li>
 <li>On <code v-pre>sea-mdf-dsw1</code> and <code v-pre>sea-mdf-dsw2</code>, use a single network statement to advertise a single summary route into OSPF.</li>
 <li>Ensure summary route is seen on <code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code></li>
 <li>Utilize <code v-pre>passive-interface default</code> under your OSPF process configuration and enable adjacencies on only on Eth5, Eth6, and VLAN 99.</li>
@@ -356,7 +357,6 @@
         </div>
     </div>
 </div>
-<hr>
 <doc-anchor-target id="success-criteria">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
@@ -392,10 +392,10 @@
 <ul>
 <li>Capture and inspect a DHCP Discover and Offer exchange in a tcpdump on an access switch | <code v-pre>tcpdump interface [ethernet X] filter udp</code></li>
 <li>Configure OSPF with neighbor authentication</li>
+<li>Exclude .1 through .9 from being handed out as DHCP addresses and set a lease time of one day.</li>
 </ul>
 </doc-tab>
 </doc-tabs>
-<hr>
 <doc-anchor-target id="verification-commands">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
@@ -407,23 +407,23 @@
 <template #title>Switch Commands</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># Spanning-tree verification
-show spanning-tree vlan 10
-show spanning-tree vlan 20
-show spanning-tree vlan 30
-show spanning-tree vlan 99</code></pre>
+show spanning-tree vlan [10]
+show spanning-tree [detail]
+show spanning-tree blockedports</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="router-commands">
 <template #title>Router Commands</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash"># OSPF route summary
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># OSPF 
 show ip ospf database summary
+show ip route ospf
+show ip ospf neighbor
+show ip ospf interface [Ethernet5]
 
 # DHCP bindings
 show ip dhcp binding
-
-# Routing table
-show ip route ospf</code></pre>
+</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="host-commands">
@@ -440,7 +440,6 @@ curl http://seamart.com</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
-<hr>
 <doc-anchor-target id="questions-to-explore">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#questions-to-explore">#</doc-anchor-trigger>
@@ -450,14 +449,16 @@ curl http://seamart.com</code></pre>
 <ul>
 <li>How does spanning-tree decide which ports go into a blocking state?</li>
 <li>What is the benefit of route-summarization?</li>
+<li>Why is it necessary for us to run OSPF in this environment over EIGRP?</li>
+<li>Are there other routing protocols that could also work?</li>
 </ul>
-<hr>
 <doc-panel id="documentation" collapsed>
     <template #title>Documentation</template>
 <ul>
 <li><a href="https://www.arista.com/en/um-eos/eos-l2-stp">EOS - Spanning Tree Configuration</a></li>
 <li><a href="https://www.arista.com/en/um-eos/eos-ip-addressing-and-hostname">EOS - DHCP Relay</a></li>
 <li><a href="https://www.arista.com/en/um-eos/eos-ip-routing">EOS - OSPF Summarization</a></li>
+<li><a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/xe-3se/3650/dhcp-xe-3se-3650-book/config-dhcp-server.pdf">IOS - DHCP Server Configuration</a></li>
 </ul>
 </doc-panel>
 

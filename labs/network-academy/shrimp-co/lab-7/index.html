@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.809220808523">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.809369346253">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/welcome/network-chadmin_notext.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.809220808523" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.809369346253" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.809220808523" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.809369346253" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.809220808523" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.809220808523" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.809220808523" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.809369346253" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.809369346253" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.809369346253" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -416,7 +416,6 @@ While OSPF operates the same under the hood, vendor syntax will differ. Referenc
 </ul>
 </doc-tab>
 </doc-tabs>
-<hr>
 <doc-anchor-target id="verification-commands">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verification-commands">#</doc-anchor-trigger>
@@ -424,31 +423,34 @@ While OSPF operates the same under the hood, vendor syntax will differ. Referenc
     </h3>
 </doc-anchor-target>
 <doc-tabs>
-<doc-tab v-cloak id="router-commands">
-<template #title>Router Commands</template>
+<doc-tab v-cloak id="router-commands-ios">
+<template #title>Router Commands (IOS)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># NAT translations
 show ip nat translations
 
-# OSPF neighbor relationships
+# OSPF
 show ip ospf neighbor
+show ip ospf interface [Ethernet0/1]
 
 # Default route in routing table
 show ip route</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="distribution-switch-commands">
-<template #title>Distribution Switch Commands</template>
+<doc-tab v-cloak id="distribution-switch-commands-eos">
+<template #title>Distribution Switch Commands (EOS)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># Verify VRRP
-show vrrp
+show vrrp [brief]
 
-# Check OSPF status
-show ip ospf interface brief</code></pre>
+# OSPF
+show ip ospf neighbor
+show ip ospf interface [Ethernet5]
+show ip ospf summary</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="host-commands">
-<template #title>Host Commands</template>
+<doc-tab v-cloak id="host-commands-linux">
+<template #title>Host Commands (Linux)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash"># Validate HTTP reachability
 curl http://123.123.123.123
