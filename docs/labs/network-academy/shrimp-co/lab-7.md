@@ -75,32 +75,33 @@ While OSPF operates the same under the hood, vendor syntax will differ. Referenc
     - Enable Linux hosts to resolve and curl seamart.com with either method you've learned so far.
 +++
 
----
-
 ### :icon-terminal: Verification Commands
 
-+++ Router Commands
++++ Router Commands (IOS)
 ```bash
 # NAT translations
 show ip nat translations
 
-# OSPF neighbor relationships
+# OSPF
 show ip ospf neighbor
+show ip ospf interface [Ethernet0/1]
 
 # Default route in routing table
 show ip route
 ```
 
-+++ Distribution Switch Commands
++++ Distribution Switch Commands (EOS)
 ```bash
 # Verify VRRP
-show vrrp
+show vrrp [brief]
 
-# Check OSPF status
-show ip ospf interface brief
+# OSPF
+show ip ospf neighbor
+show ip ospf interface [Ethernet5]
+show ip ospf summary
 ```
 
-+++ Host Commands
++++ Host Commands (Linux)
 ```bash
 # Validate HTTP reachability
 curl http://123.123.123.123

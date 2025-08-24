@@ -87,7 +87,7 @@ show interfaces status
 # Show MAC address table
 show mac address-table [address] [dynamic] 
 ```
-+++ Router Verification
++++ Router (IOS)
 ```bash
 # Show ARP table
 show ip arp
@@ -95,7 +95,7 @@ show ip arp
 # Show routing table
 show ip route
 ```
-+++ Host Verification
++++ Host (Linux)
 ```bash
 # Test reachability
 ping X.X.X.X # (ping 10.1.20.1)

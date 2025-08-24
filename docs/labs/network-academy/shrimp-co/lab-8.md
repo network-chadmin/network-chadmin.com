@@ -18,20 +18,21 @@ order: 930
 ## :icon-tasklist: Configuration Tasks
 
 ### Layer 2 Configuration
-Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from previous labs. Confirm Layer 2 reachability for the following VLANs:
+Ensure trunk links, VLAN databases, SVIs, port-channels are configured from previous labs. Confirm Layer 2 reachability for the following VLANs:
 - **VLAN 10** – Sales
 - **VLAN 20** – Engineering
 - **VLAN 30** – Marketing *(New)*
 - **VLAN 99** – IT
 
-### 1. Configure Spanning Tree (RSTP or PVST+)
-- Enable **RSTP** or **PVST+** on all switches.
+### 1. Configure Rapid Per-VLAN Spanning-Tree
+- Enable **PVST+** on all switches.
 - Assign root bridge priorities so that:
   - `sea-mdf-dsw1` is the root for VLANs 10 and 99
   - `sea-mdf-dsw2` is the root for VLANs 20 and 30
 - Verify root bridge election and port roles using the appropriate show commands.
 
 ### 2. Configure Distribution Switches
+- Configure VRRP according to the diagram, load-balancing active gateways between `dsw1` and `dsw2` and implementing md5 authentication
 - On `sea-mdf-dsw1` and `sea-mdf-dsw2`, use a single network statement to advertise a single summary route into OSPF.
 - Ensure summary route is seen on `sea-mdf-r1` and `sea-mdf-r2`
 - Utilize `passive-interface default` under your OSPF process configuration and enable adjacencies on only on Eth5, Eth6, and VLAN 99.
@@ -48,8 +49,6 @@ Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from 
 * `sudo dhclient -r eth1` - Release existing lease
 !!!
 
----
-
 ## :icon-check-circle: Success Criteria
 
 +++ Primary Goals
@@ -65,31 +64,30 @@ Ensure trunk links, VLAN databases, SVIs, and port-channels are configured from 
 +++ Stretch Goals
 - Capture and inspect a DHCP Discover and Offer exchange in a tcpdump on an access switch | `tcpdump interface [ethernet X] filter udp`
 - Configure OSPF with neighbor authentication
+- Exclude .1 through .9 from being handed out as DHCP addresses and set a lease time of one day.
 +++
-
----
 
 ## :icon-terminal: Verification Commands
 
 +++ Switch Commands
 ```bash
 # Spanning-tree verification
-show spanning-tree vlan 10
-show spanning-tree vlan 20
-show spanning-tree vlan 30
-show spanning-tree vlan 99
+show spanning-tree vlan [10]
+show spanning-tree [detail]
+show spanning-tree blockedports
 ```
 
 +++ Router Commands
 ```bash
-# OSPF route summary
+# OSPF 
 show ip ospf database summary
+show ip route ospf
+show ip ospf neighbor
+show ip ospf interface [Ethernet5]
 
 # DHCP bindings
 show ip dhcp binding
 
-# Routing table
-show ip route ospf
 ```
 
 +++ Host Commands
@@ -105,15 +103,15 @@ curl http://seamart.com
 ```
 +++
 
----
-
 ### Questions to Explore
 * How does spanning-tree decide which ports go into a blocking state?  
 * What is the benefit of route-summarization?
----
+* Why is it necessary for us to run OSPF in this environment over EIGRP?
+* Are there other routing protocols that could also work?
 
 ==- Documentation
 * [EOS - Spanning Tree Configuration](https://www.arista.com/en/um-eos/eos-l2-stp)
 * [EOS - DHCP Relay](https://www.arista.com/en/um-eos/eos-ip-addressing-and-hostname)
 * [EOS - OSPF Summarization](https://www.arista.com/en/um-eos/eos-ip-routing)
+* [IOS - DHCP Server Configuration](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/xe-3se/3650/dhcp-xe-3se-3650-book/config-dhcp-server.pdf)
 ===

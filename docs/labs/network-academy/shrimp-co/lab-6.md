@@ -63,7 +63,7 @@ When I ran through this lab myself I struggled to get dynamic NAT working as int
 
 ### \:icon-terminal: Verification Commands
 
-+++ Router Commands
++++ Router (IOS)
 
 ```bash
 # NAT translations
@@ -79,7 +79,7 @@ show ip route
 show run interface Ethernet2
 ```
 
-+++ Distribution Switch Commands
++++ Distribution Switch (EOS)
 
 ```bash
 # Routing table
@@ -92,7 +92,7 @@ show ip interface brief
 show running-config | include route
 ```
 
-+++ Host Commands
++++ Host (Linux)
 
 ```bash
 # Web test

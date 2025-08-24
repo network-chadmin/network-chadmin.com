@@ -65,7 +65,7 @@ Configure VLAN databases, port-channels, trunk links, and SVIs as done in previo
 
 ### :icon-terminal: Verification Commands
 
-+++ Router Verification
++++ Router (IOS)
 
 ```bash
 # Check NAT table
@@ -82,7 +82,7 @@ ping 123.123.123.123
 show ip route
 ```
 
-+++ Host Verification
++++ Host (Linux)
 
 ```bash
 # Check connectivity

@@ -95,7 +95,7 @@ After configuring HSRP:
 
 ### :icon-terminal: Verification Commands
 
-+++ Switch Verification
++++ Switch (EOS)
 ```bash
 # Show VLAN and trunk status
 show vlan brief
@@ -106,7 +106,7 @@ show interfaces status
 show port-channel dense
 show interfaces Port-Channel1
 ```
-+++ Router Verification
++++ Router (IOS)
 ```bash
 # Show HSRP status for all interfaces
 show standby [brief]
