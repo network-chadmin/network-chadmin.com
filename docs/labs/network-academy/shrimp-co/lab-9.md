@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 920
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -129,6 +129,8 @@ dig seamart.com
 ```
 
 +++
+
+### :icon-question: Questions to Explore
 
 ==- Documentation
 [EOS MLAG Configuration](https://www.arista.com/en/um-eos/eos-mlag)

@@ -1,6 +1,6 @@
 ---
 title: Shrimp Co.
-icon:
+icon: dot
 order: 1000
 ---
 ![An exploration in networking, from basic L2 to dynamic L3 & tunneling](/static/network-academy/shrimpco/banner.png)

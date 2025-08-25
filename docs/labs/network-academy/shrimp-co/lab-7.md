@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 940
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -114,7 +114,7 @@ nslookup seamart.com
 ```
 +++
 
-### Questions to Explore
+### :icon-question: Questions to Explore
 * When designing a network, why might you choose VRRP instead of HSRP?  
 * From your OSPF Hello packet capture, what information can you extract about neighbors and timers?  
 * Why is your OSPF learned default route on the distribution swiches labeled differently than the others? 

@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 950
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -61,7 +61,7 @@ When I ran through this lab myself I struggled to get dynamic NAT working as int
     - Verify the gateway of last resort changes on `sea-mdf-dsw1` after issuing `shutdown` on Eth0/1 on `sea-mdf-r1`.
 +++
 
-### \:icon-terminal: Verification Commands
+### :icon-terminal: Verification Commands
 
 +++ Router (IOS)
 
@@ -105,7 +105,7 @@ nslookup seamart.com
 traceroute 123.123.123.123
 ```
 +++ 
-### Questions to explore
+### :icon-question: Questions to explore
 - How does the router know which inside addresses to translate when using dynamic NAT with a pool?
 - If you add a new VLAN to the network, what changes are required to allow internet access?
 - Why is default route through R1 preferred over R2?

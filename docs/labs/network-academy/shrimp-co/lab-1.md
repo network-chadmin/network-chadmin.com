@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 1000
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -94,7 +94,7 @@ Confused about syntax?  Hitting `?` will show you all the available options for 
 - **Broadcast Control**: Reduces broadcast domain size
 - **Organization**: Logical grouping of devices
 
-#### Questions to Explore
+#### :icon-question: Questions to Explore
 - What happens when you send a broadcast in VLAN 10?
 - How does the switch learn where each host is located?
 - Why does interface VLAN 99 say **down**/**lowerlayerdown** in the output of `show interfaces status`?

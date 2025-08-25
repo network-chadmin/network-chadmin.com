@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 990
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -57,7 +57,7 @@ Create and configure the following VLANs on **both switches**:
 - Configure access-list `DENY_ICMP` and apply it so you cannot ping between VLAN 99 SVIs, but you can SSH
 +++
 
-### Verification Commands
+### :icon-terminal: Verification Commands
 
 ```bash eos
 # Show VLAN configuration
@@ -75,7 +75,7 @@ show mac address-table [dynamic]
 
 ---
 
-### Questions to Explore
+### :icon-question: Questions to Explore
 - Why do we need trunks? What problem do they solve?
 - Why do we specify the VLANs on a trunk instead of allowing all?
 - Run `show spanning-tree vlan 10` before and after you remove it from the trunk on one side, what changes?

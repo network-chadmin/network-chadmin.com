@@ -1,5 +1,5 @@
 ---
 title: SeaMart
-icon:
+icon: dot
 order: 1
 ---

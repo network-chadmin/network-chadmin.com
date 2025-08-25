@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 930
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -103,7 +103,7 @@ curl http://seamart.com
 ```
 +++
 
-### Questions to Explore
+### :icon-question: Questions to Explore
 * How does spanning-tree decide which ports go into a blocking state?  
 * What is the benefit of route-summarization?
 * Why is it necessary for us to run OSPF in this environment over EIGRP?

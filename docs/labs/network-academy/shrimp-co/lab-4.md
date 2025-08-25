@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 970
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -119,7 +119,7 @@ show ip arp
 show ip route
 ```
 
-#### Questions to Explore
+#### :icon-question: Questions to Explore
 - Steve can ping 10.255.1.1 (Loopback0 on `sea-mdf-r1`), but not 10.255.1.2.  Why?
     - What configuration changes are needed for both pings to succeed?
 - If the gateway IP address stays the same, how do your host's traffic arrive at the active interface?

@@ -1,5 +1,5 @@
 ---
-icon:
+icon: dash
 order: 980
 ---
 ![](/static/network-academy/shrimpco/banner.png)
@@ -71,7 +71,7 @@ While traditionally "router-on-a-stick" refers to a single physical interface ca
 - Look for the mac-addresses in the L2 header in your tcpdump and find on what interfaces the switch learned them.  Then, on each device find a command that will output that interface's mac address to your terminal.
 +++
 
-### Verification Commands
+### :icon-terminal: Verification Commands
 +++ Switch Verification
 ```bash
 
@@ -111,7 +111,7 @@ ip route show
 
 ---
 
-### Questions to Explore
+### :icon-question: Questions to Explore
 - Why does router-on-a-stick use sub-interfaces instead of separate physical connections?
 - What kind of routes are each subnet in the routing table?
 - What happens to the VLAN tags when traffic reaches the router sub-interface?

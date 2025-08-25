@@ -1,6 +1,6 @@
 ---
 title: Lab 5 - NAT & Internet
-icon:
+icon: dash
 order: 960
 ---
 
