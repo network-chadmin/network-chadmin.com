@@ -15,17 +15,23 @@ order: 920
 </p>
 ===
 
-## :icon-tasklist: Configuration Tasks
+### :icon-tasklist: Configuration Tasks
 
-### 1. Configure OSPF Areas
+#### 1. Access Layer Configuration:
 
-* Use the following area assignments:
+- **Host access ports**
+  - Configure according to diagram
+  - Add descriptions
+- **Management SVIs**
+  - Configure VLAN 99 SVIs according to diagram  
+- **VLANs, Trunks & Port-channels**
+  - Ensure VLAN databases are matching and VLANs are allowed across all links
 
-  * Area 0: Core (SEA MDF routers and DSWs)
-  * Area 1: Milwaukee site
-  * Area 2: Minneapolis site
+#### 2. Distribution Layer Configuration:
 
-Include the loopbacks and GRE tunnel interfaces in the appropriate areas.
+- **Gateway Redundancy**
+  - Configure VARP per diagram
+  - 
 
 ```bash
 router ospf 1

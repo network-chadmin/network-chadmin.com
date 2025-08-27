@@ -27,7 +27,7 @@ Ensure trunk links, VLAN databases, SVIs, and port-channels are configured acros
   - **VLAN 10**: `10.1.10.1/24`
   - **VLAN 20**: `10.1.20.1/24`
   - **VLAN 99**: `10.1.99.1/24`
-- Configure **Eth0/3** & **Eth1/0** as routed interfaces according to the diagram.
+- Configure **Eth3** & **Eth4** as routed interfaces according to the diagram.
 - Configure a default route that uses `sea-mdf-r1` Eth0/1 as a next-hop.
 - Configure a secondary default route that uses `sea-mdf-r2` Eth0/1 as a next-hop with an administrative distance of 10.
 
