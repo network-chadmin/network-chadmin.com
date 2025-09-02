@@ -15,9 +15,9 @@ order: 920
 </p>
 ===
 
-### :icon-tasklist: Configuration Tasks
+## :icon-tasklist: Configuration Tasks
 
-#### 1. Access Layer Configuration:
+### 1. Access Layer Configuration:
 
 - **Host access ports**
   - Configure according to diagram
@@ -27,86 +27,64 @@ order: 920
 - **VLANs, Trunks & Port-channels**
   - Ensure VLAN databases are matching and VLANs are allowed across all links
 
-#### 2. Distribution Layer Configuration:
+### 2. Distribution Layer Configuration:
 
-- **Gateway Redundancy**
-  - Configure VARP per diagram
-  - 
+- **Routed Ports & Loopback0**
+  - Configure routed ports and Loopback0 according to diagram
+- **VLANs, Trunks & Port-channels**
+  - Ensure VLAN databases are matching and VLANs are allowed across all links
+- **VRRP Configuration**
+  - Configure VIPs according to diagram
+  - Load balance active gateways using priority
+  - Implement MD5 authentication
+- **OSPF**
+  - Configure OSPF process 1 with passive-interface default
+  - Advertise all host subnets with a single summary network statement
+  - Advertise Loopback0
+  - Form adjacencies on Eth5-6 in Area 0
+  - Utilize MD5 neighbor authentication
 
-```bash
-router ospf 1
- network 10.255.1.0 0.0.0.255 area 0.0.0.0
- network 172.20.25.0 0.0.0.255 area 0.0.0.0
- network 172.16.0.0 0.0.255.255 area 1
- network 172.18.0.0 0.0.255.255 area 2
-```
+### 3. Router Configuration:
 
-### 2. Configure GRE Tunnels
+- **Routed Ports & Loopback0**
+  - Configure routed ports, Loopback0, and Tunnel0 according to diagram
+- **OSPF**
+  - Configure OSPF process 1 with passive-interface default
+  - Form adjacencies on Eth0/1-2 in Area 0
+  - Form adjacency on Tunnel0 in Area 1 on `sea-mdf-r1`
+  - Form adjacency on Tunnel0 in Area 2 on `sea-mdf-r1`
+  - Originate a default route
+  - Advertise Loopback0
+- **BGP**
+  - Peer BGP using a neighbor statement targeting your public next-hop
+- **NAT**
+  - Allow internet access for only host subnets by configuring NAT overload
+- **DHCP**
+ - Configure DHCP Pools on both routers for all host subnets so that routers cannot provide overlapping IP addresses
 
-* Create point-to-point GRE tunnels over the public internet (using `Eth3` on MDF routers)
-* Terminate tunnels between `sea-mdf-r1` ⇆ `mke-at-r1` and `sea-mdf-r2` ⇆ `msp-at-r1`
-* Assign tunnel IPs from `192.168.100.0/30`
-* Tunnel interfaces should be included in OSPF
+### 4. Remote Site Configuration:
 
-```bash
-interface Tunnel1
- ip address 192.168.100.1 255.255.255.252
- tunnel source Ethernet3
- tunnel destination [Remote IP]
-```
-
-Repeat on each router with appropriate local/remote IPs.
-
-### 3. Summarize OSPF Routes
-
-Configure route summarization on ABRs (`sea-mdf-r1` and `sea-mdf-r2`) to reduce OSPF LSAs:
-
-```bash
-router ospf 1
- area 1 range 10.2.0.0 255.255.0.0
- area 2 range 10.3.0.0 255.255.0.0
-```
-
-### 4. Configure MLAG for Access Layer
-
-* Implement MLAG between `sea-mdf-dsw1` and `dsw2`
-* Create `Port-Channel1` for MLAG peer link, and `Port-Channel10` for downstream access switches
-* Use consistent LACP and VLAN settings
-* MLAG ID: 10
-
-```bash
-interface Port-Channel1
- description MLAG Peer Link
- switchport
- switchport mode trunk
- mlag peer-link
-
-interface Ethernet3
- channel-group 1 mode active
-```
-
-```bash
-mlag configuration
- domain-id shrimp-co
- local-interface Vlan4094
- peer-address 10.1.1.2
- peer-link Port-Channel1
-```
-
-Configure corresponding access switches with `Port-Channel10` to both DSWs.
+- **Switch**
+  - Ensure VLAN 10 is stretched up to router subinterface
+- **Router**
+  - Configure router subinterface and Loopback0 according to diagram
+  - Configure static default route to public next-hop
+  - Configure OSPF process 1 with passive-interface default
+  - Form adjacency on Tunnel0 in Area 1 on `sea-mdf-r1`
+  - Form adjacency on Tunnel0 in Area 2 on `sea-mdf-r1`
+  - Configure static NAT for local host for internet reachability
 
 ## :icon-check-circle: Success Criteria
 
 +++ Primary Goals
 
-* OSPF adjacencies established within and between areas
-* Remote sites reachable via GRE tunnels
-* MLAG operational between DSWs and access
+- Hosts at HQ have ping reachability to remote sites
+- Hosts at HQ can curl http://seamart.com
+- Pings to the internet fail for Loopbacks but not hosts
 +++ Stretch Goals
-* Introduce BFD on GRE tunnel interfaces
-* Simulate OSPF area failure and observe convergence
-* Use `show mlag` and `show ip ospf database` for deep verification
-* Test routing table summarization effectiveness
+- Encrypt WAN traffic on your GRE tunnels using IPsec tunnel protection
+- Configure Area 1 and Area 2 as totally stub areas
+- Configure a route-map that matches a prefix-list inbound to your BGP peers which allows you to learn ONLY the default route
 +++
 
 ## :icon-terminal: Verification Commands
@@ -116,30 +94,25 @@ Configure corresponding access switches with `Port-Channel10` to both DSWs.
 ```bash
 show ip ospf neighbor
 show ip route ospf
-show interfaces tunnel1
+show interfaces tunnel0
 ```
 
-+++ MLAG
++++ BGP
 
 ```bash
-show mlag
-show mlag interfaces
+show ip bgp summary
+show ip bgp
 ```
-
-+++ End-to-End
-
-```bash
-ping 172.16.25.67
-traceroute 172.18.25.100
-dig seamart.com
-```
-
 +++
 
 ### :icon-question: Questions to Explore
 
+
 ==- Documentation
-[EOS MLAG Configuration](https://www.arista.com/en/um-eos/eos-mlag)
+
+[Cisco Press - BGP Fundamentals](https://www.ciscopress.com/articles/article.asp?p=2756480&seqNum=5)
+[IP Routing: OSPF Configuration Guide](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html)
 [EOS OSPF Guide](https://www.arista.com/en/um-eos/eos-ip-routing)
-[GRE Tunneling](https://www.arista.com/en/um-eos/eos-tunnel-interfaces)
+[How to configure GRE Tunnel in CISCO Router](https://ipwithease.com/how-to-configure-gre-tunnel-in-cisco-router/)
+[How to configure GRE over IPSec in Cisco IOS and Cisco IOS-XE devices](https://gulian.uk/how-to-configure-gre-over-ipsec-in-cisco-ios-and-cisco-ios-xe-devices/)
 ===
