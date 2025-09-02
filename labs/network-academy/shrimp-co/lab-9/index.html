@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.809570017255">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.810150897400">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/welcome/network-chadmin_notext.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.809570017255" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.810150897400" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.809570017255" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.810150897400" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.809570017255" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.809570017255" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.809570017255" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.810150897400" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.810150897400" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.810150897400" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -279,16 +279,16 @@
 </p>
 </doc-panel>
 <doc-anchor-target id="configuration-tasks">
-    <h3>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-tasks">#</doc-anchor-trigger>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm1.5 4.5h4v-4h-4Zm8.25-5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0Z"/></g></g></svg> Configuration Tasks</span>
-    </h3>
+    </h2>
 </doc-anchor-target>
 <doc-anchor-target id="1-access-layer-configuration">
-    <h4>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#1-access-layer-configuration">#</doc-anchor-trigger>
         <span>1. Access Layer Configuration:</span>
-    </h4>
+    </h3>
 </doc-anchor-target>
 <ul>
 <li><strong>Host access ports</strong>
@@ -309,87 +309,97 @@
 </li>
 </ul>
 <doc-anchor-target id="2-distribution-layer-configuration">
-    <h4>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#2-distribution-layer-configuration">#</doc-anchor-trigger>
         <span>2. Distribution Layer Configuration:</span>
-    </h4>
+    </h3>
 </doc-anchor-target>
 <ul>
-<li><strong>Gateway Redundancy</strong>
+<li><strong>Routed Ports &amp; Loopback0</strong>
 <ul>
-<li>Configure VARP per diagram</li>
-<li></li>
+<li>Configure routed ports and Loopback0 according to diagram</li>
+</ul>
+</li>
+<li><strong>VLANs, Trunks &amp; Port-channels</strong>
+<ul>
+<li>Ensure VLAN databases are matching and VLANs are allowed across all links</li>
+</ul>
+</li>
+<li><strong>VRRP Configuration</strong>
+<ul>
+<li>Configure VIPs according to diagram</li>
+<li>Load balance active gateways using priority</li>
+<li>Implement MD5 authentication</li>
+</ul>
+</li>
+<li><strong>OSPF</strong>
+<ul>
+<li>Configure OSPF process 1 with passive-interface default</li>
+<li>Advertise all host subnets with a single summary network statement</li>
+<li>Advertise Loopback0</li>
+<li>Form adjacencies on Eth5-6 in Area 0</li>
+<li>Utilize MD5 neighbor authentication</li>
 </ul>
 </li>
 </ul>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">router ospf 1
- network 10.255.1.0 0.0.0.255 area 0.0.0.0
- network 172.20.25.0 0.0.0.255 area 0.0.0.0
- network 172.16.0.0 0.0.255.255 area 1
- network 172.18.0.0 0.0.255.255 area 2</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="2-configure-gre-tunnels">
+<doc-anchor-target id="3-router-configuration">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-configure-gre-tunnels">#</doc-anchor-trigger>
-        <span>2. Configure GRE Tunnels</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-router-configuration">#</doc-anchor-trigger>
+        <span>3. Router Configuration:</span>
     </h3>
 </doc-anchor-target>
 <ul>
-<li>Create point-to-point GRE tunnels over the public internet (using <code v-pre>Eth3</code> on MDF routers)</li>
-<li>Terminate tunnels between <code v-pre>sea-mdf-r1</code> ⇆ <code v-pre>mke-at-r1</code> and <code v-pre>sea-mdf-r2</code> ⇆ <code v-pre>msp-at-r1</code></li>
-<li>Assign tunnel IPs from <code v-pre>192.168.100.0/30</code></li>
-<li>Tunnel interfaces should be included in OSPF</li>
+<li><strong>Routed Ports &amp; Loopback0</strong>
+<ul>
+<li>Configure routed ports, Loopback0, and Tunnel0 according to diagram</li>
 </ul>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">interface Tunnel1
- ip address 192.168.100.1 255.255.255.252
- tunnel source Ethernet3
- tunnel destination [Remote IP]</code></pre>
-</doc-codeblock></div>
-<p>Repeat on each router with appropriate local/remote IPs.</p>
-<doc-anchor-target id="3-summarize-ospf-routes">
+</li>
+<li><strong>OSPF</strong>
+<ul>
+<li>Configure OSPF process 1 with passive-interface default</li>
+<li>Form adjacencies on Eth0/1-2 in Area 0</li>
+<li>Form adjacency on Tunnel0 in Area 1 on <code v-pre>sea-mdf-r1</code></li>
+<li>Form adjacency on Tunnel0 in Area 2 on <code v-pre>sea-mdf-r1</code></li>
+<li>Originate a default route</li>
+<li>Advertise Loopback0</li>
+</ul>
+</li>
+<li><strong>BGP</strong>
+<ul>
+<li>Peer BGP using a neighbor statement targeting your public next-hop</li>
+</ul>
+</li>
+<li><strong>NAT</strong>
+<ul>
+<li>Allow internet access for only host subnets by configuring NAT overload</li>
+</ul>
+</li>
+<li><strong>DHCP</strong></li>
+<li>Configure DHCP Pools on both routers for all host subnets so that routers cannot provide overlapping IP addresses</li>
+</ul>
+<doc-anchor-target id="4-remote-site-configuration">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-summarize-ospf-routes">#</doc-anchor-trigger>
-        <span>3. Summarize OSPF Routes</span>
-    </h3>
-</doc-anchor-target>
-<p>Configure route summarization on ABRs (<code v-pre>sea-mdf-r1</code> and <code v-pre>sea-mdf-r2</code>) to reduce OSPF LSAs:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">router ospf 1
- area 1 range 10.2.0.0 255.255.0.0
- area 2 range 10.3.0.0 255.255.0.0</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="4-configure-mlag-for-access-layer">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#4-configure-mlag-for-access-layer">#</doc-anchor-trigger>
-        <span>4. Configure MLAG for Access Layer</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-remote-site-configuration">#</doc-anchor-trigger>
+        <span>4. Remote Site Configuration:</span>
     </h3>
 </doc-anchor-target>
 <ul>
-<li>Implement MLAG between <code v-pre>sea-mdf-dsw1</code> and <code v-pre>dsw2</code></li>
-<li>Create <code v-pre>Port-Channel1</code> for MLAG peer link, and <code v-pre>Port-Channel10</code> for downstream access switches</li>
-<li>Use consistent LACP and VLAN settings</li>
-<li>MLAG ID: 10</li>
+<li><strong>Switch</strong>
+<ul>
+<li>Ensure VLAN 10 is stretched up to router subinterface</li>
 </ul>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">interface Port-Channel1
- description MLAG Peer Link
- switchport
- switchport mode trunk
- mlag peer-link
-
-interface Ethernet3
- channel-group 1 mode active</code></pre>
-</doc-codeblock></div>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">mlag configuration
- domain-id shrimp-co
- local-interface Vlan4094
- peer-address 10.1.1.2
- peer-link Port-Channel1</code></pre>
-</doc-codeblock></div>
-<p>Configure corresponding access switches with <code v-pre>Port-Channel10</code> to both DSWs.</p>
+</li>
+<li><strong>Router</strong>
+<ul>
+<li>Configure router subinterface and Loopback0 according to diagram</li>
+<li>Configure static default route to public next-hop</li>
+<li>Configure OSPF process 1 with passive-interface default</li>
+<li>Form adjacency on Tunnel0 in Area 1 on <code v-pre>sea-mdf-r1</code></li>
+<li>Form adjacency on Tunnel0 in Area 2 on <code v-pre>sea-mdf-r1</code></li>
+<li>Configure static NAT for local host for internet reachability</li>
+</ul>
+</li>
+</ul>
 <doc-anchor-target id="success-criteria">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#success-criteria">#</doc-anchor-trigger>
@@ -400,18 +410,17 @@ interface Ethernet3
 <doc-tab v-cloak id="primary-goals">
 <template #title>Primary Goals</template>
 <ul>
-<li>OSPF adjacencies established within and between areas</li>
-<li>Remote sites reachable via GRE tunnels</li>
-<li>MLAG operational between DSWs and access</li>
+<li>Hosts at HQ have ping reachability to remote sites</li>
+<li>Hosts at HQ can curl <a href="http://seamart.com">http://seamart.com</a></li>
+<li>Pings to the internet fail for Loopbacks but not hosts</li>
 </ul>
 </doc-tab>
 <doc-tab v-cloak id="stretch-goals">
 <template #title>Stretch Goals</template>
 <ul>
-<li>Introduce BFD on GRE tunnel interfaces</li>
-<li>Simulate OSPF area failure and observe convergence</li>
-<li>Use <code v-pre>show mlag</code> and <code v-pre>show ip ospf database</code> for deep verification</li>
-<li>Test routing table summarization effectiveness</li>
+<li>Encrypt WAN traffic on your GRE tunnels using IPsec tunnel protection</li>
+<li>Configure Area 1 and Area 2 as totally stub areas</li>
+<li>Configure a route-map that matches a prefix-list inbound to your BGP peers which allows you to learn ONLY the default route</li>
 </ul>
 </doc-tab>
 </doc-tabs>
@@ -427,22 +436,14 @@ interface Ethernet3
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">show ip ospf neighbor
 show ip route ospf
-show interfaces tunnel1</code></pre>
+show interfaces tunnel0</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="mlag">
-<template #title>MLAG</template>
+<doc-tab v-cloak id="bgp">
+<template #title>BGP</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">show mlag
-show mlag interfaces</code></pre>
-</doc-codeblock></div>
-</doc-tab>
-<doc-tab v-cloak id="end-to-end">
-<template #title>End-to-End</template>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">ping 172.16.25.67
-traceroute 172.18.25.100
-dig seamart.com</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">show ip bgp summary
+show ip bgp</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
@@ -454,9 +455,11 @@ dig seamart.com</code></pre>
 </doc-anchor-target>
 <doc-panel id="documentation" collapsed>
     <template #title>Documentation</template>
-<p><a href="https://www.arista.com/en/um-eos/eos-mlag">EOS MLAG Configuration</a>
+<p><a href="https://www.ciscopress.com/articles/article.asp?p=2756480&amp;seqNum=5">Cisco Press - BGP Fundamentals</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html">IP Routing: OSPF Configuration Guide</a>
 <a href="https://www.arista.com/en/um-eos/eos-ip-routing">EOS OSPF Guide</a>
-<a href="https://www.arista.com/en/um-eos/eos-tunnel-interfaces">GRE Tunneling</a></p>
+<a href="https://ipwithease.com/how-to-configure-gre-tunnel-in-cisco-router/">How to configure GRE Tunnel in CISCO Router</a>
+<a href="https://gulian.uk/how-to-configure-gre-over-ipsec-in-cisco-ios-and-cisco-ios-xe-devices/">How to configure GRE over IPSec in Cisco IOS and Cisco IOS-XE devices</a></p>
 </doc-panel>
 
                                 
