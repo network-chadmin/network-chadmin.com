@@ -48,8 +48,8 @@ search:
 
 theme:
   base:
-    base-color: "#5a998f"            # teal from your mark (drives links, accents)
-    base-text:  "#425457"            # your dark gray text
+    base-color: "#5a998f"
+    base-text:  "#425457"
     heading-text: "#425457"
   dark:
     base-color: "#5a998f"

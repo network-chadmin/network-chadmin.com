@@ -9,17 +9,17 @@ description: A hands-on networking lab journal and knowledge base built for aspi
 
 ## About Me
 
-> My name is Chad and I'm an Enterprise Network Engineer for Sub-Zero, Wolf, & Cove.  
+> My name is Chad and I'm a Network Consulting Engineer at Deloitte.  
 > Born and raised in the Twin Cities, I’ve been based in Scottsdale, AZ since late 2023.  
 > I have a CCNP: Enterprise with a concentration in Advanced Routing and Services (ENARSI).  
 > When I'm not working or in my lab, you can find me hiking, traveling, or out by the pool.
 
-![](https://raw.githubusercontent.com/network-chadmin/network-chadmin.github.io/refs/heads/main/static/ccnp-badge.jpg)
+![](/static/welcome/CCNP_Enterprise_med.jpg)
 
 !!!warning Work in Progress
 This site is still under active development — many labs are incomplete or evolving.
 Cloning my GitHub right now won’t give you the full experience.  
-Check back soon for the finished version of my first lab series: **[Shrimp Co.](** 🦐
+Check back soon for the finished version of my first lab series: **Shrimp Co.** 🦐
 !!!
 
 ## What You'll Find Here
