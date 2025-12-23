@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.819818197604">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.819843424374">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,13 +33,13 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link href="../../../../static/welcome/network-chadmin_notext.png" rel="icon">
-    <link href="../../../../resources/css/retype.css?v=3.11.0.819818197604" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.819843424374" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.819818197604" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.819843424374" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.819818197604" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.819818197604" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.819818197604" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/search.js?v=3.11.0.819843424374" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.819843424374" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.819843424374" defer></script>
 
     <style>
         /* Base styles if needed */
@@ -290,23 +290,12 @@
         <span>1. Access Layer Configuration:</span>
     </h3>
 </doc-anchor-target>
+<p>Ensure access ports, trunks, VLAN databases, and port-channels are configured to span Layer 2 domain across all access and distribution switches.</p>
 <ul>
-<li><strong>Host access ports</strong>
-<ul>
-<li>Configure according to diagram</li>
-<li>Add descriptions</li>
-</ul>
-</li>
-<li><strong>Management SVIs</strong>
-<ul>
-<li>Configure VLAN 99 SVIs according to diagram</li>
-</ul>
-</li>
-<li><strong>VLANs, Trunks &amp; Port-channels</strong>
-<ul>
-<li>Ensure VLAN databases are matching and VLANs are allowed across all links</li>
-</ul>
-</li>
+<li><strong>VLAN 10</strong> – Sales</li>
+<li><strong>VLAN 20</strong> – Engineering</li>
+<li><strong>VLAN 30</strong> – Marketing</li>
+<li><strong>VLAN 99</strong> – IT</li>
 </ul>
 <doc-anchor-target id="2-distribution-layer-configuration">
     <h3>
@@ -328,14 +317,14 @@
 <li><strong>VRRP Configuration</strong>
 <ul>
 <li>Configure VIPs according to diagram</li>
-<li>Load balance active gateways using priority</li>
+<li>Load balance active gateways using priority.  <code v-pre>sea-mdf-dsw1</code> should be active for VLANs 10 and 20, <code v-pre>sea-mdf-dsw2</code> should be the active gateway for VLANs 30 and 99.</li>
 <li>Implement MD5 authentication</li>
 </ul>
 </li>
 <li><strong>OSPF</strong>
 <ul>
 <li>Configure OSPF process 1 with passive-interface default</li>
-<li>Advertise all host subnets with a single summary network statement</li>
+<li>Advertise all host subnets with a single summary network statement.</li>
 <li>Advertise Loopback0</li>
 <li>Form adjacencies on Eth5-6 in Area 0</li>
 <li>Utilize MD5 neighbor authentication</li>
@@ -358,24 +347,29 @@
 <ul>
 <li>Configure OSPF process 1 with passive-interface default</li>
 <li>Form adjacencies on Eth0/1-2 in Area 0</li>
-<li>Form adjacency on Tunnel0 in Area 1 on <code v-pre>sea-mdf-r1</code></li>
-<li>Form adjacency on Tunnel0 in Area 2 on <code v-pre>sea-mdf-r1</code></li>
-<li>Originate a default route</li>
+<li>Form adjacency on Tunnel0 in Area 1 on <code v-pre>sea-mdf-r1</code> (Requires remote site configuration)</li>
+<li>Form adjacency on Tunnel0 in Area 2 on <code v-pre>sea-mdf-r1</code> (Requires remote site configuration)</li>
+<li>Originate the default route you receive from your BGP peer</li>
 <li>Advertise Loopback0</li>
 </ul>
 </li>
 <li><strong>BGP</strong>
 <ul>
-<li>Peer BGP using a neighbor statement targeting your public next-hop</li>
+<li>Configure BGP peering, refer to ISP provided documentation for details.
+<figure class="content-center">
+    <img src="../../../../static/network-academy/shrimpco/lab-9/customer-bgp.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</li>
 </ul>
 </li>
 <li><strong>NAT</strong>
 <ul>
-<li>Allow internet access for only host subnets by configuring NAT overload</li>
+<li>Configure PAT on both routers, only matching host host subnet traffic.</li>
 </ul>
 </li>
 <li><strong>DHCP</strong></li>
-<li>Configure DHCP Pools on both routers for all host subnets so that routers cannot provide overlapping IP addresses</li>
+<li>Configure DHCP Pools on both routers for all host subnets so that routers cannot provide overlapping IP addresses.</li>
 </ul>
 <doc-anchor-target id="4-remote-site-configuration">
     <h3>
@@ -386,7 +380,7 @@
 <ul>
 <li><strong>Switch</strong>
 <ul>
-<li>Ensure VLAN 10 is stretched up to router subinterface</li>
+<li>Ensure VLAN 10 can reach it&#x27;s gateway interface on the local router.</li>
 </ul>
 </li>
 <li><strong>Router</strong>
@@ -396,7 +390,7 @@
 <li>Configure OSPF process 1 with passive-interface default</li>
 <li>Form adjacency on Tunnel0 in Area 1 on <code v-pre>sea-mdf-r1</code></li>
 <li>Form adjacency on Tunnel0 in Area 2 on <code v-pre>sea-mdf-r1</code></li>
-<li>Configure static NAT for local host for internet reachability</li>
+<li>Configure static NAT or PAT for local internet egress.</li>
 </ul>
 </li>
 </ul>
@@ -419,8 +413,9 @@
 <template #title>Stretch Goals</template>
 <ul>
 <li>Encrypt WAN traffic on your GRE tunnels using IPsec tunnel protection</li>
-<li>Configure Area 1 and Area 2 as totally stub areas</li>
-<li>Configure a route-map that matches a prefix-list inbound to your BGP peers which allows you to learn ONLY the default route</li>
+<li>Configure VARP instead of VRRP for your FHRP</li>
+<li>Have Jim &amp; Sharon acquire a DHCP address across the WAN</li>
+<li>Configure EIGRP on your Tunnel interfaces, what additional configuration is needed for your remote sites to learn about networks at HQ and vise versa?</li>
 </ul>
 </doc-tab>
 </doc-tabs>
@@ -453,6 +448,12 @@ show ip bgp</code></pre>
         <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M10.97 8.265a1.45 1.45 0 0 0-.487.57.75.75 0 0 1-1.341-.67c.2-.402.513-.826.997-1.148C10.627 6.69 11.244 6.5 12 6.5c.658 0 1.369.195 1.934.619a2.45 2.45 0 0 1 1.004 2.006c0 1.033-.513 1.72-1.027 2.215-.19.183-.399.358-.579.508l-.147.123a4.329 4.329 0 0 0-.435.409v1.37a.75.75 0 1 1-1.5 0v-1.473c0-.237.067-.504.247-.736.22-.28.486-.517.718-.714l.183-.153.001-.001c.172-.143.324-.27.47-.412.368-.355.569-.676.569-1.136a.953.953 0 0 0-.404-.806C12.766 8.118 12.384 8 12 8c-.494 0-.814.121-1.03.265ZM13 17a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"/></g></g></svg> Questions to Explore</span>
     </h3>
 </doc-anchor-target>
+<ul>
+<li>What happens to your switchports when MST is configured on one switch and Rapid-PVST is configured on the other?</li>
+<li>What&#x27;s the smallest possible summary network statement you can use to advertise all host subnets? (No loopbacks)</li>
+<li>Traceroute to Jim from Bob.  Why don&#x27;t you see any public IP addresses in the output despite it crossing that infrastructure?</li>
+<li>Would Jim and Sharon still have internet reachability if you configured Areas 1 &amp; 2 as totally stubby?  What would be the fix while maintaining your totally stub areas??</li>
+</ul>
 <doc-panel id="documentation" collapsed>
     <template #title>Documentation</template>
 <p><a href="https://www.ciscopress.com/articles/article.asp?p=2756480&amp;seqNum=5">Cisco Press - BGP Fundamentals</a>
