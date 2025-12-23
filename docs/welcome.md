@@ -10,7 +10,7 @@ description: A hands-on networking lab journal and knowledge base built for aspi
 ## About Me
 
 > My name is Chad and I'm a Network Consulting Engineer at Deloitte.  
-> Born and raised in the Twin Cities, I’ve been based in Scottsdale, AZ since late 2023.  
+> Born and raised in the Twin Cities, I’ve been based in the Phoenix area since late 2023.  
 > I have a CCNP: Enterprise with a concentration in Advanced Routing and Services (ENARSI).  
 > When I'm not working or in my lab, you can find me hiking, traveling, or out by the pool.
 
