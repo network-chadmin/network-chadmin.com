@@ -16,12 +16,6 @@ description: A hands-on networking lab journal and knowledge base built for aspi
 
 ![](/static/welcome/CCNP_Enterprise_med.jpg)
 
-!!!warning Work in Progress
-This site is still under active development — many labs are incomplete or evolving.
-Cloning my GitHub right now won’t give you the full experience.  
-Check back soon for the finished version of my first lab series: **Shrimp Co.** 🦐
-!!!
-
 ## What You'll Find Here
 
 ### :icon-mortar-board: [Network Academy](labs/network-academy)
@@ -38,7 +32,7 @@ You’ll progress from basic VLANs to complex multi-site architectures through p
 
 Standalone labs where I explore automation, emerging technologies, and advanced routing designs.
 
-### :icon-project-roadmap: [Technical Blog](/blog/)
+### :icon-project-roadmap: [Technical Blog](/blog/) 
 
 Deep dives into network concepts, troubleshooting notes, and lessons from real-world projects.
 
@@ -56,8 +50,6 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 ---
 
-## Recent Updates 8/25
+## Recent Updates 12/23
 
-- Additions and fixes to existing Shrimp Co labs
-- Finished up to Lab 8 of Shrimp Co.!
-- Made fixes to Shrimp Co. diagrams
+- Completed version 1.0 of Shrimp Co.!

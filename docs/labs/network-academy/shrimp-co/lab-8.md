@@ -18,7 +18,7 @@ order: 930
 ## :icon-tasklist: Configuration Tasks
 
 ### Layer 2 Configuration
-Ensure trunk links, VLAN databases, SVIs, port-channels are configured from previous labs. Confirm Layer 2 reachability for the following VLANs:
+Ensure access ports, trunk links, VLAN databases, port-channels are configured from previous labs.
 - **VLAN 10** – Sales
 - **VLAN 20** – Engineering
 - **VLAN 30** – Marketing *(New)*

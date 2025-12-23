@@ -19,13 +19,11 @@ order: 920
 
 ### 1. Access Layer Configuration:
 
-- **Host access ports**
-  - Configure according to diagram
-  - Add descriptions
-- **Management SVIs**
-  - Configure VLAN 99 SVIs according to diagram  
-- **VLANs, Trunks & Port-channels**
-  - Ensure VLAN databases are matching and VLANs are allowed across all links
+Ensure access ports, trunks, VLAN databases, and port-channels are configured to span Layer 2 domain across all access and distribution switches.
+- **VLAN 10** – Sales
+- **VLAN 20** – Engineering
+- **VLAN 30** – Marketing
+- **VLAN 99** – IT
 
 ### 2. Distribution Layer Configuration:
 
@@ -35,11 +33,11 @@ order: 920
   - Ensure VLAN databases are matching and VLANs are allowed across all links
 - **VRRP Configuration**
   - Configure VIPs according to diagram
-  - Load balance active gateways using priority
+  - Load balance active gateways using priority.  `sea-mdf-dsw1` should be active for VLANs 10 and 20, `sea-mdf-dsw2` should be the active gateway for VLANs 30 and 99.
   - Implement MD5 authentication
 - **OSPF**
   - Configure OSPF process 1 with passive-interface default
-  - Advertise all host subnets with a single summary network statement
+  - Advertise all host subnets with a single summary network statement.
   - Advertise Loopback0
   - Form adjacencies on Eth5-6 in Area 0
   - Utilize MD5 neighbor authentication
@@ -51,28 +49,29 @@ order: 920
 - **OSPF**
   - Configure OSPF process 1 with passive-interface default
   - Form adjacencies on Eth0/1-2 in Area 0
-  - Form adjacency on Tunnel0 in Area 1 on `sea-mdf-r1`
-  - Form adjacency on Tunnel0 in Area 2 on `sea-mdf-r1`
-  - Originate a default route
+  - Form adjacency on Tunnel0 in Area 1 on `sea-mdf-r1` (Requires remote site configuration)
+  - Form adjacency on Tunnel0 in Area 2 on `sea-mdf-r1` (Requires remote site configuration)
+  - Originate the default route you receive from your BGP peer
   - Advertise Loopback0
 - **BGP**
-  - Peer BGP using a neighbor statement targeting your public next-hop
+  - Configure BGP peering, refer to ISP provided documentation for details.
+![](/static/network-academy/shrimpco/lab-9/customer-bgp.png)
 - **NAT**
-  - Allow internet access for only host subnets by configuring NAT overload
+  - Configure PAT on both routers, only matching host host subnet traffic.
 - **DHCP**
- - Configure DHCP Pools on both routers for all host subnets so that routers cannot provide overlapping IP addresses
+ - Configure DHCP Pools on both routers for all host subnets so that routers cannot provide overlapping IP addresses.
 
 ### 4. Remote Site Configuration:
 
 - **Switch**
-  - Ensure VLAN 10 is stretched up to router subinterface
+  - Ensure VLAN 10 can reach it's gateway interface on the local router.
 - **Router**
   - Configure router subinterface and Loopback0 according to diagram
   - Configure static default route to public next-hop
   - Configure OSPF process 1 with passive-interface default
   - Form adjacency on Tunnel0 in Area 1 on `sea-mdf-r1`
   - Form adjacency on Tunnel0 in Area 2 on `sea-mdf-r1`
-  - Configure static NAT for local host for internet reachability
+  - Configure static NAT or PAT for local internet egress.
 
 ## :icon-check-circle: Success Criteria
 
@@ -83,8 +82,9 @@ order: 920
 - Pings to the internet fail for Loopbacks but not hosts
 +++ Stretch Goals
 - Encrypt WAN traffic on your GRE tunnels using IPsec tunnel protection
-- Configure Area 1 and Area 2 as totally stub areas
-- Configure a route-map that matches a prefix-list inbound to your BGP peers which allows you to learn ONLY the default route
+- Configure VARP instead of VRRP for your FHRP
+- Have Jim & Sharon acquire a DHCP address across the WAN
+- Configure EIGRP on your Tunnel interfaces, what additional configuration is needed for your remote sites to learn about networks at HQ and vise versa?
 +++
 
 ## :icon-terminal: Verification Commands
@@ -106,7 +106,10 @@ show ip bgp
 +++
 
 ### :icon-question: Questions to Explore
-
+* What happens to your switchports when MST is configured on one switch and Rapid-PVST is configured on the other?  
+* What's the smallest possible summary network statement you can use to advertise all host subnets? (No loopbacks)
+* Traceroute to Jim from Bob.  Why don't you see any public IP addresses in the output despite it crossing that infrastructure?
+* Would Jim and Sharon still have internet reachability if you configured Areas 1 & 2 as totally stubby?  What would be the fix while maintaining your totally stub areas??
 
 ==- Documentation
 
