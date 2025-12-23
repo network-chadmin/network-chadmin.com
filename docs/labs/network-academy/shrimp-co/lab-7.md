@@ -18,7 +18,7 @@ order: 940
 ### :icon-tasklist: Configuration Tasks
 
 #### Layer 2 Configuration
-Ensure access ports, trunk links, VLAN databases, and port-channels are configured to span Layer 2 domain across all access and distribution switches.
+Ensure access ports, trunks, VLAN databases, and port-channels are configured to span Layer 2 domain across all access and distribution switches.
 - **VLAN 10** – Sales
 - **VLAN 20** – Engineering
 - **VLAN 99** – IT
