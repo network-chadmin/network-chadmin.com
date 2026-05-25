@@ -11,7 +11,7 @@ description: A hands-on networking lab journal and knowledge base built for aspi
 
 > My name is Chad and I'm a Network Consulting Engineer at Deloitte.  
 > Born and raised in the Twin Cities, I’ve been based in the Phoenix area since late 2023.  
-> I have a CCNP: Enterprise with a concentration in Advanced Routing and Services (ENARSI).  
+> I have a CCNP: Enterprise with a concentration in Advanced Routing and Services (ENARSI) and I'm currently pursing my CCDE.
 > When I'm not working or in my lab, you can find me hiking, traveling, or out by the pool.
 
 ![](/static/welcome/CCNP_Enterprise_med.jpg)
@@ -50,6 +50,6 @@ All labs are designed for [Containerlab](https://containerlab.dev) — a lightwe
 
 ---
 
-## Recent Updates 12/23
+## Recent Updates 5/25
 
-- Completed version 1.0 of Shrimp Co.!
+- First blog post!

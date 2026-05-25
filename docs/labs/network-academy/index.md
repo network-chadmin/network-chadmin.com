@@ -24,9 +24,9 @@ Master networking fundamentals with hands-on labs and enterprise-inspired design
 :::
 
 ## What is Network Academy?
-Network Academy started as a way to help my colleagues learn networking through hands-on practice. What began as internal training material has grown into a public resource for anyone building real-world skills from the ground up.
+Network Academy started as a way to help my colleagues learn networking through practical lab work. What began as internal training material has grown into a public resource for anyone building real-world skills from the ground up.
 
-I believe labbing — and learning to enjoy it — is the key to success in this field. My goal isn’t just to teach concepts, but to help you build confidence by building complete networks where you can see how all these concepts work together in an enterprise environment.
+I believe labbing — and learning to enjoy it — is the key to success in this field. My goal is to show you how networking concepts work together in real enterprise networks, building the kind of confidence that only comes from hands-on practice.
 
 ## [Shrimp Co. - Network Fundamentals](/labs/network-academy/shrimp-co/)
 
