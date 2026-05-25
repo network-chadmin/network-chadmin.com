@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Technical Blog</title>
+    <title>NETWORK CHADMIN Technical Blog</title>
     <link>https://network-chadmin.github.io/blog/</link>
-    <description>Technical Blog</description>
-    <copyright>© 2025 Chad Heetland | Built with Retype</copyright>
-    <lastBuildDate>Wed, 09 Jul 2025 00:00:00 GMT</lastBuildDate>
-    <generator>https://retype.com</generator>
+    <copyright>© 2026 Chad Heetland | Built with Retype</copyright>
+    <lastBuildDate>Sun, 25 May 2025 00:00:00 GMT</lastBuildDate>
+    <generator>Retype 4.6.0</generator>
     <atom:link rel="self" type="application/rss+xml" href="https://network-chadmin.github.io/blog/feed.xml" />
     <image>
-      <title>Technical Blog</title>
+      <title>NETWORK CHADMIN Technical Blog</title>
       <link>https://network-chadmin.github.io/blog/</link>
       <url>https://network-chadmin.github.io/network-chadmin_notext.png</url>
     </image>
     <item>
-      <title>Test Blog Post</title>
-      <guid isPermaLink="true">https://network-chadmin.github.io/blog/test-post/</guid>
-      <author>heetland.chad@gmail.com (Chad Heetland)</author>
-      <pubDate>Wed, 09 Jul 2025 00:00:00 GMT</pubDate>
-      <category domain="https://network-chadmin.github.io/categories/test/">Test</category>
+      <title>Why the CCDE (and Why now?)</title>
+      <guid isPermaLink="true">https://network-chadmin.github.io/blog/ccde-why/</guid>
+      <description>It's May 25th, 2026, Memorial Day, and I'm sitting at a table at my local wine bar in Downtown Phoenix with a glass of house red and my MacBook in front of me and this blank page in my Obsidian waiting to be filled.</description>
+      <author>network-chadmin@pm.me (Chad Heetland)</author>
+      <pubDate>Sun, 25 May 2025 00:00:00 GMT</pubDate>
+      <category domain="https://network-chadmin.github.io/categories/ccde/">CCDE</category>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,36 @@
+﻿# Welcome
+
+> A hands-on networking lab journal and knowledge base built for aspiring engineers, focused on enterprise routing, switching, and automation.
+
+- [Welcome](https://network-chadmin.github.io/welcome.md): Welcome
+- [Getting Started](https://network-chadmin.github.io/getting-started.md): Labs I publish here use Containerlab, a free network lab solution developed by engineers at Nokia. It doesn't require a costly subscription, and in my experience, it's more resource-efficient, more reliable, and a lot more enjoyable than the emulators of years past.
+- [Resources](https://network-chadmin.github.io/resources.md): This is a collection of my favorite tools, applications, learning platforms and more that I use in my day-to-day life as a Network Engineer.
+
+## Labs
+
+### Network Academy
+
+- [Network Academy](https://network-chadmin.github.io/labs/network-academy/index.md): Master networking fundamentals with hands-on labs and enterprise-inspired designs.
+
+#### Shrimp Co.
+
+- [Shrimp Co.](https://network-chadmin.github.io/labs/network-academy/shrimp-co/index.md): An exploration in networking, from basic L2 to dynamic L3 tunneling
+- [Lab 1  - VLANs](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-1.md): Shrimp Co. is opening their first office in Seattle, WA, and you're hired as their network administrator. The switch is racked in IDF-A and it's up to you to set up basic Layer 2 segmentation.
+- [Lab 2 - Trunks](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-2.md): Construction of IDF-B on the second floor is finished. Configure the new switch and ensure layer 2 is properly spanned between floors.
+- [Lab 3 - Router-on-a-stick](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-3.md): Users are complaining they can't access servers in other departments. Deploy a router-on-a-stick solution to enable communication between VLANs
+- [Lab 4 - Basic Redundancy](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-4.md): As Shrimp Co. grows, network reliability becomes critical. Deploy HSRP and EtherChannel to eliminate single points of failure in your network design.
+- [Lab 5 - NAT & Internet](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-5.md): Shrimp Co. has connected to the internet via Volt Communications. Configure static NAT so Bob in Sales can reach the SeaMart web server while maintaining internal addressing.
+- [Lab 6 - Static Routing](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-6.md): Shrimp Co. needs centralized routing and improved NAT efficiency. Configure distribution layer gateways with static routes and dynamic NAT for scalable internet access.
+- [Lab 7 - PAT & Dynamic Routing](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-7.md): Shrimp Co. requires enterprise-grade infrastructure for reliable operations. Implement full redundancy with dual distribution switches, OSPF dynamic routing, and PAT for scalable internet access.
+- [Lab 8 - STP, Summarization, & DHCP](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-8.md): Shrimp Co.'s growing workforce requires more efficient Layer 2 resilience, streamlined routing, and simplified host IP management. Configure spanning-tree for redundancy, summarize routes for scalability, and deploy DHCP services for VLANs across the network.
+- [Lab 9 - Multiarea OSPF & GRE](https://network-chadmin.github.io/labs/network-academy/shrimp-co/lab-9.md): Shrimp Co. is opening remote offices in Milwaukee and New Orleans. Implement multi-area OSPF for scalable routing and configure GRE tunnels to connect all locations over the internet.
+- [SeaMart](https://network-chadmin.github.io/labs/network-academy/seamart/index.md)
+
+## Documentation
+
+- [Containerlab](https://network-chadmin.github.io/documentation/containerlab-reference.md): Command
+
+## Technical Blog
+
+- [Technical Blog](https://network-chadmin.github.io/blog/blog.md)
+- [Why the CCDE (and Why now?)](https://network-chadmin.github.io/blog/ccde-why.md): It's May 25th, 2026, Memorial Day, and I'm sitting at a table at my local wine bar in Downtown Phoenix with a glass of house red and my MacBook in front of me and this blank page in my Obsidian waiting to be filled.
