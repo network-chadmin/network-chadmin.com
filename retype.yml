@@ -1,7 +1,7 @@
 input: ./docs
 output: .retype
 
-url: network-chadmin.github.io
+url: https://www.network-chadmin.com
 
 start:
   pro: true
